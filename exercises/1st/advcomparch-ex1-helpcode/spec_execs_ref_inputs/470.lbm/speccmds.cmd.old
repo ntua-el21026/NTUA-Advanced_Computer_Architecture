@@ -1,0 +1,2 @@
+-C /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/470.lbm/run/run_base_ref_gcc49-static.0000
+-o lbm.out -e lbm.err ../run_base_ref_gcc49-static.0000/lbm_base.gcc49-static 3000 reference.dat 0 0 100_100_130_ldc.of

@@ -1,0 +1,1 @@
+-c /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/483.xalancbmk/run/run_base_ref_gcc49-static.0000 -o ref.out.cmp specperl /nvme/benchmarks/SPEC_CPU2006v1.1-static/bin/specdiff -m -l 10 /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/483.xalancbmk/data/ref/output/ref.out ref.out

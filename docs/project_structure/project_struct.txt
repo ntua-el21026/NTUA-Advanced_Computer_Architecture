@@ -1,0 +1,20 @@
+NTUA-Advanced_Computer_Architecture/
+├── docs/
+│   ├── lectures/
+│   │   ├── Lec01-overview-25-26.pdf
+│   │   ├── Lec02-Superscalar-SW-VLIW-25-26-final.pdf
+│   │   ├── Lec03-dynamic-25-26-final.pdf
+│   │   ├── Lec04-branch_prediction-25-26.pdf
+│   │   ├── Lec05-speculation-25-26-final.pdf
+│   │   ├── Lec06-SIMD-Vector-25-26.pdf
+│   │   ├── Lec07-Simulation-25-26.pdf
+│   │   └── Lec08-TLP-25-26.pdf
+│   └── project_structure/
+│       ├── project_struct.py
+│       └── project_struct.txt
+├── exercises/
+├── .gitattributes
+├── LICENSE
+└── README.md
+
+Total directories: 5, Total files: 13

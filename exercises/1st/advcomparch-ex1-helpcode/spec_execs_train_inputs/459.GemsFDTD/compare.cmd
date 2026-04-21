@@ -1,0 +1,1 @@
+-c /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/459.GemsFDTD/run/run_base_ref_gcc49-static.0000 -o sphere_td.nft.cmp specperl /nvme/benchmarks/SPEC_CPU2006v1.1-static/bin/specdiff -m -l 10  --abstol 1e-10  --reltol 1e-09  --obiwan /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/459.GemsFDTD/data/ref/output/sphere_td.nft sphere_td.nft

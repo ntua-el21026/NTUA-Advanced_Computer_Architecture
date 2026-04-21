@@ -1,0 +1,1 @@
+-c /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/435.gromacs/run/run_base_ref_gcc49-static.0000 -o gromacs.out.cmp specperl /nvme/benchmarks/SPEC_CPU2006v1.1-static/bin/specdiff -m -l 10  --reltol 0.0125 /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/435.gromacs/data/ref/output/gromacs.out gromacs.out

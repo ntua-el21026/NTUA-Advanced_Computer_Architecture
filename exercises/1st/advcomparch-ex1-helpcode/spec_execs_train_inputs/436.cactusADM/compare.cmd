@@ -1,0 +1,1 @@
+-c /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/436.cactusADM/run/run_base_ref_gcc49-static.0000 -o benchADM.out.cmp specperl /nvme/benchmarks/SPEC_CPU2006v1.1-static/bin/specdiff -m -l 10  --floatcompare /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/436.cactusADM/data/ref/output/benchADM.out benchADM.out

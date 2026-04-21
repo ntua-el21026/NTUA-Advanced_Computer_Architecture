@@ -1,0 +1,2 @@
+-C /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/433.milc/run/run_base_ref_gcc49-static.0000
+-i su3imp.in -o su3imp.out -e su3imp.err ../run_base_ref_gcc49-static.0000/milc_base.gcc49-static

@@ -1,0 +1,2 @@
+-C /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/435.gromacs/run/run_base_ref_gcc49-static.0000
+-e gromacs.err ../run_base_ref_gcc49-static.0000/gromacs_base.gcc49-static -silent -deffnm gromacs -nice 0

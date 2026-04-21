@@ -1,0 +1,3 @@
+-C /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/450.soplex/run/run_base_ref_gcc49-static.0000
+-o pds-50.mps.out -e pds-50.mps.stderr ../run_base_ref_gcc49-static.0000/soplex_base.gcc49-static -s1 -e -m45000 pds-50.mps
+-o ref.out -e ref.stderr ../run_base_ref_gcc49-static.0000/soplex_base.gcc49-static -m3500 ref.mps

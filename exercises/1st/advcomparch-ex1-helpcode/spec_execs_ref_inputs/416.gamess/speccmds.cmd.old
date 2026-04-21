@@ -1,0 +1,4 @@
+-C /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/416.gamess/run/run_base_ref_gcc49-static.0000
+-i cytosine.2.config -o cytosine.2.out -e cytosine.2.err ../run_base_ref_gcc49-static.0000/gamess_base.gcc49-static
+-i h2ocu2+.gradient.config -o h2ocu2+.gradient.out -e h2ocu2+.gradient.err ../run_base_ref_gcc49-static.0000/gamess_base.gcc49-static
+-i triazolium.config -o triazolium.out -e triazolium.err ../run_base_ref_gcc49-static.0000/gamess_base.gcc49-static

@@ -1,0 +1,51 @@
+# Default normalization
+* text=auto
+
+# Keep Git control files stable
+.gitattributes text eol=lf
+.gitignore    text eol=lf
+
+# MATLAB / Octave source
+*.m   text eol=crlf
+*.mat binary
+
+# General text files
+*.md   text=auto
+*.tex  text=auto
+*.bib  text=auto
+*.csv  text=auto
+*.tsv  text=auto
+*.json text=auto
+*.yaml text=auto
+*.yml  text=auto
+*.xml  text=auto
+*.py   text=auto
+
+# SPEC CPU benchmark payloads are input/output data. Preserve their exact
+# bytes; Git line-ending normalization breaks some bundled CRLF files.
+exercises/1st/advcomparch-ex1-helpcode/spec_execs_train_inputs/** -text
+exercises/1st/advcomparch-ex1-helpcode/spec_execs_ref_inputs/**   -text
+
+# Large SPEC benchmark payloads need Git LFS for GitHub.
+*.mps filter=lfs diff=lfs merge=lfs -text
+
+# Shell scripts must stay LF
+*.sh   text eol=lf
+*.bash text eol=lf
+
+# Project-specific TXT policy
+docs/project_structure/*.txt      text eol=lf
+labs/1st/programs/output/*.txt    text eol=crlf
+*.txt                             text=auto
+
+# Binary assets
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.zip  binary
+*.xlsx binary
+*.xls  binary
+*.docx binary
+*.pptx binary

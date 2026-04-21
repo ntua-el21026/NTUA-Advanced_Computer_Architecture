@@ -1,0 +1,2 @@
+-C /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/483.xalancbmk/run/run_base_ref_gcc49-static.0000
+-o ref.out -e ref.err ../run_base_ref_gcc49-static.0000/Xalan_base.gcc49-static -v t5.xml xalanc.xsl

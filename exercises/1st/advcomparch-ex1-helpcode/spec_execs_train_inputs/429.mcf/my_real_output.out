@@ -1,0 +1,43 @@
+Total Instructions: 18199720295
+
+RAS: (Correct - Incorrect)
+RAS (1 entries): 21327419 5808410
+RAS (2 entries): 23746809 3389020
+RAS (4 entries): 25847870 1287959
+RAS (8 entries): 26990832 144997
+RAS (16 entries): 27135684 145
+RAS (32 entries): 27135829 0
+
+Branch Predictors: (Name - Correct - Incorrect)
+  Nbit-16K-1: 3371440015 339198722
+  Nbit-16K-2: 3469510418 241128319
+  Nbit-32K-1: 3371440028 339198709
+  Pentium-M: 2714804948 995833789
+  Perceptron Branch Predictor (perceptrons: 512, history size: 20: 3554544217 156094520
+  Perceptron Branch Predictor (perceptrons: 512, history size: 12: 3551676587 158962150
+  Perceptron Branch Predictor (perceptrons: 512, history size: 24: 3555709484 154929253
+  Perceptron Branch Predictor (perceptrons: 512, history size: 36: 3556484630 154154107
+  Perceptron Branch Predictor (perceptrons: 512, history size: 48: 3556752106 153886631
+  Perceptron Branch Predictor (perceptrons: 512, history size: 60: 3558530888 152107849
+  Perceptron Branch Predictor (perceptrons: 1024, history size: 12: 3551710327 158928410
+  Perceptron Branch Predictor (perceptrons: 1024, history size: 24: 3555736016 154902721
+  Perceptron Branch Predictor (perceptrons: 1024, history size: 36: 3556510828 154127909
+  Perceptron Branch Predictor (perceptrons: 1024, history size: 48: 3556780614 153858123
+  Perceptron Branch Predictor (perceptrons: 1024, history size: 60: 3558557297 152081440
+  Perceptron Branch Predictor (perceptrons: 2048, history size: 12: 3551712572 158926165
+  Perceptron Branch Predictor (perceptrons: 2048, history size: 24: 3555740609 154898128
+  Perceptron Branch Predictor (perceptrons: 2048, history size: 36: 3556517477 154121260
+  Perceptron Branch Predictor (perceptrons: 2048, history size: 48: 3556782128 153856609
+  Perceptron Branch Predictor (perceptrons: 2048, history size: 60: 3558560912 152077825
+  Perceptron Branch Predictor (perceptrons: 4096, history size: 12: 3551711962 158926775
+  Perceptron Branch Predictor (perceptrons: 4096, history size: 24: 3555741059 154897678
+  Perceptron Branch Predictor (perceptrons: 4096, history size: 36: 3556517300 154121437
+  Perceptron Branch Predictor (perceptrons: 4096, history size: 48: 3556781907 153856830
+  Perceptron Branch Predictor (perceptrons: 4096, history size: 60: 3558562039 152076698
+  Perceptron Branch Predictor (perceptrons: 8192, history size: 12: 3551712050 158926687
+  Perceptron Branch Predictor (perceptrons: 8192, history size: 24: 3555741095 154897642
+  Perceptron Branch Predictor (perceptrons: 8192, history size: 36: 3556517290 154121447
+  Perceptron Branch Predictor (perceptrons: 8192, history size: 48: 3556781780 153856957
+  Perceptron Branch Predictor (perceptrons: 8192, history size: 60: 3558562390 152076347
+
+BTB Predictors: (Name - Correct - Incorrect - TargetCorrect)

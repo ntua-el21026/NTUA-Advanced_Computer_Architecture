@@ -1,0 +1,1 @@
+-o bwavesneededfor_speccmds.out -e bwaves.err ./bwaves_base.gcc49-static

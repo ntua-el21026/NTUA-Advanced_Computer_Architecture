@@ -1,0 +1,13 @@
+# Local Intel PIN kit extracted for running the assignment
+exercises/1st/pin-external-*/
+
+# Pintool build artifacts
+exercises/1st/advcomparch-ex1-helpcode/pintool/obj-*/
+*.makefile.copy
+*.core
+core.*
+
+# Local run outputs generated while validating pintools
+exercises/1st/advcomparch-ex1-helpcode/spec_execs_*_inputs/**/pin.log
+exercises/1st/advcomparch-ex1-helpcode/spec_execs_*_inputs/**/my_output.out
+exercises/1st/advcomparch-ex1-helpcode/spec_execs_*_inputs/**/my_predictor_output.out

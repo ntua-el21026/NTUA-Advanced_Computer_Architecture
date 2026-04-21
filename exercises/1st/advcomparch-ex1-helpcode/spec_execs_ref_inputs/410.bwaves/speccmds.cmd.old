@@ -1,0 +1,2 @@
+-C /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/410.bwaves/run/run_base_ref_gcc49-static.0000
+-e bwaves.err ../run_base_ref_gcc49-static.0000/bwaves_base.gcc49-static

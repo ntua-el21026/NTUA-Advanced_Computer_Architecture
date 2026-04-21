@@ -1,0 +1,1 @@
+-o train.log -e train.err ./GemsFDTD_base.gcc49-static
