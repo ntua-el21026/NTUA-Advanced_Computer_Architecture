@@ -13,8 +13,359 @@ NTUA-Advanced_Computer_Architecture/
 │       ├── project_struct.py
 │       └── project_struct.txt
 ├── exercises/
+│   └── 1st/
+│       ├── advcomparch-ex1-helpcode/
+│       │   ├── pintool/
+│       │   │   ├── pentium_m_predictor/
+│       │   │   │   ├── branch_predictor_return_value.h
+│       │   │   │   ├── global_predictor.h
+│       │   │   │   ├── lpb.h
+│       │   │   │   ├── pentium_m_bimodal_table.h
+│       │   │   │   ├── pentium_m_branch_predictor.h
+│       │   │   │   ├── pentium_m_branch_target_buffer.h
+│       │   │   │   ├── pentium_m_global_predictor.h
+│       │   │   │   ├── pentium_m_indirect_branch_target_buffer.h
+│       │   │   │   ├── pentium_m_loop_branch_predictor.h
+│       │   │   │   ├── saturating_predictor.h
+│       │   │   │   └── simple_bimodal_table.h
+│       │   │   ├── branch_predictor.h
+│       │   │   ├── cslab_branch.cpp
+│       │   │   ├── cslab_branch_stats.cpp
+│       │   │   ├── makefile
+│       │   │   ├── makefile.rules
+│       │   │   └── ras.h
+│       │   ├── spec_execs_ref_inputs/
+│       │   │   ├── 403.gcc/
+│       │   │   │   ├── 200.err
+│       │   │   │   ├── 200.i
+│       │   │   │   ├── 200.out
+│       │   │   │   ├── 200.s
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── gcc_base.gcc49-static
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   └── stdout.log
+│       │   │   ├── 410.bwaves/
+│       │   │   │   ├── bwaves.err
+│       │   │   │   ├── bwaves.in
+│       │   │   │   ├── bwaves.out
+│       │   │   │   ├── bwaves2.out
+│       │   │   │   ├── bwaves3.out
+│       │   │   │   ├── bwaves_base.gcc49-static
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   └── stdout.log
+│       │   │   ├── 416.gamess/
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── gamess_base.gcc49-static
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   ├── stdout.log
+│       │   │   │   ├── triazolium.config
+│       │   │   │   ├── triazolium.dat
+│       │   │   │   ├── triazolium.eigenv.txt
+│       │   │   │   ├── triazolium.F09
+│       │   │   │   ├── triazolium.F10
+│       │   │   │   ├── triazolium.F15
+│       │   │   │   ├── triazolium.F30
+│       │   │   │   ├── triazolium.F31
+│       │   │   │   ├── triazolium.F32
+│       │   │   │   ├── triazolium.F33
+│       │   │   │   ├── triazolium.inp
+│       │   │   │   └── triazolium.out
+│       │   │   ├── 429.mcf/
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── inp.err
+│       │   │   │   ├── inp.in
+│       │   │   │   ├── inp.out
+│       │   │   │   ├── mcf.out
+│       │   │   │   ├── mcf_base.gcc49-static
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   └── stdout.log
+│       │   │   ├── 433.milc/
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── milc_base.gcc49-static
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   ├── stdout.log
+│       │   │   │   ├── su3imp.err
+│       │   │   │   ├── su3imp.in
+│       │   │   │   └── su3imp.out
+│       │   │   ├── 435.gromacs/
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── gromacs.err
+│       │   │   │   ├── gromacs.out
+│       │   │   │   ├── gromacs.tpr
+│       │   │   │   ├── gromacs_base.gcc49-static
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   └── stdout.log
+│       │   │   ├── 436.cactusADM/
+│       │   │   │   ├── benchADM.err
+│       │   │   │   ├── benchADM.out
+│       │   │   │   ├── benchADM.par
+│       │   │   │   ├── cactusADM_base.gcc49-static
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   └── stdout.log
+│       │   │   ├── 450.soplex/
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── ref.mps
+│       │   │   │   ├── ref.mps.info
+│       │   │   │   ├── ref.out
+│       │   │   │   ├── ref.stderr
+│       │   │   │   ├── soplex_base.gcc49-static
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   └── stdout.log
+│       │   │   ├── 459.GemsFDTD/
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── GemsFDTD_base.gcc49-static
+│       │   │   │   ├── ref.in
+│       │   │   │   ├── ref.log
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── sphere.pec
+│       │   │   │   ├── sphere_td.nft
+│       │   │   │   ├── stderr.log
+│       │   │   │   ├── stdout.log
+│       │   │   │   ├── train.in
+│       │   │   │   └── yee.dat
+│       │   │   ├── 470.lbm/
+│       │   │   │   ├── 100_100_130_cf_b.of
+│       │   │   │   ├── 100_100_130_ldc.of
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── lbm.err
+│       │   │   │   ├── lbm.in
+│       │   │   │   ├── lbm.out
+│       │   │   │   ├── lbm_base.gcc49-static
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   └── stdout.log
+│       │   │   └── 483.xalancbmk/
+│       │   │       ├── 100mb.xsd
+│       │   │       ├── allbooks.xml
+│       │   │       ├── compare.cmd
+│       │   │       ├── ref.err
+│       │   │       ├── ref.lst
+│       │   │       ├── ref.out
+│       │   │       ├── speccmds.cmd
+│       │   │       ├── speccmds.cmd.old
+│       │   │       ├── stderr.log
+│       │   │       ├── stdout.log
+│       │   │       ├── t5.xml
+│       │   │       ├── test.lst
+│       │   │       ├── test.out
+│       │   │       ├── test.xml
+│       │   │       ├── train.lst
+│       │   │       ├── train.out
+│       │   │       ├── train.xsd
+│       │   │       ├── Xalan_base.gcc49-static
+│       │   │       └── xalanc.xsl
+│       │   ├── spec_execs_train_inputs/
+│       │   │   ├── 403.gcc/
+│       │   │   │   ├── 166.err
+│       │   │   │   ├── 166.i
+│       │   │   │   ├── 166.out
+│       │   │   │   ├── 166.s
+│       │   │   │   ├── 200.err
+│       │   │   │   ├── 200.i
+│       │   │   │   ├── 200.out
+│       │   │   │   ├── 200.s
+│       │   │   │   ├── c-typeck.i
+│       │   │   │   ├── c-typeck.s
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── cp-decl.i
+│       │   │   │   ├── cp-decl.s
+│       │   │   │   ├── expr.i
+│       │   │   │   ├── expr.s
+│       │   │   │   ├── expr2.i
+│       │   │   │   ├── expr2.s
+│       │   │   │   ├── g23.i
+│       │   │   │   ├── g23.s
+│       │   │   │   ├── gcc_base.gcc49-static
+│       │   │   │   ├── integrate.i
+│       │   │   │   ├── integrate.s
+│       │   │   │   ├── s04.i
+│       │   │   │   ├── s04.s
+│       │   │   │   ├── scilab.i
+│       │   │   │   ├── scilab.s
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   └── stdout.log
+│       │   │   ├── 410.bwaves/
+│       │   │   │   ├── bwaves.err
+│       │   │   │   ├── bwaves.in
+│       │   │   │   ├── bwaves.out
+│       │   │   │   ├── bwaves2.out
+│       │   │   │   ├── bwaves3.out
+│       │   │   │   ├── bwaves_base.gcc49-static
+│       │   │   │   ├── bwavesneededfor_speccmds.out
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   └── stdout.log
+│       │   │   ├── 416.gamess/
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── cytosine.2.config
+│       │   │   │   ├── cytosine.2.inp
+│       │   │   │   ├── cytosine.dat
+│       │   │   │   ├── cytosine.eigenv.txt
+│       │   │   │   ├── cytosine.F10
+│       │   │   │   ├── exam29.config
+│       │   │   │   ├── exam29.dat
+│       │   │   │   ├── exam29.eigenv.txt
+│       │   │   │   ├── exam29.F08
+│       │   │   │   ├── exam29.F10
+│       │   │   │   ├── exam29.inp
+│       │   │   │   ├── exam29.out
+│       │   │   │   ├── gamess_base.gcc49-static
+│       │   │   │   ├── h2ocu2+.dat
+│       │   │   │   ├── h2ocu2+.eigenv.txt
+│       │   │   │   ├── h2ocu2+.energy.config
+│       │   │   │   ├── h2ocu2+.energy.inp
+│       │   │   │   ├── h2ocu2+.energy.out
+│       │   │   │   ├── h2ocu2+.F10
+│       │   │   │   ├── h2ocu2+.F15
+│       │   │   │   ├── h2ocu2+.gradient.config
+│       │   │   │   ├── h2ocu2+.gradient.inp
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   ├── stdout.log
+│       │   │   │   ├── triazolium.config
+│       │   │   │   ├── triazolium.dat
+│       │   │   │   ├── triazolium.eigenv.txt
+│       │   │   │   ├── triazolium.F09
+│       │   │   │   ├── triazolium.F10
+│       │   │   │   ├── triazolium.F15
+│       │   │   │   ├── triazolium.F30
+│       │   │   │   ├── triazolium.F31
+│       │   │   │   ├── triazolium.F32
+│       │   │   │   ├── triazolium.F33
+│       │   │   │   └── triazolium.inp
+│       │   │   ├── 429.mcf/
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── inp.err
+│       │   │   │   ├── inp.in
+│       │   │   │   ├── inp.out
+│       │   │   │   ├── mcf.out
+│       │   │   │   ├── mcf_base.gcc49-static
+│       │   │   │   ├── my_real_output.out
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   └── stdout.log
+│       │   │   ├── 433.milc/
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── milc_base.gcc49-static
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   ├── stdout.log
+│       │   │   │   ├── su3imp.err
+│       │   │   │   ├── su3imp.in
+│       │   │   │   └── su3imp.out
+│       │   │   ├── 435.gromacs/
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── gromacs.err
+│       │   │   │   ├── gromacs.out
+│       │   │   │   ├── gromacs.tpr
+│       │   │   │   ├── gromacs_base.gcc49-static
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   └── stdout.log
+│       │   │   ├── 436.cactusADM/
+│       │   │   │   ├── benchADM.err
+│       │   │   │   ├── benchADM.out
+│       │   │   │   ├── benchADM.par
+│       │   │   │   ├── cactusADM_base.gcc49-static
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   └── stdout.log
+│       │   │   ├── 450.soplex/
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── pds-50.mps
+│       │   │   │   ├── pds-50.mps.info
+│       │   │   │   ├── pds-50.mps.out
+│       │   │   │   ├── pds-50.mps.stderr
+│       │   │   │   ├── ref.mps.info
+│       │   │   │   ├── soplex_base.gcc49-static
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   ├── stdout.log
+│       │   │   │   ├── test.mps
+│       │   │   │   ├── test.mps.info
+│       │   │   │   ├── test.out
+│       │   │   │   ├── test.stderr
+│       │   │   │   ├── train.mps
+│       │   │   │   ├── train.mps.info
+│       │   │   │   ├── train.out
+│       │   │   │   └── train.stderr
+│       │   │   ├── 459.GemsFDTD/
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── GemsFDTD_base.gcc49-static
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── sphere.pec
+│       │   │   │   ├── sphere_td.nft
+│       │   │   │   ├── stderr.log
+│       │   │   │   ├── stdout.log
+│       │   │   │   ├── train.in
+│       │   │   │   └── yee.dat
+│       │   │   ├── 470.lbm/
+│       │   │   │   ├── 100_100_130_cf_b.of
+│       │   │   │   ├── 100_100_130_ldc.of
+│       │   │   │   ├── compare.cmd
+│       │   │   │   ├── lbm.err
+│       │   │   │   ├── lbm.in
+│       │   │   │   ├── lbm.out
+│       │   │   │   ├── lbm_base.gcc49-static
+│       │   │   │   ├── speccmds.cmd
+│       │   │   │   ├── speccmds.cmd.old
+│       │   │   │   ├── stderr.log
+│       │   │   │   └── stdout.log
+│       │   │   └── 483.xalancbmk/
+│       │   │       ├── 100mb.xsd
+│       │   │       ├── allbooks.xml
+│       │   │       ├── compare.cmd
+│       │   │       ├── speccmds.cmd
+│       │   │       ├── speccmds.cmd.old
+│       │   │       ├── stderr.log
+│       │   │       ├── stdout.log
+│       │   │       ├── t5.xml
+│       │   │       ├── train.lst
+│       │   │       ├── train.out
+│       │   │       ├── train.xsd
+│       │   │       ├── Xalan_base.gcc49-static
+│       │   │       └── xalanc.xsl
+│       │   ├── plot_mpki_ipc.py
+│       │   ├── run_train_predictors.sh
+│       │   └── run_train_stats.sh
+│       ├── assignment/
+│       │   └── advanced-ca-2025-2026-askisi1.pdf
+│       └── report/
 ├── .gitattributes
+├── .gitignore
 ├── LICENSE
 └── README.md
 
-Total directories: 5, Total files: 13
+Total directories: 35, Total files: 334
