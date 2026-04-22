@@ -25,6 +25,7 @@
 # bytes; Git line-ending normalization breaks some bundled CRLF files.
 exercises/1st/advcomparch-ex1-helpcode/spec_execs_train_inputs/** -text
 exercises/1st/advcomparch-ex1-helpcode/spec_execs_ref_inputs/**   -text
+exercises/1st/benchmarks/**/*.csv                              -text
 
 # Large SPEC benchmark payloads need Git LFS for GitHub.
 *.mps filter=lfs diff=lfs merge=lfs -text

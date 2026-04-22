@@ -1,11 +1,28 @@
 # Local Intel PIN kit extracted for running the assignment
 exercises/1st/pin-external-*/
 
+# Python/runtime artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local editor/OS artifacts
+.DS_Store
+Thumbs.db
+
 # Pintool build artifacts
 exercises/1st/advcomparch-ex1-helpcode/pintool/obj-*/
 *.makefile.copy
 *.core
 core.*
+
+# Optional local scratch area for benchmark runs
+exercises/1st/benchmarks/.scratch/
 
 # Local run outputs generated while validating pintools
 exercises/1st/advcomparch-ex1-helpcode/spec_execs_*_inputs/**/pin.log

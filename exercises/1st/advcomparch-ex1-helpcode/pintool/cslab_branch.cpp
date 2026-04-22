@@ -15,6 +15,8 @@ using namespace std;
 /* ===================================================================== */
 KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE,    "pintool",
     "o", "cslab_branch.out", "specify output file name");
+KNOB<string> KnobPredictorSet(KNOB_MODE_WRITEONCE, "pintool",
+    "predictor_set", "5.3", "predictor set to instantiate: 5.3, 5.4, 5.5, 5.6.1, pentium-m, all");
 /* ===================================================================== */
 
 /* ===================================================================== */
@@ -109,8 +111,8 @@ VOID Instruction(INS ins, void * v)
         INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)ret_instruction,
                        IARG_INST_PTR, IARG_BRANCH_TARGET_ADDR, IARG_END);
 
-    // For BTB we instrument all branches except returns
-    if (INS_IsBranch(ins) && !INS_IsRet(ins))
+    // For BTB we instrument all branches and calls except returns.
+    if ((INS_IsBranch(ins) || INS_IsCall(ins)) && !INS_IsRet(ins))
     INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)branch_instruction,
                    IARG_INST_PTR, IARG_BRANCH_TARGET_ADDR, IARG_BRANCH_TAKEN,
                    IARG_END);
@@ -147,13 +149,14 @@ VOID Fini(int code, VOID * v)
     }
     outFile << "\n";
 
-    outFile <<"BTB Predictors: (Name - Correct - Incorrect - TargetCorrect)\n";
+    outFile <<"BTB Predictors: (Name - Correct - Incorrect - TargetCorrect - TargetIncorrect)\n";
     for (btb_it = btb_predictors.begin(); btb_it != btb_predictors.end(); ++btb_it) {
         BTBPredictor *curr_predictor = *btb_it;
         outFile << "  " << curr_predictor->getName() << ": "
                 << curr_predictor->getNumCorrectPredictions() << " "
                 << curr_predictor->getNumIncorrectPredictions() << " "
-                << curr_predictor->getNumCorrectTargetPredictions() << "\n";
+                << curr_predictor->getNumCorrectTargetPredictions() << " "
+                << curr_predictor->getNumIncorrectTargetPredictions() << "\n";
     }
 
     outFile.close();
@@ -163,16 +166,76 @@ VOID Fini(int code, VOID * v)
 
 VOID InitPredictors()
 {
+    string predictor_set = KnobPredictorSet.Value();
 
-    // Pentium-M predictor
-    PentiumMBranchPredictor *pentiumPredictor = new PentiumMBranchPredictor();
-    branch_predictors.push_back(pentiumPredictor);
+    if (predictor_set == "5.3" || predictor_set == "all") {
+        // 5.3(i): fixed 16K-entry BHT, standard n-bit saturating counters.
+        branch_predictors.push_back(new NbitPredictor(14, 1));
+        branch_predictors.push_back(new NbitPredictor(14, 2));
+        branch_predictors.push_back(new NbitPredictor(14, 3));
+        branch_predictors.push_back(new NbitPredictor(14, 4));
 
-    /* ... */
+        // 5.3(ii): Nair Table VI alternatives. ABACBDCD:3 is the standard
+        // 2-bit saturating counter above, so only the four non-standard FSMs
+        // are instantiated here.
+        branch_predictors.push_back(new NairTwoBitFsmPredictor(14, "BCBAADCD", 3));
+        branch_predictors.push_back(new NairTwoBitFsmPredictor(14, "BCBABDCD", 3));
+        branch_predictors.push_back(new NairTwoBitFsmPredictor(14, "CBBDACBA", 10));
+        branch_predictors.push_back(new NairTwoBitFsmPredictor(14, "BACADBDC", 12));
+
+        // 5.3(iii): fixed 32K-bit hardware budget variants.
+        branch_predictors.push_back(new NbitPredictor(15, 1));
+        branch_predictors.push_back(new NbitPredictor(13, 4));
+    }
+
+    if (predictor_set == "5.6.1" || predictor_set == "all") {
+        // 5.6.1: perceptron predictors for all assignment M and n pairs.
+        UINT32 perceptron_counts[] = {32, 512, 1024};
+        UINT32 history_lengths[] = {4, 8, 32, 60, 72};
+
+        for (UINT32 i = 0; i < sizeof(perceptron_counts) / sizeof(perceptron_counts[0]); i++) {
+            for (UINT32 j = 0; j < sizeof(history_lengths) / sizeof(history_lengths[0]); j++) {
+                branch_predictors.push_back(new PerceptronPredictor(perceptron_counts[i], history_lengths[j]));
+            }
+        }
+    }
+
+    if (predictor_set == "pentium-m" || predictor_set == "all") {
+        // Pentium-M predictor
+        PentiumMBranchPredictor *pentiumPredictor = new PentiumMBranchPredictor();
+        branch_predictors.push_back(pentiumPredictor);
+    }
+
+    if (predictor_set == "5.4" || predictor_set == "all") {
+        // 5.4: total BTB entries, associativity.
+        btb_predictors.push_back(new BTBPredictor(512, 1));
+        btb_predictors.push_back(new BTBPredictor(512, 2));
+        btb_predictors.push_back(new BTBPredictor(256, 2));
+        btb_predictors.push_back(new BTBPredictor(256, 4));
+        btb_predictors.push_back(new BTBPredictor(128, 2));
+        btb_predictors.push_back(new BTBPredictor(128, 4));
+        btb_predictors.push_back(new BTBPredictor(64, 4));
+        btb_predictors.push_back(new BTBPredictor(64, 8));
+    }
+
+    if (branch_predictors.empty() && btb_predictors.empty() && predictor_set != "5.5") {
+        cerr << "Unknown -predictor_set value: " << predictor_set << "\n";
+        cerr << "Valid values: 5.3, 5.4, 5.5, 5.6.1, pentium-m, all\n";
+        PIN_ExitProcess(1);
+    }
 }
 
 VOID InitRas()
 {
+    string predictor_set = KnobPredictorSet.Value();
+
+    if (predictor_set == "5.5" || predictor_set == "all") {
+        UINT32 sizes[] = {4, 8, 16, 32, 48, 64};
+        for (UINT32 i = 0; i < sizeof(sizes) / sizeof(sizes[0]); i++)
+            ras_vec.push_back(new RAS(sizes[i]));
+        return;
+    }
+
     for (UINT32 i = 1; i <= 32; i*=2)
         ras_vec.push_back(new RAS(i));
 }

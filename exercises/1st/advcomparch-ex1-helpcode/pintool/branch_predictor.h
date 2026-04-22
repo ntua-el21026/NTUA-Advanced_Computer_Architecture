@@ -4,6 +4,9 @@
 #include <sstream> // std::ostringstream
 #include <cmath>   // pow()
 #include <cstring> // memset()
+#include <cassert> // assert()
+#include <string>
+#include <vector>
 
 /**
  * A generic BranchPredictor base class.
@@ -49,7 +52,7 @@ public:
         
         COUNTER_MAX = (1 << cntr_bits) - 1;
     };
-    ~NbitPredictor() { delete TABLE; };
+    ~NbitPredictor() { delete[] TABLE; };
 
     virtual bool predict(ADDRINT ip, ADDRINT target) {
         unsigned int ip_table_index = ip % table_entries;
@@ -86,27 +89,122 @@ private:
     unsigned int table_entries;
 };
 
-// Fill in the BTB implementation ...
+class NairTwoBitFsmPredictor : public BranchPredictor
+{
+public:
+    NairTwoBitFsmPredictor(unsigned index_bits_, const std::string &machine_, unsigned output_mask_)
+        : BranchPredictor(), index_bits(index_bits_), machine(machine_), output_mask(output_mask_) {
+        assert(machine.size() == 8);
+        table_entries = 1 << index_bits;
+        TABLE = new unsigned char[table_entries];
+        memset(TABLE, 0, table_entries * sizeof(*TABLE));
+
+        for (unsigned state = 0; state < 4; state++) {
+            transitions[state][0] = decodeState(machine[2 * state]);
+            transitions[state][1] = decodeState(machine[2 * state + 1]);
+        }
+    };
+
+    ~NairTwoBitFsmPredictor() { delete[] TABLE; };
+
+    virtual bool predict(ADDRINT ip, ADDRINT target) {
+        unsigned int ip_table_index = ip % table_entries;
+        unsigned int state = TABLE[ip_table_index];
+        return predictsTaken(state);
+    };
+
+    virtual void update(bool predicted, bool actual, ADDRINT ip, ADDRINT target) {
+        unsigned int ip_table_index = ip % table_entries;
+        unsigned int state = TABLE[ip_table_index];
+        TABLE[ip_table_index] = transitions[state][actual ? 1 : 0];
+
+        updateCounters(predicted, actual);
+    };
+
+    virtual string getName() {
+        std::ostringstream stream;
+        stream << "FSM-" << pow(2.0, double(index_bits)) / 1024.0 << "K-"
+               << machine << "-" << output_mask;
+        return stream.str();
+    }
+
+private:
+    unsigned int decodeState(char state) {
+        assert(state >= 'A' && state <= 'D');
+        return static_cast<unsigned int>(state - 'A');
+    }
+
+    bool predictsTaken(unsigned int state) {
+        assert(state < 4);
+        return ((output_mask >> (3 - state)) & 1) != 0;
+    }
+
+    unsigned int index_bits;
+    std::string machine;
+    unsigned int output_mask;
+    unsigned int table_entries;
+    unsigned char *TABLE;
+    unsigned char transitions[4][2];
+};
+
 class BTBPredictor : public BranchPredictor
 {
 public:
 	BTBPredictor(int btb_lines, int btb_assoc)
-	     : table_lines(btb_lines), table_assoc(btb_assoc)
+	     : table_lines(btb_lines),
+	       table_assoc(btb_assoc),
+	       table_sets(btb_lines / btb_assoc),
+	       table(btb_lines),
+	       lru_clock(0),
+	       correct_target_predictions(0),
+	       incorrect_target_predictions(0),
+	       last_predicted_target_valid(false),
+	       last_predicted_target(0)
 	{
-		/* ... fill me ... */
+		assert(table_lines > 0);
+		assert(table_assoc > 0);
+		assert((table_lines % table_assoc) == 0);
 	}
 
 	~BTBPredictor() {
-		/* ... fill me ... */
 	}
 
     virtual bool predict(ADDRINT ip, ADDRINT target) {
-		/* ... fill me ... */
+		Entry *entry = findEntry(ip);
+
+		if (entry != 0) {
+			entry->last_used = ++lru_clock;
+			last_predicted_target_valid = true;
+			last_predicted_target = entry->target;
+			return true;
+		}
+
+		last_predicted_target_valid = false;
+		last_predicted_target = 0;
 		return false;
 	}
 
     virtual void update(bool predicted, bool actual, ADDRINT ip, ADDRINT target) {
-		/* ... fill me ... */
+		if (predicted && actual) {
+			if (last_predicted_target_valid && last_predicted_target == target)
+				correct_target_predictions++;
+			else
+				incorrect_target_predictions++;
+		}
+
+		updateCounters(predicted, actual);
+
+		if (!actual)
+			return;
+
+		Entry *entry = findEntry(ip);
+		if (entry == 0)
+			entry = chooseVictim(ip);
+
+		entry->valid = true;
+		entry->ip = ip;
+		entry->target = target;
+		entry->last_used = ++lru_clock;
 	}
 
     virtual string getName() { 
@@ -116,12 +214,64 @@ public:
 	}
 
     UINT64 getNumCorrectTargetPredictions() { 
-		/* ... fill me ... */
-		return 0;
+		return correct_target_predictions;
+	}
+
+    UINT64 getNumIncorrectTargetPredictions() {
+		return incorrect_target_predictions;
 	}
 
 private:
+	struct Entry {
+		Entry() : valid(false), ip(0), target(0), last_used(0) {}
+
+		bool valid;
+		ADDRINT ip;
+		ADDRINT target;
+		UINT64 last_used;
+	};
+
+	unsigned int setIndex(ADDRINT ip) {
+		return (ip >> 4) % table_sets;
+	}
+
+	Entry *entryAt(unsigned int set, unsigned int way) {
+		return &table[set * table_assoc + way];
+	}
+
+	Entry *findEntry(ADDRINT ip) {
+		unsigned int set = setIndex(ip);
+		for (int way = 0; way < table_assoc; way++) {
+			Entry *entry = entryAt(set, way);
+			if (entry->valid && entry->ip == ip)
+				return entry;
+		}
+		return 0;
+	}
+
+	Entry *chooseVictim(ADDRINT ip) {
+		unsigned int set = setIndex(ip);
+		Entry *victim = entryAt(set, 0);
+
+		for (int way = 0; way < table_assoc; way++) {
+			Entry *entry = entryAt(set, way);
+			if (!entry->valid)
+				return entry;
+			if (entry->last_used < victim->last_used)
+				victim = entry;
+		}
+
+		return victim;
+	}
+
 	int table_lines, table_assoc;
+	int table_sets;
+	std::vector<Entry> table;
+	UINT64 lru_clock;
+	UINT64 correct_target_predictions;
+	UINT64 incorrect_target_predictions;
+	bool last_predicted_target_valid;
+	ADDRINT last_predicted_target;
 };
 
 
@@ -176,7 +326,7 @@ private:
 	// Overriden "getName" method...
 	// ---
 	virtual string getName(){
-		std::string output = "Perceptron Branch Predictor (perceptrons: " + std::to_string(perceptronTableSize_) + ", history size: " + std::to_string(historyTableSize_);
+		std::string output = "Perceptron-M" + std::to_string(perceptronTableSize_) + "-N" + std::to_string(historyTableSize_);
 		return output;
   	}
 	// ---
