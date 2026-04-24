@@ -1,0 +1,28 @@
+Total Instructions: 3184316533
+
+RAS: (Correct - Incorrect)
+RAS (1 entries): 34812952 21784612
+RAS (2 entries): 46709357 9888207
+RAS (4 entries): 54260274 2337290
+RAS (8 entries): 56428212 169352
+RAS (16 entries): 56587836 9728
+RAS (32 entries): 56595983 1581
+
+Branch Predictors: (Name - Correct - Incorrect)
+  Perceptron-M32-N4: 492113074 82363294
+  Perceptron-M32-N8: 505676872 68799496
+  Perceptron-M32-N32: 524723400 49752968
+  Perceptron-M32-N60: 529266122 45210246
+  Perceptron-M32-N72: 530010306 44466062
+  Perceptron-M512-N4: 532655697 41820671
+  Perceptron-M512-N8: 542356584 32119784
+  Perceptron-M512-N32: 554678467 19797901
+  Perceptron-M512-N60: 557023252 17453116
+  Perceptron-M512-N72: 557313739 17162629
+  Perceptron-M1024-N4: 535579487 38896881
+  Perceptron-M1024-N8: 544543159 29933209
+  Perceptron-M1024-N32: 556169529 18306839
+  Perceptron-M1024-N60: 558542304 15934064
+  Perceptron-M1024-N72: 558855465 15620903
+
+BTB Predictors: (Name - Correct - Incorrect - TargetCorrect - TargetIncorrect)

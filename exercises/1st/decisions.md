@@ -163,3 +163,76 @@ This file records implementation and evaluation decisions for the first assignme
 - Main metric remains:
   - `directionMPKI = direction_mispredictions / total_instructions * 1000`.
 - Use `exercises/1st/scripts/run_5_6_1_perceptrons.py` to run and summarize 5.6.1 after the currently running sweeps finish and the pintool is rebuilt.
+
+## 5.6.2 Predictor Comparison
+
+- Use only the `train` inputs, as required by 5.1.
+- Add a dedicated `5.6.2` pintool mode with exactly 18 predictors:
+  - `Static-AlwaysTaken`,
+  - `Static-BTFNT`,
+  - `Nbit-16K-2` as the selected 5.3(iii) n-bit predictor,
+  - `Pentium-M`,
+  - local-history: `Local-X2048-Z8-PHT8K-2`, `Local-X4096-Z4-PHT8K-2`, `Local-X8192-Z2-PHT8K-2`,
+  - global-history: `Global-PHT16K-BHR4-2`, `Global-PHT16K-BHR8-2`, `Global-PHT16K-BHR12-2`,
+  - perceptrons near 32K bits: `Perceptron-M728-N8`, `Perceptron-M141-N32`, `Perceptron-M56-N72`,
+  - `Alpha21264`,
+  - four tournament predictors.
+- Local-history hardware:
+  - PHT cost is `8192 * 2 = 16K bits`,
+  - BHT budget is the remaining `16K bits`,
+  - therefore `(X, Z) = (2048, 8), (4096, 4), (8192, 2)`.
+- Global-history hardware:
+  - BHR overhead is ignored,
+  - PHT is `16K` entries of 2-bit counters for a `32K-bit` budget.
+- Perceptron hardware:
+  - use `weight_bits = 1 + floor(log2(theta))`,
+  - clamp simulated weights to `[-theta, theta]` so the cost assumption is consistent.
+- Two-level PHT indexing uses PC bits XOR history bits to reduce aliasing and use the full shared PHT.
+- Predictors implemented by us for 5.6.2:
+  - `StaticAlwaysTakenPredictor`,
+  - `StaticBTFNTPredictor`,
+  - `LocalHistoryTwoLevelPredictor`,
+  - `GlobalHistoryTwoLevelPredictor`,
+  - `Alpha21264Predictor`,
+  - `TournamentHybridPredictor`.
+- Tournament meta-predictor:
+  - 2-bit counters,
+  - 1024 or 2048 entries,
+  - overhead ignored as allowed by the assignment.
+- Implemented tournament predictors:
+  - `Tournament-M1024-Nbit16K1-Global8K-BHR8`
+    - meta: 1024 2-bit counters,
+    - P0: `Nbit-16K-1`,
+    - P1: `Global-PHT8K-BHR8-2`.
+  - `Tournament-M1024-Local2048x4-Global8K-BHR8`
+    - meta: 1024 2-bit counters,
+    - P0: local-history with BHT `2048 * 4` and PHT `4096 * 2`,
+    - P1: `Global-PHT8K-BHR8-2`.
+  - `Tournament-M2048-Nbit8K2-Perceptron16K-N8`
+    - meta: 2048 2-bit counters,
+    - P0: `Nbit-8K-2`,
+    - P1: `Perceptron-M364-N8`.
+  - `Tournament-M2048-Local1024x6-Perceptron16K-N8`
+    - meta: 2048 2-bit counters,
+    - P0: local-history with BHT `1024 * 6` and PHT `4096 * 2`,
+    - P1: `Perceptron-M364-N8`.
+- Use `exercises/1st/scripts/run_5_6_2_predictors.py` to run and summarize 5.6.2.
+- The final predictor choice is not encoded in the script; it will be argued in the report after inspecting MPKI, plots, hardware cost, and complexity.
+
+## 5.7 Ref-input Validation
+
+- 5.7 repeats the evaluation on the longer `ref` inputs for only 3 selected predictors.
+- Selection rule:
+  - choose the strict top 3 predictors from the completed 5.6.2 `train` comparison by arithmetic mean direction MPKI.
+- Selected predictors:
+  - `Alpha21264`,
+  - `Perceptron-M141-N32`,
+  - `Perceptron-M56-N72`.
+- Rationale:
+  - `Alpha21264` was the best 5.6.2 predictor by arithmetic mean direction MPKI and has about 29K-bit overhead.
+  - `Perceptron-M141-N32` was the best near-32K perceptron by arithmetic mean direction MPKI.
+  - `Perceptron-M56-N72` had the best aggregate direction MPKI among the 5.6.2 predictors and tests a longer-history perceptron under the same budget.
+- Do not use the larger 5.6.1 perceptrons for 5.7, even if they perform well, because their hardware overhead is far above the 32K-bit comparison budget.
+- Add a dedicated `5.7` pintool mode so the `ref` runs instantiate only these 3 predictors instead of all 18 from 5.6.2.
+- Use `exercises/1st/scripts/run_5_7_ref_top3.py` to run and summarize 5.7.
+- The script writes both ref-only summaries and train-vs-ref comparison CSVs against the existing 5.6.2 train summaries.

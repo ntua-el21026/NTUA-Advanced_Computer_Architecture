@@ -1,0 +1,37 @@
+Assignment 1 - Section 5.6.2 Predictor Comparison
+Parsed benchmark outputs: 11
+Missing/unparseable benchmark outputs: 0
+
+Predictors
+Predictor                                          Family               Bits    Mean MPKI     Agg MPKI    Mean Acc%
+-------------------------------------------------------------------------------------------------------------------
+Alpha21264                                         alpha21264          29696     3.071448     2.118810    97.392210
+Perceptron-M141-N32                                perceptron          32571     3.088004     2.186112    97.304159
+Perceptron-M56-N72                                 perceptron          32704     3.139574     1.787796    97.325544
+Tournament-M2048-Local1024x6-Perceptron16K-N8      tournament          30716     3.743018     2.921627    96.811870
+Tournament-M1024-Local2048x4-Global8K-BHR8         tournament          32768     4.091262     3.102470    96.527115
+Global-PHT16K-BHR12-2                              global-history      32768     4.180569     3.554890    96.337599
+Tournament-M2048-Nbit8K2-Perceptron16K-N8          tournament          32768     4.312035     3.773548    95.980364
+Perceptron-M728-N8                                 perceptron          32760     4.314100     3.767992    95.966800
+Tournament-M1024-Nbit16K1-Global8K-BHR8            tournament          32768     4.777557     4.133276    95.629879
+Local-X2048-Z8-PHT8K-2                             local-history       32768     4.866492     3.659317    95.936834
+Global-PHT16K-BHR8-2                               global-history      32768     5.408282     4.835113    95.036740
+Local-X4096-Z4-PHT8K-2                             local-history       32768     6.237475     4.572214    94.838343
+Global-PHT16K-BHR4-2                               global-history      32768     6.815313     5.975966    93.597980
+Local-X8192-Z2-PHT8K-2                             local-history       32768     7.628906     5.135478    93.851780
+Nbit-16K-2                                         nbit                32768     7.769876     6.505473    91.486057
+Pentium-M                                          pentium-m           30000    12.313659     6.851084    90.469760
+Static-BTFNT                                       static                  0    21.430309    14.108183    78.818575
+Static-AlwaysTaken                                 static                  0    44.919848    33.622869    53.321033
+
+Families
+Family           Predictors     Rows    Mean MPKI     Agg MPKI    Mean Acc%
+------------------------------------------------------------------------------
+alpha21264                1       11     3.071448     2.118810    97.392210
+perceptron                3       33     3.513893     2.580633    96.865501
+tournament                4       44     4.230968     3.482730    96.237307
+global-history            3       33     5.468055     4.788657    94.990773
+local-history             3       33     6.244291     4.455670    94.875652
+nbit                      1       11     7.769876     6.505473    91.486057
+pentium-m                 1       11    12.313659     6.851084    90.469760
+static                    2       22    33.175079    23.865526    66.069804

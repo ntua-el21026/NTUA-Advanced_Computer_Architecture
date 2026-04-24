@@ -16,7 +16,7 @@ using namespace std;
 KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE,    "pintool",
     "o", "cslab_branch.out", "specify output file name");
 KNOB<string> KnobPredictorSet(KNOB_MODE_WRITEONCE, "pintool",
-    "predictor_set", "5.3", "predictor set to instantiate: 5.3, 5.4, 5.5, 5.6.1, pentium-m, all");
+    "predictor_set", "5.3", "predictor set to instantiate: 5.3, 5.4, 5.5, 5.6.1, 5.6.2, 5.7, pentium-m, all");
 /* ===================================================================== */
 
 /* ===================================================================== */
@@ -200,6 +200,73 @@ VOID InitPredictors()
         }
     }
 
+    if (predictor_set == "5.6.2" || predictor_set == "all") {
+        // 5.6.2: final cross-family comparison. Most predictors are sized
+        // near 32K bits, except Pentium-M (~30K) and Alpha21264 (~29K).
+        branch_predictors.push_back(new StaticAlwaysTakenPredictor());
+        branch_predictors.push_back(new StaticBTFNTPredictor());
+
+        // Best fixed-32K n-bit predictor from 5.3(iii).
+        branch_predictors.push_back(new NbitPredictor(14, 2));
+
+        branch_predictors.push_back(new PentiumMBranchPredictor());
+
+        // Local-history two-level predictors:
+        // PHT = 8192 2-bit counters = 16K bits, BHT = X * Z = 16K bits.
+        branch_predictors.push_back(new LocalHistoryTwoLevelPredictor(2048, 8, 8192, 2));
+        branch_predictors.push_back(new LocalHistoryTwoLevelPredictor(4096, 4, 8192, 2));
+        branch_predictors.push_back(new LocalHistoryTwoLevelPredictor(8192, 2, 8192, 2));
+
+        // Global-history two-level predictors:
+        // PHT = 16K 2-bit counters = 32K bits; BHR overhead is ignored.
+        branch_predictors.push_back(new GlobalHistoryTwoLevelPredictor(16384, 4, 2));
+        branch_predictors.push_back(new GlobalHistoryTwoLevelPredictor(16384, 8, 2));
+        branch_predictors.push_back(new GlobalHistoryTwoLevelPredictor(16384, 12, 2));
+
+        // Perceptrons near 32K bits:
+        // cost = M * (n + 1) * (1 + floor(log2(theta))).
+        branch_predictors.push_back(new PerceptronPredictor(728, 8));
+        branch_predictors.push_back(new PerceptronPredictor(141, 32));
+        branch_predictors.push_back(new PerceptronPredictor(56, 72));
+
+        branch_predictors.push_back(new Alpha21264Predictor());
+
+        // Tournament hybrids: meta predictor overhead is ignored; P0 and P1
+        // are each approximately 16K bits.
+        branch_predictors.push_back(
+            new TournamentHybridPredictor(
+                1024,
+                new NbitPredictor(14, 1),
+                new GlobalHistoryTwoLevelPredictor(8192, 8, 2),
+                "Tournament-M1024-Nbit16K1-Global8K-BHR8"));
+        branch_predictors.push_back(
+            new TournamentHybridPredictor(
+                1024,
+                new LocalHistoryTwoLevelPredictor(2048, 4, 4096, 2),
+                new GlobalHistoryTwoLevelPredictor(8192, 8, 2),
+                "Tournament-M1024-Local2048x4-Global8K-BHR8"));
+        branch_predictors.push_back(
+            new TournamentHybridPredictor(
+                2048,
+                new NbitPredictor(13, 2),
+                new PerceptronPredictor(364, 8),
+                "Tournament-M2048-Nbit8K2-Perceptron16K-N8"));
+        branch_predictors.push_back(
+            new TournamentHybridPredictor(
+                2048,
+                new LocalHistoryTwoLevelPredictor(1024, 6, 4096, 2),
+                new PerceptronPredictor(364, 8),
+                "Tournament-M2048-Local1024x6-Perceptron16K-N8"));
+    }
+
+    if (predictor_set == "5.7" || predictor_set == "all") {
+        // 5.7: ref-input validation of the top three predictors selected
+        // from the 5.6.2 train-input comparison.
+        branch_predictors.push_back(new Alpha21264Predictor());
+        branch_predictors.push_back(new PerceptronPredictor(141, 32));
+        branch_predictors.push_back(new PerceptronPredictor(56, 72));
+    }
+
     if (predictor_set == "pentium-m" || predictor_set == "all") {
         // Pentium-M predictor
         PentiumMBranchPredictor *pentiumPredictor = new PentiumMBranchPredictor();
@@ -220,7 +287,7 @@ VOID InitPredictors()
 
     if (branch_predictors.empty() && btb_predictors.empty() && predictor_set != "5.5") {
         cerr << "Unknown -predictor_set value: " << predictor_set << "\n";
-        cerr << "Valid values: 5.3, 5.4, 5.5, 5.6.1, pentium-m, all\n";
+        cerr << "Valid values: 5.3, 5.4, 5.5, 5.6.1, 5.6.2, 5.7, pentium-m, all\n";
         PIN_ExitProcess(1);
     }
 }

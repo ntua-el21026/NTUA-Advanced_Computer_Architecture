@@ -41,6 +41,64 @@ private:
     UINT64 incorrect_predictions;
 };
 
+static unsigned int predictorCounterMax(unsigned int counter_bits) {
+    return (1u << counter_bits) - 1u;
+}
+
+static bool predictorCounterTaken(unsigned int counter, unsigned int counter_bits) {
+    return counter >= (1u << (counter_bits - 1));
+}
+
+static void predictorUpdateCounter(unsigned int &counter, unsigned int counter_max, bool actual) {
+    if (actual) {
+        if (counter < counter_max)
+            counter++;
+    } else {
+        if (counter > 0)
+            counter--;
+    }
+}
+
+static unsigned int predictorPcIndex(ADDRINT ip, unsigned int entries) {
+    return (ip >> 2) % entries;
+}
+
+class StaticAlwaysTakenPredictor : public BranchPredictor
+{
+public:
+    StaticAlwaysTakenPredictor() : BranchPredictor() {}
+
+    virtual bool predict(ADDRINT ip, ADDRINT target) {
+        return true;
+    }
+
+    virtual void update(bool predicted, bool actual, ADDRINT ip, ADDRINT target) {
+        updateCounters(predicted, actual);
+    }
+
+    virtual string getName() {
+        return "Static-AlwaysTaken";
+    }
+};
+
+class StaticBTFNTPredictor : public BranchPredictor
+{
+public:
+    StaticBTFNTPredictor() : BranchPredictor() {}
+
+    virtual bool predict(ADDRINT ip, ADDRINT target) {
+        return target < ip;
+    }
+
+    virtual void update(bool predicted, bool actual, ADDRINT ip, ADDRINT target) {
+        updateCounters(predicted, actual);
+    }
+
+    virtual string getName() {
+        return "Static-BTFNT";
+    }
+};
+
 class NbitPredictor : public BranchPredictor
 {
 public:
@@ -87,6 +145,196 @@ private:
     /* Make this unsigned long long so as to support big numbers of cntr_bits. */
     unsigned long long *TABLE;
     unsigned int table_entries;
+};
+
+class LocalHistoryTwoLevelPredictor : public BranchPredictor
+{
+public:
+    LocalHistoryTwoLevelPredictor(unsigned int bht_entries_, unsigned int history_bits_,
+                                  unsigned int pht_entries_, unsigned int counter_bits_)
+        : BranchPredictor(),
+          bht_entries(bht_entries_),
+          history_bits(history_bits_),
+          pht_entries(pht_entries_),
+          counter_bits(counter_bits_),
+          history_mask((1u << history_bits_) - 1u),
+          counter_max(predictorCounterMax(counter_bits_)),
+          bht(bht_entries_, 0),
+          pht(pht_entries_, 0) {
+    }
+
+    virtual bool predict(ADDRINT ip, ADDRINT target) {
+        unsigned int bht_index = predictorPcIndex(ip, bht_entries);
+        unsigned int pht_index = phtIndex(ip, bht[bht_index]);
+        return predictorCounterTaken(pht[pht_index], counter_bits);
+    }
+
+    virtual void update(bool predicted, bool actual, ADDRINT ip, ADDRINT target) {
+        unsigned int bht_index = predictorPcIndex(ip, bht_entries);
+        unsigned int old_history = bht[bht_index];
+        unsigned int pht_index = phtIndex(ip, old_history);
+
+        unsigned int counter = pht[pht_index];
+        predictorUpdateCounter(counter, counter_max, actual);
+        pht[pht_index] = counter;
+
+        bht[bht_index] = ((old_history << 1) | (actual ? 1u : 0u)) & history_mask;
+        updateCounters(predicted, actual);
+    }
+
+    virtual string getName() {
+        std::ostringstream stream;
+        stream << "Local-X" << bht_entries << "-Z" << history_bits
+               << "-PHT" << (pht_entries / 1024) << "K-" << counter_bits;
+        return stream.str();
+    }
+
+private:
+    unsigned int phtIndex(ADDRINT ip, unsigned int history) {
+        return (predictorPcIndex(ip, pht_entries) ^ history) % pht_entries;
+    }
+
+    unsigned int bht_entries;
+    unsigned int history_bits;
+    unsigned int pht_entries;
+    unsigned int counter_bits;
+    unsigned int history_mask;
+    unsigned int counter_max;
+    std::vector<unsigned int> bht;
+    std::vector<unsigned int> pht;
+};
+
+class GlobalHistoryTwoLevelPredictor : public BranchPredictor
+{
+public:
+    GlobalHistoryTwoLevelPredictor(unsigned int pht_entries_, unsigned int bhr_bits_,
+                                   unsigned int counter_bits_)
+        : BranchPredictor(),
+          pht_entries(pht_entries_),
+          bhr_bits(bhr_bits_),
+          counter_bits(counter_bits_),
+          history_mask((1u << bhr_bits_) - 1u),
+          counter_max(predictorCounterMax(counter_bits_)),
+          global_history(0),
+          pht(pht_entries_, 0) {
+    }
+
+    virtual bool predict(ADDRINT ip, ADDRINT target) {
+        unsigned int pht_index = phtIndex(ip);
+        return predictorCounterTaken(pht[pht_index], counter_bits);
+    }
+
+    virtual void update(bool predicted, bool actual, ADDRINT ip, ADDRINT target) {
+        unsigned int pht_index = phtIndex(ip);
+        unsigned int counter = pht[pht_index];
+        predictorUpdateCounter(counter, counter_max, actual);
+        pht[pht_index] = counter;
+
+        global_history = ((global_history << 1) | (actual ? 1u : 0u)) & history_mask;
+        updateCounters(predicted, actual);
+    }
+
+    virtual string getName() {
+        std::ostringstream stream;
+        stream << "Global-PHT" << (pht_entries / 1024) << "K-BHR"
+               << bhr_bits << "-" << counter_bits;
+        return stream.str();
+    }
+
+private:
+    unsigned int phtIndex(ADDRINT ip) {
+        return (predictorPcIndex(ip, pht_entries) ^ global_history) % pht_entries;
+    }
+
+    unsigned int pht_entries;
+    unsigned int bhr_bits;
+    unsigned int counter_bits;
+    unsigned int history_mask;
+    unsigned int counter_max;
+    unsigned int global_history;
+    std::vector<unsigned int> pht;
+};
+
+class Alpha21264Predictor : public BranchPredictor
+{
+public:
+    Alpha21264Predictor()
+        : BranchPredictor(),
+          local_history_table(1024, 0),
+          local_pht(1024, 0),
+          global_pht(4096, 0),
+          choice_pht(4096, 0),
+          global_history(0) {
+    }
+
+    virtual bool predict(ADDRINT ip, ADDRINT target) {
+        bool local_prediction = predictLocal(ip);
+        bool global_prediction = predictGlobal(ip);
+        return chooseGlobal(ip) ? global_prediction : local_prediction;
+    }
+
+    virtual void update(bool predicted, bool actual, ADDRINT ip, ADDRINT target) {
+        unsigned int local_history_index = predictorPcIndex(ip, 1024);
+        unsigned int old_local_history = local_history_table[local_history_index];
+        unsigned int local_pht_index = old_local_history % 1024;
+        unsigned int global_pht_index = globalIndex(ip);
+        unsigned int choice_index = global_pht_index;
+
+        bool local_prediction = predictorCounterTaken(local_pht[local_pht_index], 3);
+        bool global_prediction = predictorCounterTaken(global_pht[global_pht_index], 2);
+
+        if (local_prediction != global_prediction) {
+            unsigned int choice = choice_pht[choice_index];
+            if (global_prediction == actual)
+                predictorUpdateCounter(choice, 3, true);
+            else if (local_prediction == actual)
+                predictorUpdateCounter(choice, 3, false);
+            choice_pht[choice_index] = choice;
+        }
+
+        unsigned int local_counter = local_pht[local_pht_index];
+        predictorUpdateCounter(local_counter, 7, actual);
+        local_pht[local_pht_index] = local_counter;
+
+        unsigned int global_counter = global_pht[global_pht_index];
+        predictorUpdateCounter(global_counter, 3, actual);
+        global_pht[global_pht_index] = global_counter;
+
+        local_history_table[local_history_index] =
+            ((old_local_history << 1) | (actual ? 1u : 0u)) & 0x3ffu;
+        global_history = ((global_history << 1) | (actual ? 1u : 0u)) & 0xfffu;
+
+        updateCounters(predicted, actual);
+    }
+
+    virtual string getName() {
+        return "Alpha21264";
+    }
+
+private:
+    bool predictLocal(ADDRINT ip) {
+        unsigned int local_history_index = predictorPcIndex(ip, 1024);
+        unsigned int local_pht_index = local_history_table[local_history_index] % 1024;
+        return predictorCounterTaken(local_pht[local_pht_index], 3);
+    }
+
+    bool predictGlobal(ADDRINT ip) {
+        return predictorCounterTaken(global_pht[globalIndex(ip)], 2);
+    }
+
+    bool chooseGlobal(ADDRINT ip) {
+        return predictorCounterTaken(choice_pht[globalIndex(ip)], 2);
+    }
+
+    unsigned int globalIndex(ADDRINT ip) {
+        return (predictorPcIndex(ip, 4096) ^ global_history) % 4096;
+    }
+
+    std::vector<unsigned int> local_history_table;
+    std::vector<unsigned int> local_pht;
+    std::vector<unsigned int> global_pht;
+    std::vector<unsigned int> choice_pht;
+    unsigned int global_history;
 };
 
 class NairTwoBitFsmPredictor : public BranchPredictor
@@ -297,7 +545,11 @@ class PerceptronPredictor : public BranchPredictor
 	int last_prediction_y = 0;
 public:
 	// Constructor
-	PerceptronPredictor(int perceptronTableSize, int historyTableSize) : BranchPredictor(), perceptronTableSize_(perceptronTableSize), historyTableSize_(historyTableSize) {
+	PerceptronPredictor(int perceptronTableSize, int historyTableSize)
+		: BranchPredictor(),
+		  perceptronTableSize_(perceptronTableSize),
+		  historyTableSize_(historyTableSize),
+		  kTheta_(static_cast<int>(1.93 * historyTableSize + 14)) {
         
 	history_.resize(historyTableSize_, -1);
         bias_.resize(perceptronTableSize_, 1);
@@ -370,24 +622,91 @@ private:
   	// - t: the actual result of last prediction (taken/not-taken). This must be 1 for 'taken' and -1 for 'not taken' .
   	void train(int key, int y, int t) {
 		// Only train the perceptron if we were wrong or if we didn't give a strong enough response.
-		if (sign(y) != t || abs(y) <= kTheta_) {
-		  	int b = bias_[key] + t;
-		  	bias_[key] = b;
+		int abs_y = (y < 0) ? -y : y;
+		if (sign(y) != t || abs_y <= kTheta_) {
+			int b = clampWeight(bias_[key] + t);
+			bias_[key] = b;
 			
 			for (int i = 0; i < historyTableSize_; ++i) {
 				int h = ((history_start_ - 1) - i + historyTableSize_) % historyTableSize_;
 				int xi = history_[h];
 	
 				if (t == xi)
-					weights_[key][i] += 1;
+					weights_[key][i] = clampWeight(weights_[key][i] + 1);
 				else
-					weights_[key][i] -= 1;
+					weights_[key][i] = clampWeight(weights_[key][i] - 1);
 			}
 		}
 	
 		history_[history_start_] = t;
 		history_start_ = (1 + history_start_) % historyTableSize_;
 	  }
+
+	int clampWeight(int value) {
+		if (value > kTheta_)
+			return kTheta_;
+		if (value < -kTheta_)
+			return -kTheta_;
+		return value;
+	}
+};
+
+class TournamentHybridPredictor : public BranchPredictor
+{
+public:
+    TournamentHybridPredictor(unsigned int meta_entries_, BranchPredictor *predictor0_,
+                              BranchPredictor *predictor1_, const std::string &name_)
+        : BranchPredictor(),
+          meta_entries(meta_entries_),
+          predictor0(predictor0_),
+          predictor1(predictor1_),
+          name(name_),
+          meta(meta_entries_, 0),
+          last_predictor0_prediction(false),
+          last_predictor1_prediction(false),
+          last_meta_index(0) {
+    }
+
+    virtual bool predict(ADDRINT ip, ADDRINT target) {
+        last_predictor0_prediction = predictor0->predict(ip, target);
+        last_predictor1_prediction = predictor1->predict(ip, target);
+        last_meta_index = predictorPcIndex(ip, meta_entries);
+        return choosePredictor1(last_meta_index) ? last_predictor1_prediction : last_predictor0_prediction;
+    }
+
+    virtual void update(bool predicted, bool actual, ADDRINT ip, ADDRINT target) {
+        predictor0->update(last_predictor0_prediction, actual, ip, target);
+        predictor1->update(last_predictor1_prediction, actual, ip, target);
+
+        if (last_predictor0_prediction != last_predictor1_prediction) {
+            unsigned int counter = meta[last_meta_index];
+            if (last_predictor1_prediction == actual)
+                predictorUpdateCounter(counter, 3, true);
+            else if (last_predictor0_prediction == actual)
+                predictorUpdateCounter(counter, 3, false);
+            meta[last_meta_index] = counter;
+        }
+
+        updateCounters(predicted, actual);
+    }
+
+    virtual string getName() {
+        return name;
+    }
+
+private:
+    bool choosePredictor1(unsigned int meta_index) {
+        return predictorCounterTaken(meta[meta_index], 2);
+    }
+
+    unsigned int meta_entries;
+    BranchPredictor *predictor0;
+    BranchPredictor *predictor1;
+    std::string name;
+    std::vector<unsigned int> meta;
+    bool last_predictor0_prediction;
+    bool last_predictor1_prediction;
+    unsigned int last_meta_index;
 };
 
 

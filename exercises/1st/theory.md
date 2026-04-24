@@ -393,3 +393,166 @@ The key tradeoff in 5.6.1 is:
 - larger `n`: longer history and more correlation information, but more weights per perceptron and potentially harder training.
 
 The report should compare the 15 required `(M, n)` pairs using direction MPKI and choose based on measured behavior, not by assuming that the largest configuration is automatically best.
+
+## 5.6.2 Predictor Comparison
+
+Section 5.6.2 is the final direction-predictor comparison. The goal is not to study one parameter in isolation, but to compare different prediction ideas under similar hardware budgets.
+
+### Static Predictors
+
+`AlwaysTaken` always predicts taken. It is a useful baseline because many loop branches are taken most of the time.
+
+`BTFNT` means backward taken, forward not taken:
+
+```text
+target < branch_PC -> predict Taken
+target > branch_PC -> predict Not Taken
+```
+
+Backward conditional branches often close loops, while forward branches often skip over code.
+
+### Two-level Predictors
+
+Two-level predictors use history plus a Pattern History Table (PHT). The PHT entries are usually 2-bit saturating counters.
+
+Local-history predictors keep a separate recent-history value per branch:
+
+```text
+branch PC -> BHT entry -> local history -> PHT counter
+```
+
+This helps when one static branch has its own repeating pattern.
+
+Global-history predictors keep one shared Branch History Register (BHR):
+
+```text
+last n branch outcomes -> BHR -> PHT counter
+```
+
+This helps when the outcome of one branch is correlated with earlier branches.
+
+In our implementation, the shared PHT index uses PC bits XOR history bits. This is the usual gshare-style idea: it keeps history information but also spreads different branch PCs across the PHT to reduce aliasing.
+
+### Hardware Calculations
+
+For the assignment local-history predictors:
+
+```text
+PHT = 8192 entries * 2 bits = 16K bits
+Total budget = 32K bits
+BHT budget = 16K bits
+BHT cost = X * Z
+```
+
+So:
+
+```text
+X=2048 -> Z=8
+X=4096 -> Z=4
+X=8192 -> Z=2
+```
+
+This trades longer per-branch history against more BHT entries.
+
+For global-history predictors, the BHR cost is ignored:
+
+```text
+PHT entries * 2 bits = 32K bits
+PHT entries = 16K
+```
+
+We compare BHR lengths `4`, `8`, and `12`.
+
+For perceptrons, the approximate cost is:
+
+```text
+M * (n + 1) * weight_bits
+weight_bits = 1 + floor(log2(theta))
+theta = floor(1.93*n + 14)
+```
+
+The selected near-32K examples are:
+
+```text
+M=728, n=8   -> 32760 bits
+M=141, n=32  -> 32571 bits
+M=56,  n=72  -> 32704 bits
+```
+
+### Hybrid Predictors
+
+Alpha 21264 is a classic hybrid idea: it combines local and global predictors with a choice predictor. The choice predictor learns which component is more reliable for the current branch/context.
+
+In our implementation, `Alpha21264Predictor` uses the lecture-style organization:
+
+```text
+local history table: 1024 entries * 10 bits
+local PHT:           1024 entries * 3 bits
+global PHT:          4096 entries * 2 bits
+choice PHT:          4096 entries * 2 bits
+```
+
+This is about 29K bits.
+
+Tournament predictors use the same general idea:
+
+```text
+P0 predicts
+P1 predicts
+meta-predictor chooses P0 or P1
+```
+
+If `P0` and `P1` disagree, the meta-predictor is trained toward the component that was correct. The assignment allows us to ignore the meta-predictor overhead, so we size `P0` and `P1` at roughly 16K bits each.
+
+The four implemented tournament predictors are:
+
+```text
+Tournament-M1024-Nbit16K1-Global8K-BHR8
+  P0 = 1-bit 16K-entry predictor
+  P1 = 8K-entry global-history predictor, BHR=8
+
+Tournament-M1024-Local2048x4-Global8K-BHR8
+  P0 = local-history predictor, BHT=2048 entries, Z=4, PHT=4K
+  P1 = 8K-entry global-history predictor, BHR=8
+
+Tournament-M2048-Nbit8K2-Perceptron16K-N8
+  P0 = 2-bit 8K-entry predictor
+  P1 = perceptron predictor M=364, n=8
+
+Tournament-M2048-Local1024x6-Perceptron16K-N8
+  P0 = local-history predictor, BHT=1024 entries, Z=6, PHT=4K
+  P1 = perceptron predictor M=364, n=8
+```
+
+We implemented these ourselves through a generic `TournamentHybridPredictor` class. We also implemented the static predictors, the local/global two-level predictors, and the Alpha-style hybrid predictor. The existing `NbitPredictor`, `PentiumMBranchPredictor`, and `PerceptronPredictor` are reused as components where appropriate.
+
+The final report should compare the 18 predictors using direction MPKI and hardware complexity. The best final choice is empirical: a more complex predictor is only worth it if it gives a meaningful MPKI improvement over simpler alternatives.
+
+## 5.7 Ref-input Validation
+
+The experiments in 5.3-5.6 use the `train` inputs. These runs are useful because they finish in reasonable time, but they are still samples of each benchmark's behavior. The `ref` inputs are longer and usually more representative, so 5.7 checks whether our train-based conclusions remain valid.
+
+The question is not only "what is the MPKI on ref?" but also:
+
+```text
+Did the ordering of the predictors change?
+Did a predictor that looked good on train become worse on ref?
+Are the train conclusions stable enough to justify the final choice?
+```
+
+We selected the strict top 3 predictors from the 5.6.2 train comparison:
+
+```text
+Alpha21264
+Perceptron-M141-N32
+Perceptron-M56-N72
+```
+
+This is a clean selection rule because 5.7 is a validation step: first choose candidates from train, then test them on ref. We avoid the larger 5.6.1 perceptrons because they use much more than the intended 32K-bit budget and would not be comparable to the 5.6.2 predictors.
+
+The expected analysis is:
+
+- compare each predictor's train and ref direction MPKI,
+- compare the ranking on train versus ref,
+- explain any changes using benchmark behavior and predictor structure,
+- make the final report choice based on ref behavior, hardware cost, and implementation complexity.

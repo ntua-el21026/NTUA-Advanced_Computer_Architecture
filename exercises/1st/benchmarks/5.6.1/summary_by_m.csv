@@ -1,0 +1,4 @@
+group_value,configs,benchmark_rows,arithmetic_mean_direction_mpki,aggregate_direction_mpki,arithmetic_mean_accuracy_pct,total_instructions,total_incorrect
+32,5,55,5.368065,4.176404,95.314833,7567869176245,31606478690
+512,5,55,3.426421,2.630385,96.837004,7567869176245,19906411999
+1024,5,55,3.352058,2.603570,96.886075,7567869176245,19703478034
