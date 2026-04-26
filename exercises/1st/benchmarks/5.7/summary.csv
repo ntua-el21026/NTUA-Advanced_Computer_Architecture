@@ -1,0 +1,4 @@
+input_set,benchmark,predictor,family,hardware_bits,correct,incorrect,conditional_branches,total_instructions,direction_mpki,accuracy_pct,raw_output
+ref,483.xalancbmk,Alpha21264,alpha21264,29696,235206440404,2202558272,237408998676,920763194937,2.392101,99.072252,/home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/1st/benchmarks/5.7/ref/raw/483.xalancbmk.txt
+ref,483.xalancbmk,Perceptron-M141-N32,perceptron,32571,236005326279,1403672397,237408998676,920763194937,1.524466,99.408753,/home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/1st/benchmarks/5.7/ref/raw/483.xalancbmk.txt
+ref,483.xalancbmk,Perceptron-M56-N72,perceptron,32704,235946973941,1462024735,237408998676,920763194937,1.587840,99.384175,/home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/1st/benchmarks/5.7/ref/raw/483.xalancbmk.txt

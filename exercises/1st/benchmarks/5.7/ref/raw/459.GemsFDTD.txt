@@ -1,0 +1,16 @@
+Total Instructions: 1475101418718
+
+RAS: (Correct - Incorrect)
+RAS (1 entries): 737248497 724061025
+RAS (2 entries): 1454418320 6891202
+RAS (4 entries): 1459126894 2182628
+RAS (8 entries): 1461309404 118
+RAS (16 entries): 1461309522 0
+RAS (32 entries): 1461309522 0
+
+Branch Predictors: (Name - Correct - Incorrect)
+  Alpha21264: 41597470215 143810888
+  Perceptron-M141-N32: 41599280951 142000152
+  Perceptron-M56-N72: 41600095221 141185882
+
+BTB Predictors: (Name - Correct - Incorrect - TargetCorrect - TargetIncorrect)

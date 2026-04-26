@@ -1,0 +1,4 @@
+benchmark,predictor,train_direction_mpki,ref_direction_mpki,delta_direction_mpki,train_accuracy_pct,ref_accuracy_pct,delta_accuracy_pct
+483.xalancbmk,Alpha21264,3.141195,2.392101,-0.749094,97.481517,99.072252,1.590735
+483.xalancbmk,Perceptron-M141-N32,1.922107,1.524466,-0.397641,98.458932,99.408753,0.949821
+483.xalancbmk,Perceptron-M56-N72,2.034416,1.587840,-0.446576,98.368888,99.384175,1.015287

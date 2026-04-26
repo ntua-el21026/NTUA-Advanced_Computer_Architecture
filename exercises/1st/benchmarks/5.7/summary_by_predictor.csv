@@ -1,0 +1,4 @@
+input_set,predictor,family,hardware_bits,benchmarks,arithmetic_mean_direction_mpki,aggregate_direction_mpki,arithmetic_mean_accuracy_pct,total_instructions,total_incorrect
+ref,Perceptron-M141-N32,perceptron,32571,1,1.524466,1.524466,99.408753,920763194937,1403672397
+ref,Perceptron-M56-N72,perceptron,32704,1,1.587840,1.587840,99.384175,920763194937,1462024735
+ref,Alpha21264,alpha21264,29696,1,2.392101,2.392101,99.072252,920763194937,2202558272

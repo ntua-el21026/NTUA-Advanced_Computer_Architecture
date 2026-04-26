@@ -1,0 +1,4 @@
+predictor,family,hardware_bits,train_arithmetic_mean_direction_mpki,ref_arithmetic_mean_direction_mpki,delta_arithmetic_mean_direction_mpki,train_aggregate_direction_mpki,ref_aggregate_direction_mpki,delta_aggregate_direction_mpki,train_arithmetic_mean_accuracy_pct,ref_arithmetic_mean_accuracy_pct,delta_arithmetic_mean_accuracy_pct
+Perceptron-M141-N32,perceptron,32571,3.088004,1.524466,-1.563538,2.186112,1.524466,-0.661646,97.304159,99.408753,2.104594
+Perceptron-M56-N72,perceptron,32704,3.139574,1.587840,-1.551734,1.787796,1.587840,-0.199956,97.325544,99.384175,2.058631
+Alpha21264,alpha21264,29696,3.071448,2.392101,-0.679347,2.118810,2.392101,0.273291,97.392210,99.072252,1.680042
