@@ -180,7 +180,7 @@ VOID InitPredictors()
         // are instantiated here.
         branch_predictors.push_back(new NairTwoBitFsmPredictor(14, "BCBAADCD", 3));
         branch_predictors.push_back(new NairTwoBitFsmPredictor(14, "BCBABDCD", 3));
-        branch_predictors.push_back(new NairTwoBitFsmPredictor(14, "CBBDACBA", 10));
+        branch_predictors.push_back(new NairTwoBitFsmPredictor(14, "BCBDACBA", 10));
         branch_predictors.push_back(new NairTwoBitFsmPredictor(14, "BACADBDC", 12));
 
         // 5.3(iii): fixed 32K-bit hardware budget variants.

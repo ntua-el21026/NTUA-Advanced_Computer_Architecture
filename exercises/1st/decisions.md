@@ -236,3 +236,20 @@ This file records implementation and evaluation decisions for the first assignme
 - Add a dedicated `5.7` pintool mode so the `ref` runs instantiate only these 3 predictors instead of all 18 from 5.6.2.
 - Use `exercises/1st/scripts/run_5_7_ref_top3.py` to run and summarize 5.7.
 - The script writes both ref-only summaries and train-vs-ref comparison CSVs against the existing 5.6.2 train summaries.
+
+## Report And Diagram Decisions
+
+- Regenerated the 5.6.1 and 5.7 summaries from all existing raw outputs after detecting stale one-benchmark summaries from a targeted rerun.
+- Updated the touched summary scripts to emit LF CSV line endings, so regenerated CSV diffs pass `git diff --check`.
+- Generated report-ready PDF and PNG diagrams with:
+  - `exercises/1st/benchmarks/diagrams/make_diagrams.py`
+- The report uses PDF figures from:
+  - `exercises/1st/benchmarks/diagrams/`
+- Final predictor recommendation:
+  - choose `Alpha21264`.
+- Rationale:
+  - it is best by train arithmetic mean MPKI,
+  - remains statistically close to the best ref arithmetic mean predictor,
+  - has lower hardware overhead than the selected perceptrons,
+  - has better ref aggregate MPKI than `Perceptron-M141-N32`,
+  - avoids the dot-product cost of perceptron prediction.

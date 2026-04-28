@@ -420,25 +420,25 @@ def write_summaries(runs: list[BenchRun], output_root: Path) -> None:
     txt_path = output_root / "summary.txt"
 
     with summary_path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=SUMMARY_FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=SUMMARY_FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
     by_predictor = aggregate_by_predictor(rows)
     with by_predictor_path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=BY_PREDICTOR_FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=BY_PREDICTOR_FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(by_predictor)
 
     by_m = aggregate_by_field(rows, "m")
     with by_m_path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=BY_GROUP_FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=BY_GROUP_FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(by_m)
 
     by_n = aggregate_by_field(rows, "n")
     with by_n_path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=BY_GROUP_FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=BY_GROUP_FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(by_n)
 

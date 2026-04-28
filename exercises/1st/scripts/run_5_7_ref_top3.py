@@ -497,25 +497,25 @@ def write_summaries(runs: list[BenchRun], output_root: Path) -> None:
     txt_path = output_root / "summary.txt"
 
     with summary_path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=SUMMARY_FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=SUMMARY_FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
     by_predictor = aggregate_by_predictor(rows)
     with by_predictor_path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=BY_PREDICTOR_FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=BY_PREDICTOR_FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(by_predictor)
 
     predictor_comparison = build_predictor_comparison(output_root, by_predictor)
     with compare_predictor_path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=COMPARE_PREDICTOR_FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=COMPARE_PREDICTOR_FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(predictor_comparison)
 
     benchmark_comparison = build_benchmark_comparison(output_root, rows)
     with compare_benchmark_path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=COMPARE_BENCHMARK_FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=COMPARE_BENCHMARK_FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(benchmark_comparison)
 
