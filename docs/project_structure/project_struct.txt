@@ -563,18 +563,171 @@ NTUA-Advanced_Computer_Architecture/
 │       │   │   ├── summary.txt
 │       │   │   └── summary_by_ras.csv
 │       │   ├── 5.6.1/
-│       │   │   └── train/
-│       │   │       ├── logs/
-│       │   │       └── raw/
+│       │   │   ├── train/
+│       │   │   │   ├── logs/
+│       │   │   │   │   ├── 403.gcc.stderr.txt
+│       │   │   │   │   ├── 403.gcc.stdout.txt
+│       │   │   │   │   ├── 410.bwaves.stderr.txt
+│       │   │   │   │   ├── 410.bwaves.stdout.txt
+│       │   │   │   │   ├── 416.gamess.stderr.txt
+│       │   │   │   │   ├── 416.gamess.stdout.txt
+│       │   │   │   │   ├── 429.mcf.stderr.txt
+│       │   │   │   │   ├── 429.mcf.stdout.txt
+│       │   │   │   │   ├── 433.milc.stderr.txt
+│       │   │   │   │   ├── 433.milc.stdout.txt
+│       │   │   │   │   ├── 435.gromacs.stderr.txt
+│       │   │   │   │   ├── 435.gromacs.stdout.txt
+│       │   │   │   │   ├── 436.cactusADM.stderr.txt
+│       │   │   │   │   ├── 436.cactusADM.stdout.txt
+│       │   │   │   │   ├── 450.soplex.stderr.txt
+│       │   │   │   │   ├── 450.soplex.stdout.txt
+│       │   │   │   │   ├── 459.GemsFDTD.stderr.txt
+│       │   │   │   │   ├── 459.GemsFDTD.stdout.txt
+│       │   │   │   │   ├── 470.lbm.stderr.txt
+│       │   │   │   │   ├── 470.lbm.stdout.txt
+│       │   │   │   │   ├── 483.xalancbmk.stderr.txt
+│       │   │   │   │   └── 483.xalancbmk.stdout.txt
+│       │   │   │   └── raw/
+│       │   │   │       ├── 403.gcc.txt
+│       │   │   │       ├── 410.bwaves.txt
+│       │   │   │       ├── 416.gamess.txt
+│       │   │   │       ├── 429.mcf.txt
+│       │   │   │       ├── 433.milc.txt
+│       │   │   │       ├── 435.gromacs.txt
+│       │   │   │       ├── 436.cactusADM.txt
+│       │   │   │       ├── 450.soplex.txt
+│       │   │   │       ├── 459.GemsFDTD.txt
+│       │   │   │       ├── 470.lbm.txt
+│       │   │   │       └── 483.xalancbmk.txt
+│       │   │   ├── summary.csv
+│       │   │   ├── summary.txt
+│       │   │   ├── summary_by_m.csv
+│       │   │   ├── summary_by_n.csv
+│       │   │   └── summary_by_predictor.csv
+│       │   ├── 5.6.2/
+│       │   │   ├── train/
+│       │   │   │   ├── logs/
+│       │   │   │   │   ├── 403.gcc.stderr.txt
+│       │   │   │   │   ├── 403.gcc.stdout.txt
+│       │   │   │   │   ├── 410.bwaves.stderr.txt
+│       │   │   │   │   ├── 410.bwaves.stdout.txt
+│       │   │   │   │   ├── 416.gamess.stderr.txt
+│       │   │   │   │   ├── 416.gamess.stdout.txt
+│       │   │   │   │   ├── 429.mcf.stderr.txt
+│       │   │   │   │   ├── 429.mcf.stdout.txt
+│       │   │   │   │   ├── 433.milc.stderr.txt
+│       │   │   │   │   ├── 433.milc.stdout.txt
+│       │   │   │   │   ├── 435.gromacs.stderr.txt
+│       │   │   │   │   ├── 435.gromacs.stdout.txt
+│       │   │   │   │   ├── 436.cactusADM.stderr.txt
+│       │   │   │   │   ├── 436.cactusADM.stdout.txt
+│       │   │   │   │   ├── 450.soplex.stderr.txt
+│       │   │   │   │   ├── 450.soplex.stdout.txt
+│       │   │   │   │   ├── 459.GemsFDTD.stderr.txt
+│       │   │   │   │   ├── 459.GemsFDTD.stdout.txt
+│       │   │   │   │   ├── 470.lbm.stderr.txt
+│       │   │   │   │   ├── 470.lbm.stdout.txt
+│       │   │   │   │   ├── 483.xalancbmk.stderr.txt
+│       │   │   │   │   └── 483.xalancbmk.stdout.txt
+│       │   │   │   └── raw/
+│       │   │   │       ├── 403.gcc.txt
+│       │   │   │       ├── 410.bwaves.txt
+│       │   │   │       ├── 416.gamess.txt
+│       │   │   │       ├── 429.mcf.txt
+│       │   │   │       ├── 433.milc.txt
+│       │   │   │       ├── 435.gromacs.txt
+│       │   │   │       ├── 436.cactusADM.txt
+│       │   │   │       ├── 450.soplex.txt
+│       │   │   │       ├── 459.GemsFDTD.txt
+│       │   │   │       ├── 470.lbm.txt
+│       │   │   │       └── 483.xalancbmk.txt
+│       │   │   ├── summary.csv
+│       │   │   ├── summary.txt
+│       │   │   ├── summary_by_family.csv
+│       │   │   └── summary_by_predictor.csv
+│       │   ├── 5.7/
+│       │   │   ├── ref/
+│       │   │   │   ├── logs/
+│       │   │   │   │   ├── 403.gcc.stderr.txt
+│       │   │   │   │   ├── 403.gcc.stdout.txt
+│       │   │   │   │   ├── 410.bwaves.stderr.txt
+│       │   │   │   │   ├── 410.bwaves.stdout.txt
+│       │   │   │   │   ├── 416.gamess.stderr.txt
+│       │   │   │   │   ├── 416.gamess.stdout.txt
+│       │   │   │   │   ├── 429.mcf.stderr.txt
+│       │   │   │   │   ├── 429.mcf.stdout.txt
+│       │   │   │   │   ├── 433.milc.stderr.txt
+│       │   │   │   │   ├── 433.milc.stdout.txt
+│       │   │   │   │   ├── 435.gromacs.stderr.txt
+│       │   │   │   │   ├── 435.gromacs.stdout.txt
+│       │   │   │   │   ├── 436.cactusADM.stderr.txt
+│       │   │   │   │   ├── 436.cactusADM.stdout.txt
+│       │   │   │   │   ├── 450.soplex.stderr.txt
+│       │   │   │   │   ├── 450.soplex.stdout.txt
+│       │   │   │   │   ├── 459.GemsFDTD.stderr.txt
+│       │   │   │   │   ├── 459.GemsFDTD.stdout.txt
+│       │   │   │   │   ├── 470.lbm.stderr.txt
+│       │   │   │   │   ├── 470.lbm.stdout.txt
+│       │   │   │   │   ├── 483.xalancbmk.stderr.txt
+│       │   │   │   │   └── 483.xalancbmk.stdout.txt
+│       │   │   │   └── raw/
+│       │   │   │       ├── 403.gcc.txt
+│       │   │   │       ├── 410.bwaves.txt
+│       │   │   │       ├── 416.gamess.txt
+│       │   │   │       ├── 429.mcf.txt
+│       │   │   │       ├── 433.milc.txt
+│       │   │   │       ├── 435.gromacs.txt
+│       │   │   │       ├── 436.cactusADM.txt
+│       │   │   │       ├── 450.soplex.txt
+│       │   │   │       ├── 459.GemsFDTD.txt
+│       │   │   │       ├── 470.lbm.txt
+│       │   │   │       └── 483.xalancbmk.txt
+│       │   │   ├── summary.csv
+│       │   │   ├── summary.txt
+│       │   │   ├── summary_by_predictor.csv
+│       │   │   ├── train_vs_ref_by_benchmark.csv
+│       │   │   └── train_vs_ref_by_predictor.csv
 │       │   └── diagrams/
+│       │       ├── 5_2_branch_frequency.pdf
+│       │       ├── 5_2_branch_frequency.png
+│       │       ├── 5_2_branch_mix.pdf
+│       │       ├── 5_2_branch_mix.png
+│       │       ├── 5_3_fixed32_by_benchmark.pdf
+│       │       ├── 5_3_fixed32_by_benchmark.png
+│       │       ├── 5_3_predictor_groups.pdf
+│       │       ├── 5_3_predictor_groups.png
+│       │       ├── 5_4_btb_by_benchmark.pdf
+│       │       ├── 5_4_btb_by_benchmark.png
+│       │       ├── 5_4_btb_total_miss_mpki.pdf
+│       │       ├── 5_4_btb_total_miss_mpki.png
+│       │       ├── 5_5_ras_by_benchmark.pdf
+│       │       ├── 5_5_ras_by_benchmark.png
+│       │       ├── 5_5_ras_miss_rate.pdf
+│       │       ├── 5_5_ras_miss_rate.png
+│       │       ├── 5_6_1_perceptron_heatmap.pdf
+│       │       ├── 5_6_1_perceptron_heatmap.png
+│       │       ├── 5_6_2_predictor_by_benchmark.pdf
+│       │       ├── 5_6_2_predictor_by_benchmark.png
+│       │       ├── 5_6_2_predictor_comparison.pdf
+│       │       ├── 5_6_2_predictor_comparison.png
+│       │       ├── 5_7_ref_delta_heatmap.pdf
+│       │       ├── 5_7_ref_delta_heatmap.png
+│       │       ├── 5_7_train_vs_ref.pdf
+│       │       ├── 5_7_train_vs_ref.png
+│       │       └── make_diagrams.py
+│       ├── image/
+│       │   └── theory/
 │       ├── report/
+│       │   ├── 03121026_1.pdf
 │       │   └── main.tex
 │       ├── scripts/
 │       │   ├── run_5_2_branch_stats.py
 │       │   ├── run_5_3_predictors.py
 │       │   ├── run_5_4_btb.py
 │       │   ├── run_5_5_ras.py
-│       │   └── run_5_6_1_perceptrons.py
+│       │   ├── run_5_6_1_perceptrons.py
+│       │   ├── run_5_6_2_predictors.py
+│       │   └── run_5_7_ref_top3.py
 │       ├── decisions.md
 │       └── theory.md
 ├── .gitattributes
@@ -582,4 +735,4 @@ NTUA-Advanced_Computer_Architecture/
 ├── LICENSE
 └── README.md
 
-Total directories: 61, Total files: 522
+Total directories: 71, Total files: 665
