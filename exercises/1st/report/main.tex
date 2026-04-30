@@ -78,7 +78,7 @@
     \item Όνομα: Πέππας Μιχαήλ-Αθανάσιος
     \item Αριθμός Μητρώου: 03121026
     \item Email: el21026@mail.ntua.gr
-    \item Ημερομηνία Παράδοσης Αναφοράς: 28.04.2026
+    \item Ημερομηνία Παράδοσης Αναφοράς: 31.04.2026
 \end{itemize}
 }
 
@@ -88,29 +88,29 @@
 \newpage
 \section{Μεθοδολογία, μετρικές και έλεγχος δεδομένων}
 
-Στην άσκηση μελετήσαμε μηχανισμούς πρόβλεψης εντολών άλματος μέσω του \foreignlanguage{english}{dynamic binary instrumentation} εργαλείου PIN. Ο βοηθητικός κώδικας παρέχει δύο βασικά pintools: το \texttt{cslab\_branch\_stats.cpp}, το οποίο συλλέγει στατιστικά για τις εντολές άλματος, και το \texttt{cslab\_branch.cpp}, το οποίο προσομοιώνει predictors, BTB και RAS. Στο δεύτερο επεκτείναμε τις διαθέσιμες επιλογές ώστε να καλύπτονται ακριβώς οι διαμορφώσεις που ζητούνται στα ερωτήματα 5.3--5.7.
+Στην άσκηση μελετήσαμε μηχανισμούς πρόβλεψης εντολών άλματος μέσω του \foreignlanguage{english}{dynamic binary instrumentation} εργαλείου PIN. Ο βοηθητικός κώδικας παρέχει δύο βασικά pintools: το \texttt{cslab\_branch\_stats.cpp}, το οποίο συλλέγει στατιστικά για τις εντολές άλματος, και το \texttt{cslab\_branch.cpp}, το οποίο προσομοιώνει μηχανισμούς πρόβλεψης, BTB και RAS. Στο δεύτερο επεκτείναμε τις διαθέσιμες επιλογές ώστε να καλύπτονται ακριβώς οι διαμορφώσεις που ζητούνται στα ερωτήματα 5.3--5.7.
 
-Η εκφώνηση ορίζει ότι τα ερωτήματα 5.3--5.6 εκτελούνται με τα \texttt{train} inputs, ενώ το 5.2 ζητά και \texttt{train} και \texttt{ref}. Το 5.7 αποτελεί έλεγχο εγκυρότητας σε \texttt{ref} inputs για τρεις predictors που επιλέγονται μετά την ολοκλήρωση της σύγκρισης του 5.6.2. Τα αποτελέσματα αποθηκεύτηκαν ανά ενότητα σε raw αρχεία, CSV summaries και συνοπτικά text summaries, ώστε οι πίνακες και τα διαγράμματα της αναφοράς να προκύπτουν αναπαραγώγιμα από τα ίδια δεδομένα.
+Η εκφώνηση ορίζει ότι τα ερωτήματα 5.3--5.6 εκτελούνται με τα \texttt{train} inputs, ενώ το 5.2 ζητά και \texttt{train} και \texttt{ref}. Το 5.7 αποτελεί έλεγχο εγκυρότητας σε \texttt{ref} inputs για τρεις μηχανισμούς πρόβλεψης που επιλέγονται μετά την ολοκλήρωση της σύγκρισης του 5.6.2. Τα αποτελέσματα αποθηκεύτηκαν ανά ενότητα σε raw αρχεία, CSV summaries και συνοπτικά text summaries, ώστε οι πίνακες και τα διαγράμματα της αναφοράς να προκύπτουν αναπαραγώγιμα από τα ίδια δεδομένα.
 
-Η κύρια μετρική για τους direction predictors είναι:
+Η κύρια μετρική για τους μηχανισμούς direction prediction είναι:
 \[
     \text{direction MPKI} =
     \frac{\text{direction mispredictions}}{\text{total instructions}} \cdot 1000.
 \]
-Χρησιμοποιήσαμε δύο συμπληρωματικούς μέσους όρους. Ο αριθμητικός μέσος των MPKI δίνει ίσο βάρος σε κάθε benchmark και χρησιμοποιείται ως κύριο κριτήριο επιλογής, επειδή δεν αφήνει τα πολύ μεγάλα benchmarks να κυριαρχήσουν πλήρως στο συμπέρασμα. Ο aggregate MPKI υπολογίζεται ως:
+Χρησιμοποιήσαμε δύο συμπληρωματικούς μέσους όρους. Ο αριθμητικός μέσος του MPKI δίνει ίσο βάρος σε κάθε benchmark και χρησιμοποιείται ως κύριο κριτήριο επιλογής, επειδή δεν αφήνει τα πολύ μεγάλα benchmarks να κυριαρχήσουν πλήρως στο συμπέρασμα. Το aggregate MPKI υπολογίζεται ως:
 \[
     \text{aggregate MPKI} =
     \frac{\sum \text{mispredictions}}{\sum \text{instructions}} \cdot 1000,
 \]
-και δείχνει την επίδοση όταν κάθε δυναμική εντολή έχει ίσο βάρος. Δεν χρησιμοποιήσαμε γεωμετρικό μέσο για τα MPKI, επειδή δεν πρόκειται για λόγους επιτάχυνσης αλλά για φυσικές μετρικές αστοχιών ανά εντολές.
+και δείχνει την επίδοση όταν κάθε δυναμική εντολή έχει ίσο βάρος. Δεν χρησιμοποιήσαμε γεωμετρικό μέσο για το MPKI, επειδή δεν πρόκειται για λόγο επιτάχυνσης αλλά για φυσική μετρική αστοχιών ανά χίλιες εντολές. Η διάκριση αυτή είναι χρήσιμη θεωρητικά: το MPKI είναι κανονικοποιημένο πλήθος αστοχιών, άρα ο αριθμητικός και ο instruction-weighted μέσος έχουν άμεση ερμηνεία, ενώ ένας γεωμετρικός μέσος θα έκρυβε το πραγματικό πλήθος των λαθών.
 
-Πριν γραφτεί η αναφορά, ελέγχθηκαν όλα τα benchmark outputs. Υπήρχαν μηδενικά missing ή unparseable raw outputs: 22 outputs για το 5.2, 11 outputs για καθεμία από τις ενότητες 5.3, 5.4, 5.5, 5.6.1, 5.6.2 και 11 \texttt{ref} outputs για το 5.7. Τα μόνα μη κενά stderr logs εμφανίζονται στο \texttt{416.gamess} και αντιστοιχούν σε γνωστές αριθμητικές προειδοποιήσεις ή τερματισμό του benchmark, όχι σε αποτυχία του pintool, αφού τα αντίστοιχα raw outputs έγιναν parse κανονικά.
+Πριν γραφτεί η αναφορά, ελέγχθηκαν όλα τα benchmark outputs. Δεν υπήρχαν missing ή unparseable raw outputs: 22 outputs για το 5.2, 11 outputs για καθεμία από τις ενότητες 5.3, 5.4, 5.5, 5.6.1, 5.6.2 και 11 \texttt{ref} outputs για το 5.7. Τα μόνα μη κενά stderr logs εμφανίζονται στο \texttt{416.gamess} και αντιστοιχούν σε γνωστές αριθμητικές προειδοποιήσεις ή τερματισμό του benchmark, όχι σε αποτυχία του pintool, αφού τα αντίστοιχα raw outputs έγιναν parse κανονικά.
 
 \section{5.2 Ανάλυση εντολών άλματος}
 
 \subsection{Σκοπός και μεθοδολογία}
 
-Το πρώτο πειραματικό βήμα δεν αξιολογεί ακόμη predictors. Στόχος του είναι να καταγραφεί το δυναμικό μίγμα των branches για κάθε benchmark και για τα δύο input sets. Μετρήσαμε το πλήθος των συνολικών εντολών, το πλήθος των branches και την κατανομή τους σε conditional taken, conditional not-taken, unconditional, calls και returns. Η συχνότητα branches υπολογίζεται ως:
+Το πρώτο πειραματικό βήμα δεν αξιολογεί ακόμη μηχανισμούς πρόβλεψης. Στόχος του είναι να καταγραφεί το δυναμικό μίγμα των branches για κάθε benchmark και για τα δύο input sets. Μετρήσαμε το πλήθος των συνολικών εντολών, το πλήθος των branches και την κατανομή τους σε conditional taken, conditional not-taken, unconditional, calls και returns. Το branch frequency υπολογίζεται ως:
 \[
     \text{branch frequency} =
     \frac{\text{total branches}}{\text{total instructions}} \cdot 100\%.
@@ -123,9 +123,9 @@
     \label{fig:branch_frequency}
 \end{figure}
 
-Από το Σχήμα~\ref{fig:branch_frequency} φαίνεται ότι τα benchmarks δεν ασκούν με τον ίδιο τρόπο τον μηχανισμό πρόβλεψης. Στο \texttt{train} input τα πιο branch-heavy benchmarks είναι τα \texttt{483.xalancbmk} με 24.37\%, \texttt{403.gcc} με 23.69\%, \texttt{429.mcf} με 21.22\% και \texttt{450.soplex} με 16.89\%. Αντίθετα, τα \texttt{436.cactusADM} και \texttt{470.lbm} έχουν πολύ μικρή branch frequency, 0.21\% και 1.41\% αντίστοιχα. Η ίδια γενική εικόνα διατηρείται και στο \texttt{ref}, με το \texttt{483.xalancbmk} να αυξάνει ακόμη περισσότερο τη συχνότητα branches στο 31.10\%.
+Από το Σχήμα~\ref{fig:branch_frequency} προκύπτει ότι τα benchmarks δεν επιβαρύνουν στον ίδιο βαθμό τον μηχανισμό πρόβλεψης. Στο \texttt{train} input τα πιο branch-heavy benchmarks είναι τα \texttt{483.xalancbmk} με 24.37\%, \texttt{403.gcc} με 23.69\%, \texttt{429.mcf} με 21.22\% και \texttt{450.soplex} με 16.89\%. Αντίθετα, τα \texttt{436.cactusADM} και \texttt{470.lbm} έχουν πολύ μικρό branch frequency, 0.21\% και 1.41\% αντίστοιχα. Η ίδια γενική εικόνα διατηρείται και στο \texttt{ref}, με το \texttt{483.xalancbmk} να αυξάνει ακόμη περισσότερο το branch frequency στο 31.10\%.
 
-Η παρατήρηση αυτή είναι σημαντική για την ερμηνεία του MPKI. Ένας predictor μπορεί να έχει παρόμοιο ποσοστό αστοχίας σε δύο benchmarks, αλλά να οδηγεί σε πολύ διαφορετικό MPKI αν το ένα benchmark εκτελεί πολύ περισσότερα branches ανά χίλιες εντολές.
+Η παρατήρηση αυτή είναι σημαντική για την ερμηνεία του MPKI. Ένας μηχανισμός πρόβλεψης μπορεί να έχει παρόμοιο ποσοστό αστοχίας σε δύο benchmarks, αλλά να οδηγεί σε πολύ διαφορετικό MPKI αν το ένα benchmark εκτελεί πολύ περισσότερα branches ανά χίλιες εντολές. Με άλλα λόγια, το branch frequency λειτουργεί ως σύνδεσμος ανάμεσα στη μικροαρχιτεκτονική ακρίβεια του predictor και στον πραγματικό φόρτο που δέχεται το frontend του επεξεργαστή.
 
 \begin{figure}[htbp]
     \centering
@@ -134,20 +134,20 @@
     \label{fig:branch_mix}
 \end{figure}
 
-Το Σχήμα~\ref{fig:branch_mix} δείχνει ότι τα conditional branches κυριαρχούν στα περισσότερα benchmarks, αλλά υπάρχουν ουσιαστικές διαφοροποιήσεις. Για παράδειγμα, στο \texttt{483.xalancbmk} το \texttt{train} input έχει μεγάλο ποσοστό calls και returns, περίπου 19.82\% το καθένα, άρα αναμένουμε έντονη επίδραση από τη RAS. Αντίθετα, το \texttt{470.lbm} έχει χαμηλή branch frequency αλλά σχετικά μεγάλο ποσοστό unconditional branches, 18.61\% στο \texttt{train} και 24.05\% στο \texttt{ref}. Επομένως, η μετέπειτα αξιολόγηση δεν πρέπει να περιοριστεί μόνο σε έναν direction predictor, αλλά να ξεχωρίσει direction prediction, target prediction μέσω BTB και πρόβλεψη επιστροφών μέσω RAS.
+Το Σχήμα~\ref{fig:branch_mix} δείχνει ότι τα conditional branches κυριαρχούν στα περισσότερα benchmarks, αλλά υπάρχουν ουσιαστικές διαφοροποιήσεις. Για παράδειγμα, στο \texttt{483.xalancbmk} το \texttt{train} input έχει μεγάλο ποσοστό calls και returns, περίπου 19.82\% το καθένα, επομένως αναμένεται έντονη επίδραση από τη RAS. Αντίθετα, το \texttt{470.lbm} έχει χαμηλό branch frequency αλλά σχετικά μεγάλο ποσοστό unconditional branches, 18.61\% στο \texttt{train} και 24.05\% στο \texttt{ref}. Επομένως, η μετέπειτα αξιολόγηση δεν πρέπει να περιοριστεί μόνο στο direction prediction, αλλά να ξεχωρίσει direction prediction, target prediction μέσω BTB και πρόβλεψη επιστροφών μέσω RAS.
 
 \FloatBarrier
-\section{5.3 N-bit predictors και εναλλακτικά FSMs}
+\section{5.3 Μηχανισμοί n-bit πρόβλεψης και εναλλακτικά FSMs}
 
 \subsection{Θεωρητικό υπόβαθρο}
 
-Οι n-bit predictors βασίζονται σε έναν \foreignlanguage{english}{Branch History Table} (BHT). Κάθε στατική εντολή άλματος προσπελαύνει μία εγγραφή του BHT μέσω bits του PC και η εγγραφή περιέχει έναν saturating up-down counter. Σε κάθε taken outcome ο counter αυξάνεται μέχρι τη μέγιστη τιμή του, ενώ σε κάθε not-taken outcome μειώνεται μέχρι το μηδέν. Η πρόβλεψη προκύπτει από το πιο σημαντικό bit του counter.
+Οι μηχανισμοί n-bit πρόβλεψης βασίζονται σε έναν \foreignlanguage{english}{Branch History Table} (BHT). Κάθε στατική εντολή άλματος προσπελαύνει μία εγγραφή του BHT μέσω bits του PC και η εγγραφή περιέχει έναν saturating up-down counter. Σε κάθε taken outcome ο counter αυξάνεται μέχρι τη μέγιστη τιμή του, ενώ σε κάθε not-taken outcome μειώνεται μέχρι το μηδέν. Η πρόβλεψη προκύπτει από το πιο σημαντικό bit του counter. Επειδή ο BHT είναι πεπερασμένος, διαφορετικά branches μπορούν να χαρτογραφηθούν στην ίδια εγγραφή και να δημιουργήσουν aliasing.
 
-Ο κλασικός 2-bit predictor είναι ιδιαίτερα χρήσιμος για loops, επειδή έχει υστέρηση. Για μια τυπική ακολουθία loop branch:
+Ο κλασικός 2-bit μηχανισμός είναι ιδιαίτερα χρήσιμος για loops, επειδή έχει hysteresis. Για μια τυπική ακολουθία loop branch:
 \[
     T, T, T, \ldots, T, N,
 \]
-η μία not-taken έξοδος του loop δεν αρκεί για να αλλάξει αμέσως μια ισχυρή taken πρόβλεψη. Έτσι αποφεύγεται η διπλή αστοχία που συχνά εμφανίζεται με 1-bit predictors.
+η μία not-taken έξοδος του loop δεν αρκεί για να αλλάξει αμέσως μια ισχυρή taken πρόβλεψη. Έτσι αποφεύγεται η διπλή αστοχία που συχνά εμφανίζεται με 1-bit μηχανισμούς. Το βασικό θεωρητικό trade-off είναι επομένως ανάμεσα σε περισσότερες entries, που μειώνουν το aliasing, και περισσότερα bits ανά entry, που αυξάνουν το hysteresis αλλά ενδέχεται να καθυστερούν την προσαρμογή σε πραγματική αλλαγή συμπεριφοράς.
 
 \subsection{5.3(i): Σταθερές 16K BHT entries}
 
@@ -164,11 +164,11 @@ Predictor & Bits & Mean MPKI & Aggregate MPKI \\
 \texttt{Nbit-16K-4} & 65536 & 7.717 & 6.531 \\
 \bottomrule
 \end{tabular}
-\captionof{table}{Αποτελέσματα n-bit predictors με 16K BHT entries.}
+\captionof{table}{Αποτελέσματα μηχανισμών n-bit πρόβλεψης με 16K BHT entries.}
 \label{tab:nbit_16k}
 \end{center}
 
-Με αυστηρή ανάγνωση του ερωτήματος, όπου το πλήθος entries είναι σταθερό και δεν επιβάλλεται budget, θα επέλεγα τον \texttt{Nbit-16K-3}, επειδή έχει τον μικρότερο αριθμητικό μέσο MPKI. Η βελτίωσή του όμως ως προς τον 2-bit predictor είναι μικρή, περίπου 0.139 MPKI, ενώ απαιτεί 50\% περισσότερα bits. Ο 4-bit predictor δεν βελτιώνει περαιτέρω την επίδοση, κάτι που δείχνει ότι η επιπλέον υστέρηση μπορεί να καθυστερεί την προσαρμογή χωρίς να μειώνει ουσιαστικά το aliasing.
+Με αυστηρή ανάγνωση του ερωτήματος, όπου το πλήθος entries είναι σταθερό και δεν επιβάλλεται budget, θα επέλεγα τον \texttt{Nbit-16K-3}, επειδή έχει τη μικρότερη αριθμητική μέση τιμή του MPKI. Η βελτίωσή του όμως ως προς τον 2-bit μηχανισμό είναι μικρή, περίπου 0.139 MPKI, ενώ απαιτεί 50\% περισσότερα bits. Ο 4-bit μηχανισμός δεν βελτιώνει περαιτέρω την επίδοση, γεγονός που υποδηλώνει ότι το πρόσθετο hysteresis καθυστερεί την προσαρμογή χωρίς να μειώνει ουσιαστικά το aliasing.
 
 \subsection{5.3(ii): Εναλλακτικά 2-bit FSMs του Nair}
 
@@ -177,26 +177,26 @@ Predictor & Bits & Mean MPKI & Aggregate MPKI \\
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.98\linewidth]{5_3_predictor_groups.png}
-    \caption{Σύγκριση n-bit predictors και Nair FSMs με αριθμητικό μέσο direction MPKI.}
+    \caption{Σύγκριση μηχανισμών n-bit πρόβλεψης και Nair FSMs με αριθμητικό μέσο του direction MPKI.}
     \label{fig:nbit_groups}
 \end{figure}
 
-Τα καλύτερα FSMs είναι πρακτικά ισοδύναμα με τον κλασικό 2-bit predictor. Ο \texttt{Nbit-16K-2} έχει mean MPKI 7.761, ο \texttt{FSM-16K-BCBAADCD-3} έχει 7.767 και ο \texttt{FSM-16K-BACADBDC-12} έχει 7.770. Οι διαφορές είναι τόσο μικρές ώστε δεν δικαιολογούν την επιλογή πιο ειδικού FSM αντί του κλασικού saturating counter. Επομένως, για το 5.3(ii) επιλέγουμε τον \texttt{Nbit-16K-2}, κυρίως λόγω απλότητας και ισοδύναμης επίδοσης.
+Τα καλύτερα FSMs είναι πρακτικά ισοδύναμα με τον κλασικό 2-bit μηχανισμό. Η διαμόρφωση \texttt{Nbit-16K-2} έχει mean MPKI 7.761, η \texttt{FSM-16K-BCBAADCD-3} έχει 7.767 και η \texttt{FSM-16K-BACADBDC-12} έχει 7.770. Οι διαφορές είναι τόσο μικρές ώστε δεν δικαιολογούν την επιλογή πιο ειδικού FSM αντί του κλασικού saturating counter. Θεωρητικά, τα FSMs του Nair εξετάζουν διαφορετικές πολιτικές μετάβασης ανάμεσα στις ίδιες τέσσερις καταστάσεις και επομένως διαφορετικό τρόπο ενσωμάτωσης του hysteresis. Η μέτρηση δείχνει ότι η κλασική διάταξη δύο bits βρίσκεται ήδη πολύ κοντά στο βέλτιστο για τα συγκεκριμένα traces. Επομένως, για το 5.3(ii) επιλέγουμε τη διαμόρφωση \texttt{Nbit-16K-2}, κυρίως λόγω απλότητας και ισοδύναμης επίδοσης.
 
 \subsection{5.3(iii): Σταθερό hardware budget 32K bits}
 
-Στο τρίτο υποερώτημα το κρίσιμο σημείο είναι ότι το hardware μένει σταθερό στις 32K bits. Άρα η αύξηση των bits ανά counter μειώνει αναγκαστικά το πλήθος των entries:
+Στο τρίτο υποερώτημα το κρίσιμο σημείο είναι ότι το hardware μένει σταθερό στα 32K bits. Συνεπώς, η αύξηση των bits ανά counter μειώνει αναγκαστικά το πλήθος των entries:
 \[
     1\text{-bit}: 32K \text{ entries}, \qquad
     2\text{-bit}: 16K \text{ entries}, \qquad
     4\text{-bit}: 8K \text{ entries}.
 \]
-Με αυτόν τον τρόπο αξιολογείται άμεσα η ανταλλαγή ανάμεσα σε λιγότερο aliasing και περισσότερη υστέρηση ανά entry.
+Με αυτόν τον τρόπο αξιολογείται άμεσα η ανταλλαγή ανάμεσα σε λιγότερο aliasing και περισσότερο hysteresis ανά entry.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.98\linewidth]{5_3_fixed32_by_benchmark.png}
-    \caption{Direction MPKI ανά benchmark για τους 7 predictors του fixed-32K πειράματος.}
+    \caption{Τιμή direction MPKI ανά benchmark για τους 7 μηχανισμούς του πειράματος fixed-32K.}
     \label{fig:nbit_fixed32_by_benchmark}
 \end{figure}
 
@@ -214,11 +214,11 @@ Predictor & Mean MPKI & Aggregate MPKI \\
 \texttt{Nbit-32K-1} & 12.217 & 10.516 \\
 \bottomrule
 \end{tabular}
-\captionof{table}{Σύγκριση predictors με σταθερό κόστος 32K bits.}
+\captionof{table}{Σύγκριση μηχανισμών πρόβλεψης με σταθερό κόστος 32K bits.}
 \label{tab:fixed32}
 \end{center}
 
-Ο 1-bit predictor, παρότι έχει τις περισσότερες entries, υστερεί έντονα επειδή δεν διαθέτει hysteresis. Ο 4-bit predictor έχει περισσότερη hysteresis αλλά λιγότερες entries, άρα αυξάνει το aliasing. Η καλύτερη ισορροπία εμφανίζεται στον \texttt{Nbit-16K-2}. Είναι πρώτος με βάση τον αριθμητικό μέσο MPKI, σχεδόν πρώτος και σε aggregate MPKI, και παραμένει ο πιο απλός 2-bit μηχανισμός. Αυτόν τον predictor χρησιμοποιούμε στη συνέχεια ως τον n-bit εκπρόσωπο του 5.6.2.
+Ο 1-bit μηχανισμός, παρότι έχει τις περισσότερες entries, υστερεί έντονα επειδή δεν διαθέτει hysteresis. Ο 4-bit μηχανισμός έχει μεγαλύτερο hysteresis αλλά λιγότερες entries, άρα αυξάνει το aliasing. Ο καλύτερος συμβιβασμός εμφανίζεται στη διαμόρφωση \texttt{Nbit-16K-2}. Η συγκεκριμένη διαμόρφωση είναι πρώτη με βάση τον αριθμητικό μέσο του MPKI, σχεδόν πρώτη και ως προς το aggregate MPKI, και παραμένει ο πιο απλός 2-bit μηχανισμός. Τη χρησιμοποιούμε στη συνέχεια ως τον εκπρόσωπο των n-bit predictors στο 5.6.2.
 
 \FloatBarrier
 \section{5.4 Μελέτη του BTB}
@@ -229,27 +229,27 @@ Predictor & Mean MPKI & Aggregate MPKI \\
 \[
     \text{sets} = \frac{\text{total entries}}{\text{associativity}}.
 \]
-Ένα BTB hit προβλέπει taken και δίνει το αποθηκευμένο target. Ένα miss προβλέπει not-taken. Οι εγγραφές ενημερώνονται μόνο όταν το πραγματικό αποτέλεσμα είναι taken, επειδή μόνο τότε υπάρχει target που πρέπει να αποθηκευτεί.
+Ένα BTB hit προβλέπει taken και δίνει το αποθηκευμένο target. Ένα miss προβλέπει not-taken. Οι εγγραφές ενημερώνονται μόνο όταν το πραγματικό αποτέλεσμα είναι taken, επειδή μόνο τότε υπάρχει target που πρέπει να αποθηκευτεί. Η οργάνωση αυτή είναι άμεσα ανάλογη με μια cache: οι περισσότερες entries μειώνουν capacity misses, ενώ το μεγαλύτερο associativity μειώνει conflict misses αλλά αφήνει λιγότερα sets για το ίδιο συνολικό μέγεθος και αυξάνει το κόστος σύγκρισης tags.
 
-Υπάρχουν δύο είδη αστοχίας. Direction miss έχουμε όταν η taken/not-taken απόφαση είναι λάθος. Target miss έχουμε όταν η direction πρόβλεψη είναι σωστά taken, αλλά το αποθηκευμένο target διαφέρει από το πραγματικό. Επομένως, τα target misses είναι πιο ειδική περίπτωση και σχετίζονται κυρίως με branches που αλλάζουν target δυναμικά.
+Υπάρχουν δύο είδη αστοχίας. Direction miss εμφανίζεται όταν η απόφαση taken/not-taken είναι λάθος. Target miss εμφανίζεται όταν το direction prediction έχει σωστά προβλέψει taken, αλλά το αποθηκευμένο target διαφέρει από το πραγματικό. Επομένως, τα target misses είναι πιο ειδική περίπτωση και σχετίζονται κυρίως με branches που αλλάζουν target δυναμικά.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.86\linewidth]{5_4_btb_total_miss_mpki.png}
-    \caption{Direction και target miss MPKI για τις οργανώσεις BTB.}
+    \caption{Τιμές direction και target miss MPKI για τις οργανώσεις BTB.}
     \label{fig:btb_total}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.98\linewidth]{5_4_btb_by_benchmark.png}
-    \caption{Total BTB miss MPKI ανά benchmark και οργάνωση.}
+    \caption{Το total BTB miss MPKI ανά benchmark και οργάνωση.}
     \label{fig:btb_by_benchmark}
 \end{figure}
 
 \subsection{Αποτελέσματα και επιλογή}
 
-Τα target misses είναι πολύ μικρότερα από τα direction misses. Για παράδειγμα, στον \texttt{BTB-512-1} ο αριθμητικός μέσος direction miss rate είναι 23.12\%, ενώ ο αντίστοιχος target miss rate είναι μόλις 0.62\%. Άρα η βασική επίδραση του BTB εδώ είναι αν εντοπίζει έγκαιρα τα taken branches και όχι τόσο αν μπερδεύει target για ήδη σωστά προβλεπόμενα taken branches.
+Τα target misses είναι πολύ μικρότερα από τα direction misses. Για παράδειγμα, στον \texttt{BTB-512-1} ο αριθμητικός μέσος direction miss rate είναι 23.12\%, ενώ ο αντίστοιχος target miss rate είναι μόλις 0.62\%. Επομένως, στα συγκεκριμένα traces η επίδοση του BTB καθορίζεται κυρίως από την ικανότητά του να αναγνωρίζει εγκαίρως τα taken branches και δευτερευόντως από τη διάκριση μεταξύ διαφορετικών targets για ήδη σωστά προβλεπόμενα taken branches.
 
 \begin{center}
 \begin{tabular}{lrrrr}
@@ -270,21 +270,21 @@ BTB & Sets & Mean total MPKI & Aggregate total MPKI & Mean target miss\% \\
 \label{tab:btb}
 \end{center}
 
-Με κύριο κριτήριο τον αριθμητικό μέσο total miss MPKI, η καλύτερη οργάνωση είναι ο \texttt{BTB-512-1}. Ο \texttt{BTB-512-2} έχει ελαφρώς καλύτερο aggregate MPKI, αλλά χειρότερο αριθμητικό μέσο. Αυτό σημαίνει ότι ευνοείται από τα μεγαλύτερα benchmarks, όχι ότι είναι συνολικά πιο σταθερή επιλογή. Επίσης, για τα συγκεκριμένα πειράματα η αύξηση των συνολικών entries βοηθά περισσότερο από την αύξηση associativity, διότι ο περιορισμός μοιάζει περισσότερο με capacity παρά με καθαρό conflict πρόβλημα. Επομένως επιλέγουμε \texttt{BTB-512-1}.
+Με κύριο κριτήριο τον αριθμητικό μέσο του total miss MPKI, η καλύτερη οργάνωση είναι το \texttt{BTB-512-1}. Το \texttt{BTB-512-2} έχει ελαφρώς καλύτερο aggregate MPKI, αλλά χειρότερο αριθμητικό μέσο. Η απόκλιση αυτή υποδηλώνει ότι ευνοείται από τα μεγαλύτερα benchmarks, όχι ότι αποτελεί συνολικά πιο σταθερή επιλογή. Για τα συγκεκριμένα πειράματα η αύξηση των συνολικών entries αποδίδει περισσότερο από την αύξηση associativity, ένδειξη ότι ο περιορισμός είναι κυρίως capacity και όχι καθαρά conflict πρόβλημα. Επομένως επιλέγουμε το \texttt{BTB-512-1}.
 
 \FloatBarrier
 \section{5.5 Μελέτη του RAS}
 
 \subsection{Θεωρία και υλοποίηση}
 
-Η \foreignlanguage{english}{Return Address Stack} (RAS) προβλέπει targets των return instructions. Ένας απλός BTB δυσκολεύεται στα returns, επειδή η ίδια στατική return instruction μπορεί να επιστρέψει σε διαφορετικά δυναμικά call sites. Η RAS εκμεταλλεύεται το γεγονός ότι οι κλήσεις και οι επιστροφές ακολουθούν συνήθως LIFO συμπεριφορά: σε κάθε call γίνεται push της διεύθυνσης επιστροφής και σε κάθε return γίνεται pop και σύγκριση με το πραγματικό target.
+Η \foreignlanguage{english}{Return Address Stack} (RAS) προβλέπει targets των return instructions. Ένας απλός BTB δυσκολεύεται στα returns, επειδή η ίδια στατική return instruction μπορεί να επιστρέψει σε διαφορετικά δυναμικά call sites. Η RAS εκμεταλλεύεται το γεγονός ότι οι κλήσεις και οι επιστροφές ακολουθούν συνήθως LIFO συμπεριφορά: σε κάθε call γίνεται push της διεύθυνσης επιστροφής και σε κάθε return γίνεται pop και σύγκριση με το πραγματικό target. Συνεπώς, σε θεωρητικό επίπεδο, το κρίσιμο μέγεθος δεν είναι το πλήθος των στατικών return εντολών αλλά το βάθος και η κανονικότητα της δυναμικής στοίβας κλήσεων.
 
 Η βασική μετρική είναι:
 \[
     \text{RAS miss rate} =
     \frac{\text{incorrect returns}}{\text{correct returns} + \text{incorrect returns}} \cdot 100\%.
 \]
-Παράλληλα κρατήσαμε και RAS miss MPKI, ώστε η επίδραση να είναι κανονικοποιημένη ως προς το μήκος του benchmark.
+Παράλληλα κρατήσαμε και το RAS miss MPKI, ώστε η επίδραση να είναι κανονικοποιημένη ως προς το μήκος του benchmark.
 
 \begin{figure}[htbp]
     \centering
@@ -296,7 +296,7 @@ BTB & Sets & Mean total MPKI & Aggregate total MPKI & Mean target miss\% \\
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.95\linewidth]{5_5_ras_by_benchmark.png}
-    \caption{RAS miss MPKI ανά benchmark και μέγεθος RAS.}
+    \caption{Το RAS miss MPKI ανά benchmark και μέγεθος RAS.}
     \label{fig:ras_by_benchmark}
 \end{figure}
 
@@ -319,14 +319,14 @@ Entries & Mean miss\% & Aggregate miss\% & Mean MPKI & Aggregate MPKI \\
 \label{tab:ras}
 \end{center}
 
-Η αύξηση από 4 σε 16 entries μειώνει δραστικά τις αστοχίες. Μετά τα 32 entries η καμπύλη σχεδόν κορέννυται: από 32 σε 64 entries ο αριθμητικός μέσος miss rate μειώνεται μόνο από 0.070\% σε 0.056\%. Επομένως, αν το μόνο κριτήριο ήταν η ελάχιστη αστοχία, θα επιλέγαμε 64 entries. Ως αρχιτεκτονική επιλογή όμως προτιμάμε RAS 32 entries, επειδή βρίσκεται πρακτικά στο γόνατο της καμπύλης και δίνει πολύ μικρό miss MPKI με μισό μέγεθος σε σχέση με τα 64 entries.
+Η αύξηση από 4 σε 16 entries μειώνει δραστικά τις αστοχίες. Μετά τα 32 entries η καμπύλη σχεδόν κορέννυται: από 32 σε 64 entries ο αριθμητικός μέσος του miss rate μειώνεται μόνο από 0.070\% σε 0.056\%. Επομένως, αν το μόνο κριτήριο ήταν η ελάχιστη αστοχία, θα επιλέγαμε 64 entries. Ως αρχιτεκτονική επιλογή όμως προτιμάμε RAS 32 entries, επειδή βρίσκεται πρακτικά στο γόνατο της καμπύλης και δίνει πολύ μικρή τιμή του miss MPKI με μισό μέγεθος σε σχέση με τα 64 entries. Η επιλογή αυτή συνδέεται με τη θεωρία της RAS: μόλις καλυφθεί το τυπικό δυναμικό βάθος κλήσεων, η περαιτέρω αύξηση του stack προσφέρει μόνο οριακή βελτίωση.
 
 \FloatBarrier
 \section{5.6.1 Perceptrons}
 
 \subsection{Θεωρητικό υπόβαθρο}
 
-Ο perceptron predictor χρησιμοποιεί global history μήκους \(n\) και έναν πίνακα από \(M\) perceptrons. Η διεύθυνση του branch επιλέγει έναν perceptron. Κάθε perceptron έχει \(n+1\) βάρη:
+Ο μηχανισμός πρόβλεψης perceptron χρησιμοποιεί global history length \(n\) και έναν πίνακα από \(M\) perceptrons. Η διεύθυνση του branch επιλέγει ένα perceptron. Κάθε perceptron έχει \(n+1\) βάρη:
 \[
     w_0, w_1, \ldots, w_n,
 \]
@@ -342,24 +342,24 @@ Entries & Mean miss\% & Aggregate miss\% & Mean MPKI & Aggregate MPKI \\
 \[
     y = w_0 + \sum_{i=1}^{n} x_i w_i.
 \]
-Αν \(y \geq 0\), η πρόβλεψη είναι taken, αλλιώς not-taken. Η εκπαίδευση γίνεται όταν η πρόβλεψη είναι λάθος ή όταν είναι σωστή αλλά χαμηλής εμπιστοσύνης:
+Αν \(y \geq 0\), η πρόβλεψη είναι taken, αλλιώς not-taken. Η εκπαίδευση γίνεται όταν η πρόβλεψη είναι λάθος ή όταν είναι σωστή αλλά με χαμηλή εμπιστοσύνη:
 \[
     |y| \leq \theta, \qquad
     \theta = \left\lfloor 1.93n + 14 \right\rfloor.
 \]
 
-Στην υλοποίησή μας κρατήσαμε την ονοματολογία \texttt{Perceptron-M<M>-N<n>} και περιορίσαμε τα βάρη στο διάστημα \([-\theta,\theta]\), ώστε ο υπολογισμός του hardware κόστους στο επόμενο ερώτημα να είναι συνεπής με το πλήθος bits ανά βάρος.
+Στην υλοποίησή μας κρατήσαμε την ονοματολογία \texttt{Perceptron-M<M>-N<n>} και περιορίσαμε τα βάρη στο διάστημα \([-\theta,\theta]\), ώστε ο υπολογισμός του hardware κόστους στο επόμενο ερώτημα να είναι συνεπής με το πλήθος bits ανά βάρος. Σε σχέση με τους saturating counters, το perceptron λειτουργεί ως γραμμικός ταξινομητής πάνω στο πρόσφατο global history. Επομένως, μπορεί να αξιοποιήσει μακρύτερες συσχετίσεις μεταξύ διαφορετικών branches, με αντάλλαγμα μεγαλύτερο κόστος αποθήκευσης βαρών και τον υπολογισμό του dot product σε κάθε πρόβλεψη.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.72\linewidth]{5_6_1_perceptron_heatmap.png}
-    \caption{Αριθμητικός μέσος direction MPKI για τα απαιτούμενα ζεύγη \(M,n\).}
+    \caption{Αριθμητικός μέσος του direction MPKI για τα απαιτούμενα ζεύγη \(M,n\).}
     \label{fig:perceptron_heatmap}
 \end{figure}
 
 \subsection{Σχολιασμός αποτελεσμάτων}
 
-Το Σχήμα~\ref{fig:perceptron_heatmap} δείχνει ότι το μήκος ιστορίας \(n\) είναι ο κυρίαρχος παράγοντας. Ο μέσος MPKI ανά \(n\), συνυπολογίζοντας τα τρία \(M\), μειώνεται από 6.229 για \(n=4\) σε 2.763 για \(n=72\). Η αύξηση του \(M\) βοηθά επίσης, επειδή μειώνει το aliasing μεταξύ διαφορετικών branch PCs, αλλά το όφελος από 512 σε 1024 perceptrons είναι μικρότερο από το όφελος αύξησης του \(n\).
+Το Σχήμα~\ref{fig:perceptron_heatmap} δείχνει ότι το global history length \(n\) είναι ο κυρίαρχος παράγοντας. Η μέση τιμή του MPKI ανά \(n\), συνυπολογίζοντας τα τρία \(M\), μειώνεται από 6.229 για \(n=4\) σε 2.763 για \(n=72\). Η αύξηση του \(M\) βοηθά επίσης, επειδή μειώνει το aliasing μεταξύ διαφορετικών branch PCs, αλλά το όφελος από 512 σε 1024 perceptrons είναι μικρότερο από το όφελος αύξησης του \(n\). Αυτό συμφωνεί με τη θεωρία των perceptrons: όταν υπάρχει ουσιαστικό global correlation, το μεγαλύτερο history length προσθέτει πληροφορία που δεν μπορεί να αντικατασταθεί απλώς από περισσότερες entries.
 
 \begin{center}
 \begin{tabular}{lrrrr}
@@ -377,14 +377,14 @@ Predictor & \(M\) & \(n\) & Mean MPKI & Aggregate MPKI \\
 \label{tab:perceptron_best}
 \end{center}
 
-Η καλύτερη διαμόρφωση του ερωτήματος είναι η \texttt{Perceptron-M1024-N72}, με mean MPKI 2.287 και aggregate MPKI 1.333. Το αποτέλεσμα αυτό δείχνει την αξία της μακράς global history για branches που έχουν συσχέτιση με παλαιότερα outcomes. Παρόλα αυτά, η διαμόρφωση αυτή δεν είναι συγκρίσιμη με το 32K-bit budget του 5.6.2, επειδή απαιτεί πολύ μεγαλύτερο πίνακα βαρών. Για τον λόγο αυτό στο επόμενο ερώτημα επιλέγουμε μικρότερες perceptron διαμορφώσεις περίπου 32K bits.
+Η καλύτερη διαμόρφωση του ερωτήματος είναι η \texttt{Perceptron-M1024-N72}, με τιμή mean MPKI 2.287 και τιμή aggregate MPKI 1.333. Το αποτέλεσμα αυτό δείχνει την αξία του μεγάλου global history length για branches που συσχετίζονται με παλαιότερα outcomes. Ωστόσο, η διαμόρφωση αυτή δεν είναι συγκρίσιμη με το 32K-bit budget του 5.6.2, επειδή απαιτεί πολύ μεγαλύτερο πίνακα βαρών. Για τον λόγο αυτό στο επόμενο ερώτημα επιλέγουμε μικρότερες διαμορφώσεις perceptron περίπου 32K bits.
 
 \FloatBarrier
-\section{5.6.2 Σύγκριση διαφορετικών predictors}
+\section{5.6.2 Σύγκριση διαφορετικών μηχανισμών πρόβλεψης}
 
 \subsection{Υλοποίηση και επιλογές hardware}
 
-Στο τελικό συγκριτικό πείραμα αξιολογήσαμε 18 predictors. Εκτός από τους ήδη διαθέσιμους predictors, υλοποιήθηκαν static predictors, local-history two-level predictors, global-history two-level predictors, ένας Alpha 21264-style hybrid predictor και τέσσερις tournament predictors.
+Στο τελικό συγκριτικό πείραμα αξιολογήσαμε 18 predictors. Εκτός από τους ήδη διαθέσιμους μηχανισμούς, υλοποιήθηκαν static predictors, two-level predictors με local history, two-level predictors με global history, ένας Alpha 21264-style hybrid predictor και τέσσερις tournament predictors. Η επιλογή αυτή καλύπτει τις βασικές ιδέες της θεωρίας: στατική πρόβλεψη, απλή δυναμική πρόβλεψη με counters, αξιοποίηση local history ή global history και υβριδική επιλογή ανάμεσα σε επιμέρους predictors.
 
 Για τους local-history predictors κρατήσαμε σταθερό:
 \[
@@ -394,37 +394,37 @@ Predictor & \(M\) & \(n\) & Mean MPKI & Aggregate MPKI \\
 \[
     (X,Z) = (2048,8), (4096,4), (8192,2).
 \]
-Για τους global-history predictors αγνοείται το μικρό κόστος του BHR, όπως επιτρέπει η εκφώνηση. Επομένως:
+Για τους global-history predictors αγνοήσαμε το μικρό κόστος του BHR, όπως επιτρέπει η εκφώνηση. Επομένως:
 \[
     Z \cdot 2 = 32K \Rightarrow Z = 16K \text{ PHT entries},
 \]
 και συγκρίνουμε BHR μήκη 4, 8 και 12.
 
-Για τους perceptrons χρησιμοποιήσαμε την προσέγγιση:
+Για τα perceptrons χρησιμοποιήσαμε την προσέγγιση:
 \[
     \text{bits} = M(n+1)(1+\lfloor \log_2\theta \rfloor),
     \qquad
     \theta = \lfloor 1.93n + 14 \rfloor.
 \]
-Οι τρεις near-32K επιλογές είναι:
+Οι τρεις επιλογές κοντά στα 32K bits είναι:
 \[
     \texttt{M728-N8}: 32760 \text{ bits}, \quad
     \texttt{M141-N32}: 32571 \text{ bits}, \quad
     \texttt{M56-N72}: 32704 \text{ bits}.
 \]
-Ο \texttt{Alpha21264} υλοποιήθηκε με local history table 1024 entries των 10 bits, local PHT 1024 entries των 3 bits, global PHT 4096 entries των 2 bits και choice PHT 4096 entries των 2 bits, δηλαδή συνολικά 29696 bits. Στους tournament predictors αγνοήσαμε το κόστος του meta-predictor, όπως ζητείται, και δώσαμε περίπου 16K bits σε κάθε συνιστώσα \(P_0\) και \(P_1\).
+Ο \texttt{Alpha21264} υλοποιήθηκε με local history table 1024 entries των 10 bits, local PHT 1024 entries των 3 bits, global PHT 4096 entries των 2 bits και choice PHT 4096 entries των 2 bits, δηλαδή συνολικά 29696 bits. Στους tournament predictors αγνοήσαμε το κόστος του meta-predictor, όπως ζητείται, και δώσαμε περίπου 16K bits σε κάθε συνιστώσα \(P_0\) και \(P_1\). Ο ρόλος του choice/meta predictor είναι κρίσιμος θεωρητικά: δεν προσπαθεί να προβλέψει απευθείας το branch, αλλά μαθαίνει ποιος επιμέρους predictor είναι πιο αξιόπιστος για το τρέχον pattern.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.92\linewidth]{5_6_2_predictor_comparison.png}
-    \caption{Σύγκριση των 18 predictors του 5.6.2. Οι μπάρες δείχνουν αριθμητικό μέσο MPKI και τα μαύρα σημεία aggregate MPKI.}
+    \caption{Σύγκριση των 18 predictors του 5.6.2. Οι μπάρες δείχνουν τον αριθμητικό μέσο του MPKI και τα μαύρα σημεία δείχνουν το aggregate MPKI.}
     \label{fig:predictor_comparison}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.98\linewidth]{5_6_2_predictor_by_benchmark.png}
-    \caption{Direction MPKI ανά benchmark για τους predictors του 5.6.2.}
+    \caption{Το direction MPKI ανά benchmark για τους predictors του 5.6.2.}
     \label{fig:predictor_by_benchmark}
 \end{figure}
 
@@ -453,29 +453,29 @@ Predictor & Family & Bits & Mean MPKI & Aggregate MPKI \\
 \label{tab:predictor_comparison}
 \end{center}
 
-Η ιεράρχηση είναι σαφής. Οι static predictors είναι χρήσιμοι ως baselines, αλλά απέχουν πολύ από τους δυναμικούς predictors. Ο \texttt{Static-BTFNT} είναι καλύτερος από τον \texttt{Static-AlwaysTaken}, επειδή εκμεταλλεύεται τη συχνή συμπεριφορά των backward loop branches, αλλά παραμένει απλός στατικός κανόνας.
+Η ιεράρχηση είναι σαφής. Οι static predictors είναι χρήσιμοι ως baselines, αλλά απέχουν πολύ από τους dynamic predictors, επειδή δεν προσαρμόζονται στη συμπεριφορά κάθε στατικού branch. Ο κανόνας \texttt{Static-BTFNT} είναι καλύτερος από τον \texttt{Static-AlwaysTaken}, επειδή εκμεταλλεύεται τη συχνή συμπεριφορά των backward loop branches, αλλά παραμένει απλός στατικός κανόνας.
 
-Οι local-history και global-history predictors βελτιώνουν σημαντικά τον 2-bit predictor, με καλύτερο global-history αποτέλεσμα το \texttt{Global-PHT16K-BHR12-2} στα 4.181 mean MPKI. Αυτό δείχνει ότι η global συσχέτιση είναι σημαντική στα συγκεκριμένα benchmarks. Οι tournament predictors βελτιώνουν περαιτέρω τις συνιστώσες τους, ειδικά όταν μία από αυτές είναι perceptron. Παρόλα αυτά, η καλύτερη tournament διαμόρφωση μένει στα 3.743 mean MPKI και δεν φτάνει τους κορυφαίους predictors.
+Οι local-history και global-history predictors βελτιώνουν σημαντικά τον 2-bit μηχανισμό. Στην κατηγορία των global-history predictors, η καλύτερη διαμόρφωση είναι η \texttt{Global-PHT16K-BHR12-2}, με 4.181 mean MPKI. Η μέτρηση αυτή δείχνει ότι το global correlation είναι σημαντικό στα συγκεκριμένα benchmarks. Οι local-history predictors είναι ιδιαίτερα χρήσιμοι όταν ένα συγκεκριμένο static branch ακολουθεί δικό του επαναλαμβανόμενο μοτίβο, ενώ οι global-history predictors μπορούν να εκμεταλλευθούν συσχετίσεις μεταξύ διαφορετικών branches. Στα δεδομένα μας οι global-history predictors αποδίδουν καλύτερα, γεγονός που υποδηλώνει ότι υπάρχει αξιοποιήσιμο inter-branch correlation. Οι tournament predictors βελτιώνουν περαιτέρω τις συνιστώσες τους, ειδικά όταν μία από αυτές είναι perceptron predictor. Ωστόσο, η καλύτερη διαμόρφωση για tournament predictors επιτυγχάνει 3.743 mean MPKI και δεν φτάνει τους κορυφαίους predictors.
 
-Οι τρεις καλύτεροι predictors με βάση τον αριθμητικό μέσο είναι ο \texttt{Alpha21264}, ο \texttt{Perceptron-M141-N32} και ο \texttt{Perceptron-M56-N72}. Ο \texttt{Alpha21264} είναι πρώτος σε mean MPKI, με 3.071, και έχει μικρότερο κόστος από τους δύο perceptrons. Ο \texttt{Perceptron-M56-N72} έχει το καλύτερο aggregate MPKI, 1.788, επειδή αποδίδει πολύ καλά στα μεγάλα benchmarks, αλλά έχει ελαφρώς χειρότερο αριθμητικό μέσο. Ως τελική επιλογή μετά το 5.6.2 θα προκρινόταν ο \texttt{Alpha21264}: συνδυάζει local και global πληροφορία, διαθέτει choice predictor που μαθαίνει ποια συνιστώσα είναι καλύτερη, έχει την καλύτερη ίσου-βάρους επίδοση και δεν απαιτεί dot product πολλών βαρών σε κάθε πρόβλεψη.
+Οι τρεις καλύτερες διαμορφώσεις με βάση τον αριθμητικό μέσο είναι η \texttt{Alpha21264}, η \texttt{Perceptron-M141-N32} και η \texttt{Perceptron-M56-N72}. Η \texttt{Alpha21264} είναι πρώτη σε mean MPKI, με 3.071, και έχει μικρότερο κόστος από τις δύο διαμορφώσεις perceptron. Η \texttt{Perceptron-M56-N72} έχει την καλύτερη τιμή aggregate MPKI, 1.788, επειδή αποδίδει πολύ καλά στα μεγάλα benchmarks, αλλά έχει ελαφρώς χειρότερο αριθμητικό μέσο. Ως τελική επιλογή μετά το 5.6.2 θα προκρινόταν η \texttt{Alpha21264}: συνδυάζει local history και global history, διαθέτει choice predictor που μαθαίνει ποια συνιστώσα είναι καλύτερη, έχει την καλύτερη ίσου-βάρους επίδοση και δεν απαιτεί dot product πολλών βαρών σε κάθε πρόβλεψη.
 
 \FloatBarrier
 \section{5.7 Ακρίβεια προσομοιώσεων με \texttt{ref} inputs}
 
-\subsection{Επιλογή predictors για έλεγχο}
+\subsection{Επιλογή μηχανισμών πρόβλεψης για έλεγχο}
 
-Το 5.7 ελέγχει αν τα συμπεράσματα που προέκυψαν από τα \texttt{train} inputs παραμένουν αξιόπιστα στα μεγαλύτερα \texttt{ref} inputs. Επιλέξαμε τους τρεις καλύτερους predictors του 5.6.2 με βάση τον αριθμητικό μέσο direction MPKI:
+Το 5.7 ελέγχει αν τα συμπεράσματα που προέκυψαν από τα \texttt{train} inputs παραμένουν αξιόπιστα στα μεγαλύτερα \texttt{ref} inputs. Επιλέξαμε τους τρεις καλύτερους μηχανισμούς του 5.6.2 με βάση τον αριθμητικό μέσο του direction MPKI:
 \[
     \texttt{Alpha21264}, \quad
     \texttt{Perceptron-M141-N32}, \quad
     \texttt{Perceptron-M56-N72}.
 \]
-Δεν επιλέξαμε τους πολύ μεγάλους perceptrons του 5.6.1, παρότι έχουν χαμηλότερο MPKI, επειδή ξεπερνούν κατά πολύ το περίπου 32K-bit budget και άρα δεν θα ήταν δίκαιη σύγκριση.
+Δεν επιλέξαμε τις πολύ μεγάλες διαμορφώσεις perceptron του 5.6.1, παρότι έχουν χαμηλότερο MPKI, επειδή ξεπερνούν κατά πολύ το περίπου 32K-bit budget και άρα δεν θα ήταν δίκαιη σύγκριση.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.72\linewidth]{5_7_train_vs_ref.png}
-    \caption{Αριθμητικός μέσος direction MPKI σε \texttt{train} και \texttt{ref} inputs για τους τρεις επιλεγμένους predictors.}
+    \caption{Αριθμητικός μέσος του direction MPKI σε \texttt{train} και \texttt{ref} inputs για τους τρεις επιλεγμένους μηχανισμούς.}
     \label{fig:train_vs_ref}
 \end{figure}
 
@@ -489,32 +489,32 @@ Predictor & Train mean & Ref mean & Train agg. & Ref agg. \\
 \texttt{Perceptron-M56-N72} & 3.140 & 2.778 & 1.788 & 1.110 \\
 \bottomrule
 \end{tabular}
-\captionof{table}{Σύγκριση \texttt{train} και \texttt{ref} για τους τρεις επιλεγμένους predictors.}
+\captionof{table}{Σύγκριση \texttt{train} και \texttt{ref} για τους τρεις επιλεγμένους μηχανισμούς.}
 \label{tab:train_ref}
 \end{center}
 
 \subsection{Σύγκριση συμπερασμάτων}
 
-Στα \texttt{ref} inputs και οι τρεις predictors βελτιώνουν τον αριθμητικό μέσο MPKI σε σχέση με τα \texttt{train} inputs. Η σειρά όμως αλλάζει οριακά: ο \texttt{Perceptron-M141-N32} γίνεται πρώτος με 2.634 MPKI, ο \texttt{Alpha21264} ακολουθεί με 2.675 MPKI και ο \texttt{Perceptron-M56-N72} έχει 2.778 MPKI. Η διαφορά των δύο πρώτων είναι περίπου 0.04 MPKI, δηλαδή πολύ μικρή για να θεωρηθεί ανατροπή του συμπεράσματος.
+Στα \texttt{ref} inputs και οι τρεις μηχανισμοί βελτιώνουν τον αριθμητικό μέσο του MPKI σε σχέση με τα \texttt{train} inputs. Η σειρά όμως αλλάζει οριακά: η \texttt{Perceptron-M141-N32} γίνεται πρώτη με 2.634 MPKI, η \texttt{Alpha21264} ακολουθεί με 2.675 MPKI και η \texttt{Perceptron-M56-N72} έχει 2.778 MPKI. Η διαφορά των δύο πρώτων είναι περίπου 0.04 MPKI, δηλαδή πολύ μικρή για να θεωρηθεί ανατροπή του συμπεράσματος. Η μικρή αυτή διαφορά υποδηλώνει ότι τα \texttt{train} inputs ήταν αρκετά αντιπροσωπευτικά για την κατάταξη της κορυφαίας ομάδας, παρότι δεν προβλέπουν τέλεια κάθε επιμέρους benchmark.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.76\linewidth]{5_7_ref_delta_heatmap.png}
-    \caption{Μεταβολή direction MPKI ανά benchmark από \texttt{train} σε \texttt{ref}. Αρνητική τιμή σημαίνει καλύτερη επίδοση στο \texttt{ref} input.}
+    \caption{Μεταβολή του direction MPKI ανά benchmark από \texttt{train} σε \texttt{ref}. Αρνητική τιμή σημαίνει καλύτερη επίδοση στο \texttt{ref} input.}
     \label{fig:ref_delta}
 \end{figure}
 
-Το Σχήμα~\ref{fig:ref_delta} δείχνει ότι η μεγαλύτερη επιδείνωση εμφανίζεται στο \texttt{429.mcf}, όπου και οι τρεις predictors έχουν υψηλότερο MPKI στο \texttt{ref}. Αντίθετα, στα \texttt{403.gcc}, \texttt{410.bwaves} και \texttt{450.soplex} η επίδοση βελτιώνεται. Το συμπέρασμα από το \texttt{train} παραμένει ουσιαστικά σταθερό: οι τρεις επιλεγμένοι predictors αποτελούν την κορυφαία ομάδα, αλλά οι μεταξύ τους διαφορές είναι μικρές και εξαρτώνται από το αν χρησιμοποιούμε αριθμητικό ή aggregate μέσο.
+Το Σχήμα~\ref{fig:ref_delta} δείχνει ότι η μεγαλύτερη επιδείνωση εμφανίζεται στο \texttt{429.mcf}, όπου και οι τρεις μηχανισμοί έχουν υψηλότερο MPKI στο \texttt{ref}. Αντίθετα, στα \texttt{403.gcc}, \texttt{410.bwaves} και \texttt{450.soplex} η επίδοση βελτιώνεται. Το συμπέρασμα από το \texttt{train} παραμένει ουσιαστικά σταθερό: οι τρεις επιλεγμένοι μηχανισμοί αποτελούν την κορυφαία ομάδα, αλλά οι μεταξύ τους διαφορές είναι μικρές και εξαρτώνται από το αν χρησιμοποιούμε αριθμητικό ή aggregate μέσο.
 
-Σε aggregate MPKI η σειρά στα \texttt{ref} είναι \texttt{Perceptron-M56-N72}, \texttt{Alpha21264}, \texttt{Perceptron-M141-N32}, με τιμές 1.110, 1.129 και 1.139 αντίστοιχα. Αυτό επιβεβαιώνει ότι ο μακράς ιστορίας perceptron είναι πολύ ισχυρός στα benchmarks που έχουν μεγάλο βάρος σε δυναμικές εντολές. Ωστόσο, ο \texttt{Alpha21264} παραμένει η πιο ισορροπημένη τελική επιλογή: ήταν πρώτος στο \texttt{train} mean, είναι πρακτικά ισοδύναμος με τον πρώτο στο \texttt{ref} mean, έχει καλύτερο \texttt{ref} aggregate από τον \texttt{Perceptron-M141-N32}, χαμηλότερο κόστος και μικρότερη υπολογιστική πολυπλοκότητα ανά πρόβλεψη.
+Σε aggregate MPKI η σειρά στα \texttt{ref} είναι \texttt{Perceptron-M56-N72}, \texttt{Alpha21264}, \texttt{Perceptron-M141-N32}, με τιμές 1.110, 1.129 και 1.139 αντίστοιχα. Αυτό επιβεβαιώνει ότι η διαμόρφωση perceptron με μεγάλο global history length είναι πολύ ισχυρή στα benchmarks που έχουν μεγάλο βάρος σε δυναμικές εντολές. Ωστόσο, η \texttt{Alpha21264} παραμένει η πιο ισορροπημένη τελική επιλογή: ήταν πρώτη στο \texttt{train} mean, είναι πρακτικά ισοδύναμη με την πρώτη στο \texttt{ref} mean, έχει καλύτερο \texttt{ref} aggregate από την \texttt{Perceptron-M141-N32}, χαμηλότερο κόστος και μικρότερη υπολογιστική πολυπλοκότητα ανά πρόβλεψη.
 
 \FloatBarrier
 \section{Συνολικά συμπεράσματα}
 
-Η άσκηση δείχνει καθαρά ότι η πρόβλεψη διακλαδώσεων δεν είναι ένα μονοδιάστατο πρόβλημα. Το 5.2 έδειξε ότι τα benchmarks έχουν πολύ διαφορετική branch frequency και διαφορετικό μίγμα conditional branches, calls και returns. Αυτό εξηγεί γιατί χρειάζονται ξεχωριστοί μηχανισμοί για direction prediction, target prediction και return prediction.
+Η άσκηση καταδεικνύει ότι η πρόβλεψη διακλαδώσεων δεν είναι μονοδιάστατο πρόβλημα. Το 5.2 έδειξε ότι τα benchmarks έχουν πολύ διαφορετικό branch frequency και διαφορετικό μίγμα conditional branches, calls και returns. Αυτό εξηγεί γιατί απαιτούνται ξεχωριστοί μηχανισμοί για direction prediction, target prediction και return prediction.
 
-Στους απλούς n-bit predictors, ο 2-bit saturating counter παραμένει η καλύτερη πρακτική επιλογή όταν το hardware budget είναι σταθερό στις 32K bits. Τα Nair FSMs επιβεβαιώνουν ότι υπάρχουν ισοδύναμες 4-state μηχανές, αλλά δεν δίνουν ουσιαστικό κέρδος έναντι της κλασικής και απλούστερης μορφής. Στο BTB, η καλύτερη οργάνωση με βάση τον αριθμητικό μέσο είναι η \texttt{BTB-512-1}, ενώ στη RAS η επιλογή 32 entries προσφέρει σχεδόν όλη την ωφέλεια των μεγαλύτερων stacks με μικρότερο κόστος.
+Στους απλούς μηχανισμούς n-bit πρόβλεψης, ο 2-bit saturating counter παραμένει η καλύτερη πρακτική επιλογή όταν το hardware budget είναι σταθερό στα 32K bits. Τα Nair FSMs επιβεβαιώνουν ότι υπάρχουν σχεδόν ισοδύναμες 4-state μηχανές, αλλά δεν δίνουν ουσιαστικό κέρδος έναντι της κλασικής και απλούστερης μορφής. Στο BTB, η καλύτερη οργάνωση με βάση τον αριθμητικό μέσο είναι το \texttt{BTB-512-1}, επειδή το πρόσθετο πλήθος entries αποδίδει περισσότερο από το πρόσθετο associativity. Στη RAS, η επιλογή 32 entries προσφέρει σχεδόν όλη την ωφέλεια των μεγαλύτερων stacks με μικρότερο κόστος.
 
-Οι perceptrons εκμεταλλεύονται αποτελεσματικά μακρά global history και πετυχαίνουν πολύ χαμηλό MPKI όταν δεν υπάρχει αυστηρός περιορισμός hardware. Στο δίκαιο όμως 32K-bit συγκριτικό πλαίσιο, ο \texttt{Alpha21264} είναι ο καλύτερος συνολικός συμβιβασμός. Συνδυάζει local και global history, χρησιμοποιεί choice predictor, έχει κόστος περίπου 29K bits και παραμένει στην κορυφαία ομάδα και στα \texttt{ref} inputs. Επομένως, αν έπρεπε να υλοποιηθεί ένας predictor στο σύστημα, η τελική επιλογή θα ήταν ο \texttt{Alpha21264}.
+Τα perceptrons εκμεταλλεύονται αποτελεσματικά μεγάλο global history length και πετυχαίνουν πολύ χαμηλό MPKI όταν δεν υπάρχει αυστηρός περιορισμός hardware. Στο πλαίσιο δίκαιης σύγκρισης με budget 32K bits, η \texttt{Alpha21264} είναι ο καλύτερος συνολικός συμβιβασμός. Συνδυάζει local history και global history, χρησιμοποιεί choice predictor, έχει κόστος περίπου 29K bits και παραμένει στην κορυφαία ομάδα και στα \texttt{ref} inputs. Επομένως, αν έπρεπε να υλοποιηθεί ένας μηχανισμός πρόβλεψης στο σύστημα, η τελική επιλογή θα ήταν η \texttt{Alpha21264}.
 
 \end{document}
