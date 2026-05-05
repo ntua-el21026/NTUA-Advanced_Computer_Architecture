@@ -25,6 +25,7 @@ core.*
 # Optional local scratch area for benchmark runs
 exercises/1st/benchmarks/.scratch/
 exercises/2nd/benchmarks/.scratch/
+exercises/2nd/benchmarks/**/.scratch/
 exercises/2nd/benchmarks/smoke/
 
 # Local run outputs generated while validating pintools

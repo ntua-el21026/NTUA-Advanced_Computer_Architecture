@@ -853,10 +853,15 @@ NTUA-Advanced_Computer_Architecture/
 │       ├── benchmarks/
 │       ├── report/
 │       ├── scripts/
-│       └── advanced-ca-Spring-2026-ask2-helpcode.tgz
+│       │   ├── README.md
+│       │   └── run_4_2_l2_sweep.py
+│       ├── advanced-ca-Spring-2026-ask2-helpcode.tgz
+│       ├── decisions.md
+│       ├── README.md
+│       └── theory.md
 ├── .gitattributes
 ├── .gitignore
 ├── LICENSE
 └── README.md
 
-Total directories: 84, Total files: 776
+Total directories: 84, Total files: 781
