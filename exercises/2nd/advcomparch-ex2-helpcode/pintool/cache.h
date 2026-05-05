@@ -3,6 +3,7 @@
 
 #include <iostream>  // std::cout ...
 #include <cstdlib>   // rand()
+#include <vector>
 
 /*****************************************************************************/
 /* Policy about L2 inclusion of L1's content                                 */
@@ -51,9 +52,21 @@ CACHE_TAG INVALID_TAG(-1);
 namespace CACHE_SET
 {
 
-// ************************
-// Change this class and implement policy to evict random block!
-// ************************
+static VOID SeedReplacementRandom()
+{
+    static bool seeded = false;
+    if (!seeded) {
+        srand(21026);
+        seeded = true;
+    }
+}
+
+static UINT32 SrripMaxRrpv(UINT32 associativity)
+{
+    if (associativity >= 31)
+        return 0xffffffff;
+    return (1U << associativity) - 1U;
+}
 
 class LRU 
 {
@@ -110,6 +123,352 @@ class LRU
         {
             if (*it == tag) { // Tag found
                 _tags.erase(it);
+                break;
+            }
+        }
+    }
+};
+
+class MRU
+{
+  protected:
+    std::vector<CACHE_TAG> _tags;
+    UINT32 _associativity;
+
+ public:
+    MRU(UINT32 associativity = 8)
+    {
+        _associativity = associativity;
+        _tags.clear();
+    }
+
+    VOID SetAssociativity(UINT32 associativity)
+    {
+        _associativity = associativity;
+        _tags.clear();
+    }
+    UINT32 GetAssociativity() { return _associativity; }
+
+    string Name() { return "MRU"; }
+
+    UINT32 Find(CACHE_TAG tag)
+    {
+        for (std::vector<CACHE_TAG>::iterator it = _tags.begin();
+             it != _tags.end(); ++it)
+        {
+            if (*it == tag) {
+                _tags.erase(it);
+                _tags.push_back(tag);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    CACHE_TAG Replace(CACHE_TAG tag)
+    {
+        CACHE_TAG ret = INVALID_TAG;
+        if (_tags.size() >= _associativity) {
+            ret = _tags.back();
+            _tags.pop_back();
+        }
+        _tags.push_back(tag);
+        return ret;
+    }
+
+    VOID DeleteIfPresent(CACHE_TAG tag)
+    {
+        for (std::vector<CACHE_TAG>::iterator it = _tags.begin();
+             it != _tags.end(); ++it)
+        {
+            if (*it == tag) {
+                _tags.erase(it);
+                break;
+            }
+        }
+    }
+};
+
+class Random
+{
+  protected:
+    std::vector<CACHE_TAG> _tags;
+    UINT32 _associativity;
+
+ public:
+    Random(UINT32 associativity = 8)
+    {
+        _associativity = associativity;
+        _tags.clear();
+        SeedReplacementRandom();
+    }
+
+    VOID SetAssociativity(UINT32 associativity)
+    {
+        _associativity = associativity;
+        _tags.clear();
+        SeedReplacementRandom();
+    }
+    UINT32 GetAssociativity() { return _associativity; }
+
+    string Name() { return "Random"; }
+
+    UINT32 Find(CACHE_TAG tag)
+    {
+        for (std::vector<CACHE_TAG>::iterator it = _tags.begin();
+             it != _tags.end(); ++it)
+        {
+            if (*it == tag)
+                return true;
+        }
+
+        return false;
+    }
+
+    CACHE_TAG Replace(CACHE_TAG tag)
+    {
+        CACHE_TAG ret = INVALID_TAG;
+        if (_tags.size() >= _associativity) {
+            UINT32 victim = rand() % _tags.size();
+            ret = _tags[victim];
+            _tags[victim] = tag;
+        } else {
+            _tags.push_back(tag);
+        }
+        return ret;
+    }
+
+    VOID DeleteIfPresent(CACHE_TAG tag)
+    {
+        for (std::vector<CACHE_TAG>::iterator it = _tags.begin();
+             it != _tags.end(); ++it)
+        {
+            if (*it == tag) {
+                _tags.erase(it);
+                break;
+            }
+        }
+    }
+};
+
+class LFU
+{
+  protected:
+    std::vector<CACHE_TAG> _tags;
+    std::vector<UINT64> _use_counts;
+    UINT32 _associativity;
+
+ public:
+    LFU(UINT32 associativity = 8)
+    {
+        _associativity = associativity;
+        _tags.clear();
+        _use_counts.clear();
+    }
+
+    VOID SetAssociativity(UINT32 associativity)
+    {
+        _associativity = associativity;
+        _tags.clear();
+        _use_counts.clear();
+    }
+    UINT32 GetAssociativity() { return _associativity; }
+
+    string Name() { return "LFU"; }
+
+    UINT32 Find(CACHE_TAG tag)
+    {
+        for (UINT32 i = 0; i < _tags.size(); i++)
+        {
+            if (_tags[i] == tag) {
+                _use_counts[i]++;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    CACHE_TAG Replace(CACHE_TAG tag)
+    {
+        CACHE_TAG ret = INVALID_TAG;
+        if (_tags.size() >= _associativity) {
+            UINT32 victim = 0;
+            for (UINT32 i = 1; i < _use_counts.size(); i++) {
+                if (_use_counts[i] < _use_counts[victim])
+                    victim = i;
+            }
+            ret = _tags[victim];
+            _tags[victim] = tag;
+            _use_counts[victim] = 1;
+        } else {
+            _tags.push_back(tag);
+            _use_counts.push_back(1);
+        }
+        return ret;
+    }
+
+    VOID DeleteIfPresent(CACHE_TAG tag)
+    {
+        for (UINT32 i = 0; i < _tags.size(); i++)
+        {
+            if (_tags[i] == tag) {
+                _tags.erase(_tags.begin() + i);
+                _use_counts.erase(_use_counts.begin() + i);
+                break;
+            }
+        }
+    }
+};
+
+class LIP
+{
+  protected:
+    std::vector<CACHE_TAG> _tags;
+    UINT32 _associativity;
+
+ public:
+    LIP(UINT32 associativity = 8)
+    {
+        _associativity = associativity;
+        _tags.clear();
+    }
+
+    VOID SetAssociativity(UINT32 associativity)
+    {
+        _associativity = associativity;
+        _tags.clear();
+    }
+    UINT32 GetAssociativity() { return _associativity; }
+
+    string Name() { return "LIP"; }
+
+    UINT32 Find(CACHE_TAG tag)
+    {
+        for (std::vector<CACHE_TAG>::iterator it = _tags.begin();
+             it != _tags.end(); ++it)
+        {
+            if (*it == tag) {
+                _tags.erase(it);
+                _tags.push_back(tag);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    CACHE_TAG Replace(CACHE_TAG tag)
+    {
+        CACHE_TAG ret = INVALID_TAG;
+        if (_tags.size() >= _associativity) {
+            ret = *_tags.begin();
+            _tags.erase(_tags.begin());
+        }
+        _tags.push_back(tag);
+        for (UINT32 i = _tags.size() - 1; i > 0; i--)
+            _tags[i] = _tags[i - 1];
+        _tags[0] = tag;
+        return ret;
+    }
+
+    VOID DeleteIfPresent(CACHE_TAG tag)
+    {
+        for (std::vector<CACHE_TAG>::iterator it = _tags.begin();
+             it != _tags.end(); ++it)
+        {
+            if (*it == tag) {
+                _tags.erase(it);
+                break;
+            }
+        }
+    }
+};
+
+class SRRIP
+{
+  protected:
+    struct Entry
+    {
+        CACHE_TAG tag;
+        UINT32 rrpv;
+    };
+
+    std::vector<Entry> _entries;
+    UINT32 _associativity;
+    UINT32 _max_rrpv;
+
+    UINT32 InsertionRrpv() const
+    {
+        return _max_rrpv > 0 ? _max_rrpv - 1 : 0;
+    }
+
+ public:
+    SRRIP(UINT32 associativity = 8)
+    {
+        _associativity = associativity;
+        _max_rrpv = SrripMaxRrpv(associativity);
+        _entries.clear();
+    }
+
+    VOID SetAssociativity(UINT32 associativity)
+    {
+        _associativity = associativity;
+        _max_rrpv = SrripMaxRrpv(associativity);
+        _entries.clear();
+    }
+    UINT32 GetAssociativity() { return _associativity; }
+
+    string Name() { return "SRRIP"; }
+
+    UINT32 Find(CACHE_TAG tag)
+    {
+        for (UINT32 i = 0; i < _entries.size(); i++)
+        {
+            if (_entries[i].tag == tag) {
+                _entries[i].rrpv = 0;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    CACHE_TAG Replace(CACHE_TAG tag)
+    {
+        CACHE_TAG ret = INVALID_TAG;
+        Entry inserted;
+        inserted.tag = tag;
+        inserted.rrpv = InsertionRrpv();
+
+        if (_entries.size() < _associativity) {
+            _entries.push_back(inserted);
+            return ret;
+        }
+
+        while (true) {
+            for (UINT32 i = 0; i < _entries.size(); i++) {
+                if (_entries[i].rrpv == _max_rrpv) {
+                    ret = _entries[i].tag;
+                    _entries[i] = inserted;
+                    return ret;
+                }
+            }
+
+            for (UINT32 i = 0; i < _entries.size(); i++) {
+                if (_entries[i].rrpv < _max_rrpv)
+                    _entries[i].rrpv++;
+            }
+        }
+    }
+
+    VOID DeleteIfPresent(CACHE_TAG tag)
+    {
+        for (UINT32 i = 0; i < _entries.size(); i++)
+        {
+            if (_entries[i].tag == tag) {
+                _entries.erase(_entries.begin() + i);
                 break;
             }
         }

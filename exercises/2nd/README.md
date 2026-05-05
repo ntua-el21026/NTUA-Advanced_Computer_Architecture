@@ -28,3 +28,11 @@ Run the section 4.2 L2-cache sweep from the repository root:
 ```
 
 The runner uses `taskset` worker processes pinned to cores `0-7` by default, writes raw outputs and logs under `exercises/2nd/benchmarks/4.2/`, and emits progress as each benchmark/configuration finishes.
+
+After section 4.2 finishes and writes `summary_by_config.csv`, run the section 4.3 replacement-policy study from the repository root:
+
+```bash
+./exercises/2nd/scripts/run_4_3_replacement_policies.py
+```
+
+The 4.3 runner selects the best 4.2 L2 configuration for each capacity by aggregate IPC, then runs LRU, MRU, Random, LFU, LIP, and SRRIP on the same seven benchmarks. It writes raw outputs and summaries under `exercises/2nd/benchmarks/4.3/`.

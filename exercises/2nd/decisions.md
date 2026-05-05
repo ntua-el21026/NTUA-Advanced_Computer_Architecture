@@ -75,3 +75,37 @@ This file records implementation and evaluation decisions for the second assignm
 - The section 4.2 runner uses one worker per listed core. Each worker executes one benchmark/configuration process at a time and reports progress when each run finishes.
 - Use `exercises/2nd/scripts/run_4_2_l2_sweep.py` to run and summarize section 4.2.
 - The script does not select final report conclusions automatically. It writes summaries that make the per-capacity choice and parameter-impact discussion straightforward.
+
+## Section 4.3 Replacement Policy Study
+
+- Implement replacement policies in the pintool so the policy can be selected at runtime with:
+  - `-repl LRU`,
+  - `-repl MRU`,
+  - `-repl Random`,
+  - `-repl LFU`,
+  - `-repl LIP`,
+  - `-repl SRRIP`.
+- Use the same replacement policy in both L1 and L2 for each 4.3 simulation. This keeps one controlled variable: the policy applied by the cache hierarchy.
+- Keep LRU in the 4.3 runner as a rerun baseline, even though section 4.2 already used LRU. This gives a clean same-script comparison against the new policies.
+- Random replacement uses deterministic seed `21026`, the last five digits of AM `03121026`.
+- LFU starts a newly inserted block with use count `1`; on a hit, the count increments by `1`; ties are resolved by the earliest matching block in the set.
+- LIP keeps the same hit behavior as LRU, but inserts missed blocks at the LRU position instead of the MRU position.
+- SRRIP uses static RRIP with hit priority:
+  - each block stores an RRPV counter,
+  - counter width is `n` bits where `n` is the cache associativity,
+  - new blocks are inserted with RRPV `max - 1`,
+  - hits set RRPV to `0`,
+  - replacement searches for RRPV `max`; if none exists, it increments all non-maximum counters until a victim appears.
+- Section 4.3 outputs use:
+  - `exercises/2nd/benchmarks/4.3/raw/<policy>/<benchmark>/<config>.out`
+  - `exercises/2nd/benchmarks/4.3/logs/<policy>/<benchmark>/<config>.stdout.txt`
+  - `exercises/2nd/benchmarks/4.3/logs/<policy>/<benchmark>/<config>.stderr.txt`
+  - `exercises/2nd/benchmarks/4.3/times/<policy>/<benchmark>/<config>.time.txt`
+  - `exercises/2nd/benchmarks/4.3/summary.csv`
+  - `exercises/2nd/benchmarks/4.3/summary_by_policy.csv`
+  - `exercises/2nd/benchmarks/4.3/summary_by_config_policy.csv`
+  - `exercises/2nd/benchmarks/4.3/summary_best_policy_by_config.csv`
+  - `exercises/2nd/benchmarks/4.3/summary.txt`
+- The section 4.3 runner selects the four L2 configurations automatically from `exercises/2nd/benchmarks/4.2/summary_by_config.csv`, choosing the best row per L2 capacity by `aggregate_ipc`.
+- Manual selection remains available with `--selected-configs` for debugging or if the final 4.2 choice is adjusted during report writing.
+- Use `taskset` worker processes pinned to cores `0-7`, following the same execution model as section 4.2.

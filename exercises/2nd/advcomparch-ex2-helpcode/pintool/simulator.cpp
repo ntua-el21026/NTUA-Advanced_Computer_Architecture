@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <cassert>
+#include <string>
 
 using namespace std;
 
@@ -36,14 +37,73 @@ KNOB<UINT32> KnobL2Associativity(KNOB_MODE_WRITEONCE, "pintool",
 //KNOB<UINT32> KnobL2PrefetchLines(KNOB_MODE_WRITEONCE, "pintool",
 //    "L2prf","0", "Number of lines to prefetch to L2 (0 disables prefetching)");
 
+// Replacement policy
+KNOB<string> KnobReplacementPolicy(KNOB_MODE_WRITEONCE, "pintool",
+    "repl","LRU", "replacement policy: LRU, MRU, Random, LFU, LIP, SRRIP");
+
 /* ===================================================================== */
 
 /* ===================================================================== */
 /* Global Variables                                                      */
 /* ===================================================================== */
 
-typedef TWO_LEVEL_CACHE<CACHE_SET::LRU> CACHE_T; // This is where the replacement policy is chosen
-CACHE_T *two_level_cache;
+typedef enum
+{
+    ACCESS_KIND_LOAD,
+    ACCESS_KIND_STORE
+} ACCESS_KIND;
+
+class CacheModelBase
+{
+  public:
+    virtual ~CacheModelBase() {}
+    virtual UINT32 Access(ADDRINT addr, ACCESS_KIND accessKind) = 0;
+    virtual string StatsLong(string prefix = "") const = 0;
+    virtual string PrintCache(string prefix = "") const = 0;
+};
+
+template <class SET>
+class CacheModel : public CacheModelBase
+{
+  private:
+    TWO_LEVEL_CACHE<SET> _cache;
+
+  public:
+    CacheModel(std::string name,
+               UINT32 l1CacheSize, UINT32 l1BlockSize, UINT32 l1Associativity,
+               UINT32 l2CacheSize, UINT32 l2BlockSize, UINT32 l2Associativity,
+               UINT32 l2PrefetchLines,
+               UINT32 l1HitLatency, UINT32 l2HitLatency,
+               UINT32 l2MissLatency)
+      : _cache(name,
+               l1CacheSize, l1BlockSize, l1Associativity,
+               l2CacheSize, l2BlockSize, l2Associativity,
+               l2PrefetchLines,
+               l1HitLatency, l2HitLatency, l2MissLatency)
+    {
+    }
+
+    UINT32 Access(ADDRINT addr, ACCESS_KIND accessKind)
+    {
+        typename TWO_LEVEL_CACHE<SET>::ACCESS_TYPE accessType =
+            accessKind == ACCESS_KIND_LOAD
+                ? TWO_LEVEL_CACHE<SET>::ACCESS_TYPE_LOAD
+                : TWO_LEVEL_CACHE<SET>::ACCESS_TYPE_STORE;
+        return _cache.Access(addr, accessType);
+    }
+
+    string StatsLong(string prefix = "") const
+    {
+        return _cache.StatsLong(prefix);
+    }
+
+    string PrintCache(string prefix = "") const
+    {
+        return _cache.PrintCache(prefix);
+    }
+};
+
+CacheModelBase *two_level_cache;
 
 UINT64 total_cycles, total_instructions;
 std::ofstream outFile;
@@ -68,7 +128,7 @@ VOID Load(ADDRINT addr)
     // "addr" is virtual and remains unchanged for accessing the cache hierarchy
 
     // load the data from the cache hierarchy
-    total_cycles += two_level_cache->Access(addr, CACHE_T::ACCESS_TYPE_LOAD);
+    total_cycles += two_level_cache->Access(addr, ACCESS_KIND_LOAD);
 }
 
 VOID Store(ADDRINT addr)
@@ -78,7 +138,7 @@ VOID Store(ADDRINT addr)
     // "addr" is virtual and remains unchanged for accessing the cache hierarchy
     
     // store the data to the cache hierarchy
-    total_cycles += two_level_cache->Access(addr, CACHE_T::ACCESS_TYPE_STORE);
+    total_cycles += two_level_cache->Access(addr, ACCESS_KIND_STORE);
 }
 
 VOID count_instruction()
@@ -126,6 +186,8 @@ VOID Fini(int code, VOID * v)
     outFile << two_level_cache->PrintCache("");
     outFile << two_level_cache->StatsLong("");
 
+    delete two_level_cache;
+
     outFile.close();
 }
 
@@ -134,6 +196,45 @@ VOID roi_begin()
     INS_AddInstrumentFunction(Instruction, 0);
 }
 
+
+/* ===================================================================== */
+
+template <class SET>
+CacheModelBase *NewCacheModel()
+{
+    return new CacheModel<SET>("Two level Cache hierarchy",
+                               KnobL1CacheSize.Value() * KILO,
+                               KnobL1BlockSize.Value(),
+                               KnobL1Associativity.Value(),
+                               KnobL2CacheSize.Value() * KILO,
+                               KnobL2BlockSize.Value(),
+                               KnobL2Associativity.Value(),
+                               0,
+                               1,
+                               10,
+                               200);
+                               //KnobL2PrefetchLines.Value()); (I don't want prefetching at all in this run, so hardcode 0)
+}
+
+CacheModelBase *CreateCacheModel(string policy)
+{
+    if (policy == "LRU")
+        return NewCacheModel<CACHE_SET::LRU>();
+    if (policy == "MRU")
+        return NewCacheModel<CACHE_SET::MRU>();
+    if (policy == "Random")
+        return NewCacheModel<CACHE_SET::Random>();
+    if (policy == "LFU")
+        return NewCacheModel<CACHE_SET::LFU>();
+    if (policy == "LIP")
+        return NewCacheModel<CACHE_SET::LIP>();
+    if (policy == "SRRIP")
+        return NewCacheModel<CACHE_SET::SRRIP>();
+
+    cerr << "Unknown replacement policy '" << policy
+         << "'. Valid choices: LRU, MRU, Random, LFU, LIP, SRRIP." << endl;
+    return 0;
+}
 
 /* ===================================================================== */
 
@@ -148,18 +249,9 @@ int main(int argc, char *argv[])
     outFile.open(KnobOutputFile.Value().c_str());
 
    // Initialize two level Cache
-    two_level_cache = new CACHE_T("Two level Cache hierarchy",
-                                  KnobL1CacheSize.Value() * KILO,
-                                  KnobL1BlockSize.Value(),
-                                  KnobL1Associativity.Value(),
-                                  KnobL2CacheSize.Value() * KILO,
-                                  KnobL2BlockSize.Value(),
-                                  KnobL2Associativity.Value(),
-				  0,
-                                  1,
-                                  10,
-                                  200);
-				  //KnobL2PrefetchLines.Value()); (I don't want prefetching at all in this run, so hardcode 0)
+    two_level_cache = CreateCacheModel(KnobReplacementPolicy.Value());
+    if (two_level_cache == 0)
+        return Usage();
 
     INS_AddInstrumentFunction(Instruction, 0);
 

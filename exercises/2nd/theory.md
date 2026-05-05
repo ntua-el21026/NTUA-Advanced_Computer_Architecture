@@ -98,3 +98,21 @@ The report should answer two questions:
 2. For each L2 capacity, which cache configuration is the best choice?
 
 The first answer should compare trends across size, associativity, and block size. The second answer should be capacity-specific, because the assignment asks for the best cache within each capacity group.
+
+## Section 4.3 Replacement Policy Study
+
+Section 4.3 keeps the L1 fixed and reuses the four best L2 configurations from section 4.2, one for each L2 capacity group. It then compares replacement policies:
+
+- LRU: evict the least recently used block. This is the baseline from section 4.2.
+- MRU: evict the most recently used block. This can help when the most recent block belongs to a streaming pattern and is unlikely to be reused.
+- Random: evict a random block from the target set. It is simple and can avoid pathological behavior, but it does not exploit locality directly.
+- LFU: evict the block with the lowest reuse count. It can protect frequently reused blocks, but stale high-count blocks can remain even after the working set changes.
+- LIP: insert new blocks at the LRU position instead of the MRU position. This prevents one-time streaming misses from quickly evicting older blocks with proven reuse.
+- SRRIP: predict future reuse with a per-line re-reference prediction value. Lines predicted to be reused farthest in the future are selected first for replacement.
+
+The comparison should focus on whether the policy reduces expensive L2 misses and improves IPC. The best policy is not necessarily the one with the lowest L1 miss rate, because all L1 misses still have to be filtered by the selected L2 cache before they become 200-cycle main-memory accesses.
+
+For reporting, compare policies in two ways:
+
+1. Overall policy ranking across all selected L2 configurations and benchmarks.
+2. Best policy for each selected L2 configuration, because a policy can behave differently when capacity, associativity, and block size change.
