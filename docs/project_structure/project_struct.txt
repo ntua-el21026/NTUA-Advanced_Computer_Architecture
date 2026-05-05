@@ -718,8 +718,6 @@ NTUA-Advanced_Computer_Architecture/
 │   │   │   │   ├── 5_7_train_vs_ref.png
 │   │   │   │   └── make_diagrams.py
 │   │   │   └── README.md
-│   │   ├── image/
-│   │   │   └── README.md
 │   │   ├── report/
 │   │   │   ├── 03121026_1.pdf
 │   │   │   ├── main.tex
@@ -742,4 +740,4 @@ NTUA-Advanced_Computer_Architecture/
 ├── LICENSE
 └── README.md
 
-Total directories: 71, Total files: 672
+Total directories: 70, Total files: 671
