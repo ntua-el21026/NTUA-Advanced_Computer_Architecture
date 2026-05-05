@@ -1,0 +1,1 @@
+-c /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/470.lbm/run/run_base_ref_gcc49-static.0000 -o lbm.out.cmp specperl /nvme/benchmarks/SPEC_CPU2006v1.1-static/bin/specdiff -m -l 10  --abstol 1e-07 /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/470.lbm/data/ref/output/lbm.out lbm.out

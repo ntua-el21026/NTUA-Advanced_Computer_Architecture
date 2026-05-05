@@ -1,0 +1,1 @@
+-c /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/433.milc/run/run_base_ref_gcc49-static.0000 -o su3imp.out.cmp specperl /nvme/benchmarks/SPEC_CPU2006v1.1-static/bin/specdiff -m -l 10  --abstol 2e-07  --reltol 0.0001 /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/433.milc/data/ref/output/su3imp.out su3imp.out

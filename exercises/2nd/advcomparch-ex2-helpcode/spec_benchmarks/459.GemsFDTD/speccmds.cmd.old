@@ -1,0 +1,2 @@
+-C /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/459.GemsFDTD/run/run_base_ref_gcc49-static.0000
+-o ref.log -e ref.err ../run_base_ref_gcc49-static.0000/GemsFDTD_base.gcc49-static

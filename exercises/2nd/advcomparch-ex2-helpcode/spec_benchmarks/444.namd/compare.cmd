@@ -1,0 +1,1 @@
+-c /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/444.namd/run/run_base_ref_gcc49-static.0000 -o namd.out.cmp specperl /nvme/benchmarks/SPEC_CPU2006v1.1-static/bin/specdiff -m -l 10  --abstol 1e-05 /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/444.namd/data/ref/output/namd.out namd.out

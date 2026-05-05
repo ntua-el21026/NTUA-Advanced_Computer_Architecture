@@ -1,0 +1,2 @@
+-C /nvme/benchmarks/SPEC_CPU2006v1.1-static/benchspec/CPU2006/444.namd/run/run_base_ref_gcc49-static.0000
+-o namd.stdout -e namd.err ../run_base_ref_gcc49-static.0000/namd_base.gcc49-static --input namd.input --iterations 38 --output namd.out 
