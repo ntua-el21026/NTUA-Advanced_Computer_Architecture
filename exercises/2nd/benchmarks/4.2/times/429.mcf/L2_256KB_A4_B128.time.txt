@@ -1,0 +1,7 @@
+benchmark=429.mcf
+config=L2_256KB_A4_B128
+core=7
+return_code=0
+elapsed_seconds=815.092
+work_dir=/home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.2/.scratch/429.mcf.0ouufp7j/429.mcf
+command=taskset -c 7 /bin/bash -lc '/home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/1st/pin-external-4.2-99776-g21d818fa2-gcc-linux/pin -t /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/advcomparch-ex2-helpcode/pintool/obj-intel64/simulator.so -o /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.2/raw/429.mcf/L2_256KB_A4_B128.out -L1c 32 -L1a 4 -L1b 32 -L2c 256 -L2a 4 -L2b 128 -- ./mcf_base.gcc49-static inp.in' 1> /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.2/logs/429.mcf/L2_256KB_A4_B128.stdout.txt 2> /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.2/logs/429.mcf/L2_256KB_A4_B128.stderr.txt

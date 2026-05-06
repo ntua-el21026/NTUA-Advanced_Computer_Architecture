@@ -1,0 +1,7 @@
+benchmark=470.lbm
+config=L2_1024KB_A8_B128
+core=1
+return_code=0
+elapsed_seconds=1983.192
+work_dir=/home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.2/.scratch/470.lbm.koc_z74i/470.lbm
+command=taskset -c 1 /bin/bash -lc '/home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/1st/pin-external-4.2-99776-g21d818fa2-gcc-linux/pin -t /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/advcomparch-ex2-helpcode/pintool/obj-intel64/simulator.so -o /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.2/raw/470.lbm/L2_1024KB_A8_B128.out -L1c 32 -L1a 4 -L1b 32 -L2c 1024 -L2a 8 -L2b 128 -- ./lbm_base.gcc49-static 300 reference.dat 0 1 100_100_130_cf_b.of > lbm.out' 1> /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.2/logs/470.lbm/L2_1024KB_A8_B128.stdout.txt 2> /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.2/logs/470.lbm/L2_1024KB_A8_B128.stderr.txt

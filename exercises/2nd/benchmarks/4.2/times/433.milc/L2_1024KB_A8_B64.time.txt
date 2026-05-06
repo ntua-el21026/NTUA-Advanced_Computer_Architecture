@@ -1,0 +1,7 @@
+benchmark=433.milc
+config=L2_1024KB_A8_B64
+core=6
+return_code=0
+elapsed_seconds=532.242
+work_dir=/home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.2/.scratch/433.milc.yn4cfg6f/433.milc
+command=taskset -c 6 /bin/bash -lc '/home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/1st/pin-external-4.2-99776-g21d818fa2-gcc-linux/pin -t /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/advcomparch-ex2-helpcode/pintool/obj-intel64/simulator.so -o /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.2/raw/433.milc/L2_1024KB_A8_B64.out -L1c 32 -L1a 4 -L1b 32 -L2c 1024 -L2a 8 -L2b 64 -- ./milc_base.gcc49-static < su3imp.in > su3imp.out' 1> /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.2/logs/433.milc/L2_1024KB_A8_B64.stdout.txt 2> /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.2/logs/433.milc/L2_1024KB_A8_B64.stderr.txt
