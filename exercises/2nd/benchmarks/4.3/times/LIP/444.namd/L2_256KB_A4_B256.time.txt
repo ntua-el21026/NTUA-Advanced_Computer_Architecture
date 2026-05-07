@@ -1,0 +1,8 @@
+policy=LIP
+benchmark=444.namd
+config=L2_256KB_A4_B256
+core=5
+return_code=0
+elapsed_seconds=1977.498
+work_dir=/home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.3/.scratch/444.namd.la1f9ukt/444.namd
+command=taskset -c 5 /bin/bash -lc '/home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/1st/pin-external-4.2-99776-g21d818fa2-gcc-linux/pin -t /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/advcomparch-ex2-helpcode/pintool/obj-intel64/simulator.so -o /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.3/raw/LIP/444.namd/L2_256KB_A4_B256.out -L1c 32 -L1a 4 -L1b 32 -L2c 256 -L2a 4 -L2b 256 -repl LIP -- ./namd_base.gcc49-static --input namd.input --iterations 1 --output namd.out' 1> /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.3/logs/LIP/444.namd/L2_256KB_A4_B256.stdout.txt 2> /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.3/logs/LIP/444.namd/L2_256KB_A4_B256.stderr.txt

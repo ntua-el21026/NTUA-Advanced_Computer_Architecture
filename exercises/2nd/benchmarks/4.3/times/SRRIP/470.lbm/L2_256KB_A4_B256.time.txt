@@ -1,0 +1,8 @@
+policy=SRRIP
+benchmark=470.lbm
+config=L2_256KB_A4_B256
+core=6
+return_code=0
+elapsed_seconds=4085.382
+work_dir=/home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.3/.scratch/470.lbm.3ds_w9e1/470.lbm
+command=taskset -c 6 /bin/bash -lc '/home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/1st/pin-external-4.2-99776-g21d818fa2-gcc-linux/pin -t /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/advcomparch-ex2-helpcode/pintool/obj-intel64/simulator.so -o /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.3/raw/SRRIP/470.lbm/L2_256KB_A4_B256.out -L1c 32 -L1a 4 -L1b 32 -L2c 256 -L2a 4 -L2b 256 -repl SRRIP -- ./lbm_base.gcc49-static 300 reference.dat 0 1 100_100_130_cf_b.of > lbm.out' 1> /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.3/logs/SRRIP/470.lbm/L2_256KB_A4_B256.stdout.txt 2> /home/peppasmich/NTUA-Advanced_Computer_Architecture/exercises/2nd/benchmarks/4.3/logs/SRRIP/470.lbm/L2_256KB_A4_B256.stderr.txt
