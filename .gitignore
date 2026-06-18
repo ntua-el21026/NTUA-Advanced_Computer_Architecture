@@ -18,6 +18,8 @@ Thumbs.db
 # Pintool build artifacts
 exercises/1st/advcomparch-ex1-helpcode/pintool/obj-*/
 exercises/2nd/advcomparch-ex2-helpcode/pintool/obj-*/
+exercises/3rd/advcomparch-ex3-helpcode/bin/
+exercises/3rd/advcomparch-ex3-helpcode/locks
 *.makefile.copy
 *.core
 core.*

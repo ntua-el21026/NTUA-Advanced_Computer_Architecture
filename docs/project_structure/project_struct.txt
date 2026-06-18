@@ -2332,14 +2332,29 @@ NTUA-Advanced_Computer_Architecture/
 │   │   ├── README.md
 │   │   └── theory.md
 │   └── 3rd/
+│       ├── advcomparch-ex3-helpcode/
+│       │   ├── advcomparch_mcpat.py
+│       │   ├── ask3.cfg
+│       │   ├── lock.h
+│       │   ├── locks_scalability.c
+│       │   └── Makefile
 │       ├── assignment/
 │       │   └── advanced-ca-2025-2026-askisi3.pdf
 │       ├── benchmarks/
 │       │   └── diagrams/
+│       ├── docker/
+│       │   └── Dockerfile
 │       ├── report/
 │       ├── scripts/
-│       │   └── README.md
-│       ├── advanced-ca-Spring-2026-ask3-helpcode.tgz
+│       │   ├── exercise3_common.py
+│       │   ├── mcpat_docker_exec.sh
+│       │   ├── preflight_16core.py
+│       │   ├── README.md
+│       │   ├── run_4_1_real_scalability.py
+│       │   ├── run_4_1_sniper_scalability.py
+│       │   ├── run_4_2_topologies.py
+│       │   ├── run_sniper_docker.sh
+│       │   └── sniper_docker_exec.sh
 │       ├── decisions.md
 │       ├── README.md
 │       └── theory.md
@@ -2348,4 +2363,4 @@ NTUA-Advanced_Computer_Architecture/
 ├── LICENSE
 └── README.md
 
-Total directories: 264, Total files: 2085
+Total directories: 266, Total files: 2098
