@@ -1,14 +1,18 @@
 NTUA-Advanced_Computer_Architecture/
 ├── docs/
 │   ├── lectures/
-│   │   ├── Lec01-overview-25-26.pdf
-│   │   ├── Lec02-Superscalar-SW-VLIW-25-26-final.pdf
-│   │   ├── Lec03-dynamic-25-26-final.pdf
-│   │   ├── Lec04-branch_prediction-25-26.pdf
-│   │   ├── Lec05-speculation-25-26-final.pdf
-│   │   ├── Lec06-SIMD-Vector-25-26.pdf
-│   │   ├── Lec07-Simulation-25-26.pdf
-│   │   └── Lec08-TLP-25-26.pdf
+│   │   ├── Lec01-overview.pdf
+│   │   ├── Lec02-Superscalar-SW-VLIW (loop unroling).pdf
+│   │   ├── Lec03-dynamic (SCOREBOARD - TOMASULO).pdf
+│   │   ├── Lec04-branch_pred (predictors).pdf
+│   │   ├── Lec05-speculation (TOMASULO ROB).pdf
+│   │   ├── Lec06-SIMD (vectors).pdf
+│   │   ├── Lec07-Simulation.pdf
+│   │   ├── Lec08-TLP (multithread).pdf
+│   │   ├── Lec09-GPU (loop-level parallelism).pdf
+│   │   ├── Lec10-Coherence (MSI - MESI).pdf
+│   │   ├── Lec11-MemoryConsistency (TSO-TAS-TTAS).pdf
+│   │   └── Lec12-interconnects (networks).pdf
 │   └── project_structure/
 │       ├── project_struct.py
 │       └── project_struct.txt
@@ -734,1603 +738,1614 @@ NTUA-Advanced_Computer_Architecture/
 │   │   ├── decisions.md
 │   │   ├── README.md
 │   │   └── theory.md
-│   └── 2nd/
-│       ├── advcomparch-ex2-helpcode/
-│       │   ├── pintool/
-│       │   │   ├── cache.h
-│       │   │   ├── globals.h
-│       │   │   ├── makefile
-│       │   │   ├── makefile.rules
-│       │   │   └── simulator.cpp
-│       │   ├── spec_benchmarks/
-│       │   │   ├── 403.gcc/
-│       │   │   │   ├── 166.err
-│       │   │   │   ├── 166.i
-│       │   │   │   ├── 166.out
-│       │   │   │   ├── 166.s
-│       │   │   │   ├── 200.err
-│       │   │   │   ├── 200.i
-│       │   │   │   ├── 200.out
-│       │   │   │   ├── 200.s
-│       │   │   │   ├── c-typeck.i
-│       │   │   │   ├── c-typeck.s
-│       │   │   │   ├── compare.cmd
-│       │   │   │   ├── cp-decl.i
-│       │   │   │   ├── cp-decl.s
-│       │   │   │   ├── expr.i
-│       │   │   │   ├── expr.s
-│       │   │   │   ├── expr2.i
-│       │   │   │   ├── expr2.s
-│       │   │   │   ├── g23.i
-│       │   │   │   ├── g23.s
-│       │   │   │   ├── gcc_base.gcc49-static
-│       │   │   │   ├── integrate.i
-│       │   │   │   ├── integrate.s
-│       │   │   │   ├── s04.i
-│       │   │   │   ├── s04.s
-│       │   │   │   ├── scilab.i
-│       │   │   │   ├── scilab.s
-│       │   │   │   ├── speccmds.cmd
-│       │   │   │   ├── speccmds.cmd.old
-│       │   │   │   ├── stderr.log
-│       │   │   │   └── stdout.log
-│       │   │   ├── 429.mcf/
-│       │   │   │   ├── compare.cmd
-│       │   │   │   ├── inp.err
-│       │   │   │   ├── inp.in
-│       │   │   │   ├── inp.out
-│       │   │   │   ├── mcf.out
-│       │   │   │   ├── mcf_base.gcc49-static
-│       │   │   │   ├── speccmds.cmd
-│       │   │   │   ├── speccmds.cmd.old
-│       │   │   │   ├── stderr.log
-│       │   │   │   └── stdout.log
-│       │   │   ├── 433.milc/
-│       │   │   │   ├── compare.cmd
-│       │   │   │   ├── milc_base.gcc49-static
-│       │   │   │   ├── speccmds.cmd
-│       │   │   │   ├── speccmds.cmd.old
-│       │   │   │   ├── stderr.log
-│       │   │   │   ├── stdout.log
-│       │   │   │   ├── su3imp.err
-│       │   │   │   ├── su3imp.in
-│       │   │   │   └── su3imp.out
-│       │   │   ├── 444.namd/
-│       │   │   │   ├── compare.cmd
-│       │   │   │   ├── namd.input
-│       │   │   │   ├── namd.out
-│       │   │   │   ├── namd_base.gcc49-static
-│       │   │   │   ├── speccmds.cmd
-│       │   │   │   ├── speccmds.cmd.old
-│       │   │   │   ├── stderr.log
-│       │   │   │   └── stdout.log
-│       │   │   ├── 450.soplex/
-│       │   │   │   ├── compare.cmd
-│       │   │   │   ├── pds-50.mps
-│       │   │   │   ├── pds-50.mps.info
-│       │   │   │   ├── pds-50.mps.out
-│       │   │   │   ├── pds-50.mps.stderr
-│       │   │   │   ├── ref.mps.info
-│       │   │   │   ├── soplex_base.gcc49-static
-│       │   │   │   ├── speccmds.cmd
-│       │   │   │   ├── speccmds.cmd.old
-│       │   │   │   ├── stderr.log
-│       │   │   │   ├── stdout.log
-│       │   │   │   ├── test.mps
-│       │   │   │   ├── test.mps.info
-│       │   │   │   ├── test.out
-│       │   │   │   ├── test.stderr
-│       │   │   │   ├── train.mps
-│       │   │   │   ├── train.mps.info
-│       │   │   │   ├── train.out
-│       │   │   │   └── train.stderr
-│       │   │   ├── 459.GemsFDTD/
-│       │   │   │   ├── compare.cmd
-│       │   │   │   ├── GemsFDTD_base.gcc49-static
-│       │   │   │   ├── speccmds.cmd
-│       │   │   │   ├── speccmds.cmd.old
-│       │   │   │   ├── sphere.pec
-│       │   │   │   ├── sphere_td.nft
-│       │   │   │   ├── stderr.log
-│       │   │   │   ├── stdout.log
-│       │   │   │   ├── train.in
-│       │   │   │   └── yee.dat
-│       │   │   └── 470.lbm/
-│       │   │       ├── 100_100_130_cf_b.of
-│       │   │       ├── 100_100_130_ldc.of
-│       │   │       ├── compare.cmd
-│       │   │       ├── lbm.err
-│       │   │       ├── lbm.in
-│       │   │       ├── lbm.out
-│       │   │       ├── lbm_base.gcc49-static
-│       │   │       ├── speccmds.cmd
-│       │   │       ├── speccmds.cmd.old
-│       │   │       ├── stderr.log
-│       │   │       └── stdout.log
-│       │   └── run_benchmarks.sh
+│   ├── 2nd/
+│   │   ├── advcomparch-ex2-helpcode/
+│   │   │   ├── pintool/
+│   │   │   │   ├── cache.h
+│   │   │   │   ├── globals.h
+│   │   │   │   ├── makefile
+│   │   │   │   ├── makefile.rules
+│   │   │   │   └── simulator.cpp
+│   │   │   ├── spec_benchmarks/
+│   │   │   │   ├── 403.gcc/
+│   │   │   │   │   ├── 166.err
+│   │   │   │   │   ├── 166.i
+│   │   │   │   │   ├── 166.out
+│   │   │   │   │   ├── 166.s
+│   │   │   │   │   ├── 200.err
+│   │   │   │   │   ├── 200.i
+│   │   │   │   │   ├── 200.out
+│   │   │   │   │   ├── 200.s
+│   │   │   │   │   ├── c-typeck.i
+│   │   │   │   │   ├── c-typeck.s
+│   │   │   │   │   ├── compare.cmd
+│   │   │   │   │   ├── cp-decl.i
+│   │   │   │   │   ├── cp-decl.s
+│   │   │   │   │   ├── expr.i
+│   │   │   │   │   ├── expr.s
+│   │   │   │   │   ├── expr2.i
+│   │   │   │   │   ├── expr2.s
+│   │   │   │   │   ├── g23.i
+│   │   │   │   │   ├── g23.s
+│   │   │   │   │   ├── gcc_base.gcc49-static
+│   │   │   │   │   ├── integrate.i
+│   │   │   │   │   ├── integrate.s
+│   │   │   │   │   ├── s04.i
+│   │   │   │   │   ├── s04.s
+│   │   │   │   │   ├── scilab.i
+│   │   │   │   │   ├── scilab.s
+│   │   │   │   │   ├── speccmds.cmd
+│   │   │   │   │   ├── speccmds.cmd.old
+│   │   │   │   │   ├── stderr.log
+│   │   │   │   │   └── stdout.log
+│   │   │   │   ├── 429.mcf/
+│   │   │   │   │   ├── compare.cmd
+│   │   │   │   │   ├── inp.err
+│   │   │   │   │   ├── inp.in
+│   │   │   │   │   ├── inp.out
+│   │   │   │   │   ├── mcf.out
+│   │   │   │   │   ├── mcf_base.gcc49-static
+│   │   │   │   │   ├── speccmds.cmd
+│   │   │   │   │   ├── speccmds.cmd.old
+│   │   │   │   │   ├── stderr.log
+│   │   │   │   │   └── stdout.log
+│   │   │   │   ├── 433.milc/
+│   │   │   │   │   ├── compare.cmd
+│   │   │   │   │   ├── milc_base.gcc49-static
+│   │   │   │   │   ├── speccmds.cmd
+│   │   │   │   │   ├── speccmds.cmd.old
+│   │   │   │   │   ├── stderr.log
+│   │   │   │   │   ├── stdout.log
+│   │   │   │   │   ├── su3imp.err
+│   │   │   │   │   ├── su3imp.in
+│   │   │   │   │   └── su3imp.out
+│   │   │   │   ├── 444.namd/
+│   │   │   │   │   ├── compare.cmd
+│   │   │   │   │   ├── namd.input
+│   │   │   │   │   ├── namd.out
+│   │   │   │   │   ├── namd_base.gcc49-static
+│   │   │   │   │   ├── speccmds.cmd
+│   │   │   │   │   ├── speccmds.cmd.old
+│   │   │   │   │   ├── stderr.log
+│   │   │   │   │   └── stdout.log
+│   │   │   │   ├── 450.soplex/
+│   │   │   │   │   ├── compare.cmd
+│   │   │   │   │   ├── pds-50.mps
+│   │   │   │   │   ├── pds-50.mps.info
+│   │   │   │   │   ├── pds-50.mps.out
+│   │   │   │   │   ├── pds-50.mps.stderr
+│   │   │   │   │   ├── ref.mps.info
+│   │   │   │   │   ├── soplex_base.gcc49-static
+│   │   │   │   │   ├── speccmds.cmd
+│   │   │   │   │   ├── speccmds.cmd.old
+│   │   │   │   │   ├── stderr.log
+│   │   │   │   │   ├── stdout.log
+│   │   │   │   │   ├── test.mps
+│   │   │   │   │   ├── test.mps.info
+│   │   │   │   │   ├── test.out
+│   │   │   │   │   ├── test.stderr
+│   │   │   │   │   ├── train.mps
+│   │   │   │   │   ├── train.mps.info
+│   │   │   │   │   ├── train.out
+│   │   │   │   │   └── train.stderr
+│   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   ├── compare.cmd
+│   │   │   │   │   ├── GemsFDTD_base.gcc49-static
+│   │   │   │   │   ├── speccmds.cmd
+│   │   │   │   │   ├── speccmds.cmd.old
+│   │   │   │   │   ├── sphere.pec
+│   │   │   │   │   ├── sphere_td.nft
+│   │   │   │   │   ├── stderr.log
+│   │   │   │   │   ├── stdout.log
+│   │   │   │   │   ├── train.in
+│   │   │   │   │   └── yee.dat
+│   │   │   │   └── 470.lbm/
+│   │   │   │       ├── 100_100_130_cf_b.of
+│   │   │   │       ├── 100_100_130_ldc.of
+│   │   │   │       ├── compare.cmd
+│   │   │   │       ├── lbm.err
+│   │   │   │       ├── lbm.in
+│   │   │   │       ├── lbm.out
+│   │   │   │       ├── lbm_base.gcc49-static
+│   │   │   │       ├── speccmds.cmd
+│   │   │   │       ├── speccmds.cmd.old
+│   │   │   │       ├── stderr.log
+│   │   │   │       └── stdout.log
+│   │   │   └── run_benchmarks.sh
+│   │   ├── assignment/
+│   │   │   └── advanced-ca-2025-2026-askisi2.pdf
+│   │   ├── benchmarks/
+│   │   │   ├── 4.2/
+│   │   │   │   ├── logs/
+│   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B64.stderr.txt
+│   │   │   │   │   │   └── L2_512KB_A8_B64.stdout.txt
+│   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B64.stderr.txt
+│   │   │   │   │   │   └── L2_512KB_A8_B64.stdout.txt
+│   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B64.stderr.txt
+│   │   │   │   │   │   └── L2_512KB_A8_B64.stdout.txt
+│   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B64.stderr.txt
+│   │   │   │   │   │   └── L2_512KB_A8_B64.stdout.txt
+│   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B64.stderr.txt
+│   │   │   │   │   │   └── L2_512KB_A8_B64.stdout.txt
+│   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.stderr.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.stdout.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B64.stderr.txt
+│   │   │   │   │   │   └── L2_512KB_A8_B64.stdout.txt
+│   │   │   │   │   └── 470.lbm/
+│   │   │   │   │       ├── L2_1024KB_A16_B128.stderr.txt
+│   │   │   │   │       ├── L2_1024KB_A16_B128.stdout.txt
+│   │   │   │   │       ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │       ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │       ├── L2_1024KB_A16_B64.stderr.txt
+│   │   │   │   │       ├── L2_1024KB_A16_B64.stdout.txt
+│   │   │   │   │       ├── L2_1024KB_A8_B128.stderr.txt
+│   │   │   │   │       ├── L2_1024KB_A8_B128.stdout.txt
+│   │   │   │   │       ├── L2_1024KB_A8_B256.stderr.txt
+│   │   │   │   │       ├── L2_1024KB_A8_B256.stdout.txt
+│   │   │   │   │       ├── L2_1024KB_A8_B64.stderr.txt
+│   │   │   │   │       ├── L2_1024KB_A8_B64.stdout.txt
+│   │   │   │   │       ├── L2_2048KB_A16_B128.stderr.txt
+│   │   │   │   │       ├── L2_2048KB_A16_B128.stdout.txt
+│   │   │   │   │       ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │       ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │       ├── L2_2048KB_A16_B64.stderr.txt
+│   │   │   │   │       ├── L2_2048KB_A16_B64.stdout.txt
+│   │   │   │   │       ├── L2_256KB_A4_B128.stderr.txt
+│   │   │   │   │       ├── L2_256KB_A4_B128.stdout.txt
+│   │   │   │   │       ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │       ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │       ├── L2_256KB_A4_B64.stderr.txt
+│   │   │   │   │       ├── L2_256KB_A4_B64.stdout.txt
+│   │   │   │   │       ├── L2_512KB_A16_B128.stderr.txt
+│   │   │   │   │       ├── L2_512KB_A16_B128.stdout.txt
+│   │   │   │   │       ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │       ├── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │       ├── L2_512KB_A16_B64.stderr.txt
+│   │   │   │   │       ├── L2_512KB_A16_B64.stdout.txt
+│   │   │   │   │       ├── L2_512KB_A4_B128.stderr.txt
+│   │   │   │   │       ├── L2_512KB_A4_B128.stdout.txt
+│   │   │   │   │       ├── L2_512KB_A4_B256.stderr.txt
+│   │   │   │   │       ├── L2_512KB_A4_B256.stdout.txt
+│   │   │   │   │       ├── L2_512KB_A4_B64.stderr.txt
+│   │   │   │   │       ├── L2_512KB_A4_B64.stdout.txt
+│   │   │   │   │       ├── L2_512KB_A8_B128.stderr.txt
+│   │   │   │   │       ├── L2_512KB_A8_B128.stdout.txt
+│   │   │   │   │       ├── L2_512KB_A8_B256.stderr.txt
+│   │   │   │   │       ├── L2_512KB_A8_B256.stdout.txt
+│   │   │   │   │       ├── L2_512KB_A8_B64.stderr.txt
+│   │   │   │   │       └── L2_512KB_A8_B64.stdout.txt
+│   │   │   │   ├── raw/
+│   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.out
+│   │   │   │   │   │   └── L2_512KB_A8_B64.out
+│   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.out
+│   │   │   │   │   │   └── L2_512KB_A8_B64.out
+│   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.out
+│   │   │   │   │   │   └── L2_512KB_A8_B64.out
+│   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.out
+│   │   │   │   │   │   └── L2_512KB_A8_B64.out
+│   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.out
+│   │   │   │   │   │   └── L2_512KB_A8_B64.out
+│   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.out
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.out
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.out
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.out
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.out
+│   │   │   │   │   │   └── L2_512KB_A8_B64.out
+│   │   │   │   │   └── 470.lbm/
+│   │   │   │   │       ├── L2_1024KB_A16_B128.out
+│   │   │   │   │       ├── L2_1024KB_A16_B256.out
+│   │   │   │   │       ├── L2_1024KB_A16_B64.out
+│   │   │   │   │       ├── L2_1024KB_A8_B128.out
+│   │   │   │   │       ├── L2_1024KB_A8_B256.out
+│   │   │   │   │       ├── L2_1024KB_A8_B64.out
+│   │   │   │   │       ├── L2_2048KB_A16_B128.out
+│   │   │   │   │       ├── L2_2048KB_A16_B256.out
+│   │   │   │   │       ├── L2_2048KB_A16_B64.out
+│   │   │   │   │       ├── L2_256KB_A4_B128.out
+│   │   │   │   │       ├── L2_256KB_A4_B256.out
+│   │   │   │   │       ├── L2_256KB_A4_B64.out
+│   │   │   │   │       ├── L2_512KB_A16_B128.out
+│   │   │   │   │       ├── L2_512KB_A16_B256.out
+│   │   │   │   │       ├── L2_512KB_A16_B64.out
+│   │   │   │   │       ├── L2_512KB_A4_B128.out
+│   │   │   │   │       ├── L2_512KB_A4_B256.out
+│   │   │   │   │       ├── L2_512KB_A4_B64.out
+│   │   │   │   │       ├── L2_512KB_A8_B128.out
+│   │   │   │   │       ├── L2_512KB_A8_B256.out
+│   │   │   │   │       └── L2_512KB_A8_B64.out
+│   │   │   │   ├── times/
+│   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.time.txt
+│   │   │   │   │   │   └── L2_512KB_A8_B64.time.txt
+│   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.time.txt
+│   │   │   │   │   │   └── L2_512KB_A8_B64.time.txt
+│   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.time.txt
+│   │   │   │   │   │   └── L2_512KB_A8_B64.time.txt
+│   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.time.txt
+│   │   │   │   │   │   └── L2_512KB_A8_B64.time.txt
+│   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.time.txt
+│   │   │   │   │   │   └── L2_512KB_A8_B64.time.txt
+│   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   ├── L2_1024KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B128.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B256.time.txt
+│   │   │   │   │   │   ├── L2_1024KB_A8_B64.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_2048KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B128.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   ├── L2_256KB_A4_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A16_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B256.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A4_B64.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B128.time.txt
+│   │   │   │   │   │   ├── L2_512KB_A8_B256.time.txt
+│   │   │   │   │   │   └── L2_512KB_A8_B64.time.txt
+│   │   │   │   │   └── 470.lbm/
+│   │   │   │   │       ├── L2_1024KB_A16_B128.time.txt
+│   │   │   │   │       ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │       ├── L2_1024KB_A16_B64.time.txt
+│   │   │   │   │       ├── L2_1024KB_A8_B128.time.txt
+│   │   │   │   │       ├── L2_1024KB_A8_B256.time.txt
+│   │   │   │   │       ├── L2_1024KB_A8_B64.time.txt
+│   │   │   │   │       ├── L2_2048KB_A16_B128.time.txt
+│   │   │   │   │       ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │       ├── L2_2048KB_A16_B64.time.txt
+│   │   │   │   │       ├── L2_256KB_A4_B128.time.txt
+│   │   │   │   │       ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │       ├── L2_256KB_A4_B64.time.txt
+│   │   │   │   │       ├── L2_512KB_A16_B128.time.txt
+│   │   │   │   │       ├── L2_512KB_A16_B256.time.txt
+│   │   │   │   │       ├── L2_512KB_A16_B64.time.txt
+│   │   │   │   │       ├── L2_512KB_A4_B128.time.txt
+│   │   │   │   │       ├── L2_512KB_A4_B256.time.txt
+│   │   │   │   │       ├── L2_512KB_A4_B64.time.txt
+│   │   │   │   │       ├── L2_512KB_A8_B128.time.txt
+│   │   │   │   │       ├── L2_512KB_A8_B256.time.txt
+│   │   │   │   │       └── L2_512KB_A8_B64.time.txt
+│   │   │   │   ├── summary.csv
+│   │   │   │   ├── summary.txt
+│   │   │   │   ├── summary_by_benchmark.csv
+│   │   │   │   └── summary_by_config.csv
+│   │   │   ├── 4.3/
+│   │   │   │   ├── logs/
+│   │   │   │   │   ├── LFU/
+│   │   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   └── 470.lbm/
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │       ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │       └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   ├── LIP/
+│   │   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   └── 470.lbm/
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │       ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │       └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   ├── LRU/
+│   │   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   └── 470.lbm/
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │       ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │       └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   ├── MRU/
+│   │   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   └── 470.lbm/
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │       ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │       └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   ├── Random/
+│   │   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   │   └── 470.lbm/
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │   │       ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │   │       └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │   └── SRRIP/
+│   │   │   │   │       ├── 403.gcc/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │       │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │       ├── 429.mcf/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │       │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │       ├── 433.milc/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │       │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │       ├── 444.namd/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │       │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │       ├── 450.soplex/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │       │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │       ├── 459.GemsFDTD/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │       │   ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │       │   └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   │       └── 470.lbm/
+│   │   │   │   │           ├── L2_1024KB_A16_B256.stderr.txt
+│   │   │   │   │           ├── L2_1024KB_A16_B256.stdout.txt
+│   │   │   │   │           ├── L2_2048KB_A16_B256.stderr.txt
+│   │   │   │   │           ├── L2_2048KB_A16_B256.stdout.txt
+│   │   │   │   │           ├── L2_256KB_A4_B256.stderr.txt
+│   │   │   │   │           ├── L2_256KB_A4_B256.stdout.txt
+│   │   │   │   │           ├── L2_512KB_A16_B256.stderr.txt
+│   │   │   │   │           └── L2_512KB_A16_B256.stdout.txt
+│   │   │   │   ├── raw/
+│   │   │   │   │   ├── LFU/
+│   │   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   └── 470.lbm/
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │       └── L2_512KB_A16_B256.out
+│   │   │   │   │   ├── LIP/
+│   │   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   └── 470.lbm/
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │       └── L2_512KB_A16_B256.out
+│   │   │   │   │   ├── LRU/
+│   │   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   └── 470.lbm/
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │       └── L2_512KB_A16_B256.out
+│   │   │   │   │   ├── MRU/
+│   │   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   └── 470.lbm/
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │       └── L2_512KB_A16_B256.out
+│   │   │   │   │   ├── Random/
+│   │   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.out
+│   │   │   │   │   │   └── 470.lbm/
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.out
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.out
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.out
+│   │   │   │   │   │       └── L2_512KB_A16_B256.out
+│   │   │   │   │   └── SRRIP/
+│   │   │   │   │       ├── 403.gcc/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │       │   └── L2_512KB_A16_B256.out
+│   │   │   │   │       ├── 429.mcf/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │       │   └── L2_512KB_A16_B256.out
+│   │   │   │   │       ├── 433.milc/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │       │   └── L2_512KB_A16_B256.out
+│   │   │   │   │       ├── 444.namd/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │       │   └── L2_512KB_A16_B256.out
+│   │   │   │   │       ├── 450.soplex/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │       │   └── L2_512KB_A16_B256.out
+│   │   │   │   │       ├── 459.GemsFDTD/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.out
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.out
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.out
+│   │   │   │   │       │   └── L2_512KB_A16_B256.out
+│   │   │   │   │       └── 470.lbm/
+│   │   │   │   │           ├── L2_1024KB_A16_B256.out
+│   │   │   │   │           ├── L2_2048KB_A16_B256.out
+│   │   │   │   │           ├── L2_256KB_A4_B256.out
+│   │   │   │   │           └── L2_512KB_A16_B256.out
+│   │   │   │   ├── times/
+│   │   │   │   │   ├── LFU/
+│   │   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   └── 470.lbm/
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │       └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   ├── LIP/
+│   │   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   └── 470.lbm/
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │       └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   ├── LRU/
+│   │   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   └── 470.lbm/
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │       └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   ├── MRU/
+│   │   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   └── 470.lbm/
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │       └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   ├── Random/
+│   │   │   │   │   │   ├── 403.gcc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 429.mcf/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 433.milc/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 444.namd/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 450.soplex/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   ├── 459.GemsFDTD/
+│   │   │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   │   └── 470.lbm/
+│   │   │   │   │   │       ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │   │       ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │   │       ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │   │       └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │   └── SRRIP/
+│   │   │   │   │       ├── 403.gcc/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │       │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │       ├── 429.mcf/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │       │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │       ├── 433.milc/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │       │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │       ├── 444.namd/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │       │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │       ├── 450.soplex/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │       │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │       ├── 459.GemsFDTD/
+│   │   │   │   │       │   ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │       │   ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │       │   ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │       │   └── L2_512KB_A16_B256.time.txt
+│   │   │   │   │       └── 470.lbm/
+│   │   │   │   │           ├── L2_1024KB_A16_B256.time.txt
+│   │   │   │   │           ├── L2_2048KB_A16_B256.time.txt
+│   │   │   │   │           ├── L2_256KB_A4_B256.time.txt
+│   │   │   │   │           └── L2_512KB_A16_B256.time.txt
+│   │   │   │   ├── summary.csv
+│   │   │   │   ├── summary.txt
+│   │   │   │   ├── summary_best_policy_by_config.csv
+│   │   │   │   ├── summary_by_config_policy.csv
+│   │   │   │   └── summary_by_policy.csv
+│   │   │   └── diagrams/
+│   │   │       ├── 4_2_associativity_sensitivity.pdf
+│   │   │       ├── 4_2_associativity_sensitivity.png
+│   │   │       ├── 4_2_benchmark_ipc_heatmap.pdf
+│   │   │       ├── 4_2_benchmark_ipc_heatmap.png
+│   │   │       ├── 4_2_best_by_capacity.pdf
+│   │   │       ├── 4_2_best_by_capacity.png
+│   │   │       ├── 4_2_block_size_sensitivity.pdf
+│   │   │       ├── 4_2_block_size_sensitivity.png
+│   │   │       ├── 4_2_config_ipc_ranked.pdf
+│   │   │       ├── 4_2_config_ipc_ranked.png
+│   │   │       ├── 4_2_l2_mpki_vs_ipc.pdf
+│   │   │       ├── 4_2_l2_mpki_vs_ipc.png
+│   │   │       ├── 4_3_lru_random_delta_by_benchmark.pdf
+│   │   │       ├── 4_3_lru_random_delta_by_benchmark.png
+│   │   │       ├── 4_3_policy_benchmark_heatmap.pdf
+│   │   │       ├── 4_3_policy_benchmark_heatmap.png
+│   │   │       ├── 4_3_policy_by_config_ipc.pdf
+│   │   │       ├── 4_3_policy_by_config_ipc.png
+│   │   │       ├── 4_3_policy_by_config_l2_mpki.pdf
+│   │   │       ├── 4_3_policy_by_config_l2_mpki.png
+│   │   │       ├── 4_3_policy_overall.pdf
+│   │   │       ├── 4_3_policy_overall.png
+│   │   │       └── make_diagrams.py
+│   │   ├── report/
+│   │   │   ├── 03121026_2.pdf
+│   │   │   └── main.tex
+│   │   ├── scripts/
+│   │   │   ├── README.md
+│   │   │   ├── run_4_2_l2_sweep.py
+│   │   │   └── run_4_3_replacement_policies.py
+│   │   ├── decisions.md
+│   │   ├── README.md
+│   │   └── theory.md
+│   └── 3rd/
 │       ├── assignment/
-│       │   └── advanced-ca-2025-2026-askisi2.pdf
+│       │   └── advanced-ca-2025-2026-askisi3.pdf
 │       ├── benchmarks/
-│       │   ├── 4.2/
-│       │   │   ├── logs/
-│       │   │   │   ├── 403.gcc/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B64.stderr.txt
-│       │   │   │   │   └── L2_512KB_A8_B64.stdout.txt
-│       │   │   │   ├── 429.mcf/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B64.stderr.txt
-│       │   │   │   │   └── L2_512KB_A8_B64.stdout.txt
-│       │   │   │   ├── 433.milc/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B64.stderr.txt
-│       │   │   │   │   └── L2_512KB_A8_B64.stdout.txt
-│       │   │   │   ├── 444.namd/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B64.stderr.txt
-│       │   │   │   │   └── L2_512KB_A8_B64.stdout.txt
-│       │   │   │   ├── 450.soplex/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B64.stderr.txt
-│       │   │   │   │   └── L2_512KB_A8_B64.stdout.txt
-│       │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.stdout.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.stderr.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.stderr.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.stderr.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.stdout.txt
-│       │   │   │   │   ├── L2_512KB_A8_B64.stderr.txt
-│       │   │   │   │   └── L2_512KB_A8_B64.stdout.txt
-│       │   │   │   └── 470.lbm/
-│       │   │   │       ├── L2_1024KB_A16_B128.stderr.txt
-│       │   │   │       ├── L2_1024KB_A16_B128.stdout.txt
-│       │   │   │       ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │       ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │       ├── L2_1024KB_A16_B64.stderr.txt
-│       │   │   │       ├── L2_1024KB_A16_B64.stdout.txt
-│       │   │   │       ├── L2_1024KB_A8_B128.stderr.txt
-│       │   │   │       ├── L2_1024KB_A8_B128.stdout.txt
-│       │   │   │       ├── L2_1024KB_A8_B256.stderr.txt
-│       │   │   │       ├── L2_1024KB_A8_B256.stdout.txt
-│       │   │   │       ├── L2_1024KB_A8_B64.stderr.txt
-│       │   │   │       ├── L2_1024KB_A8_B64.stdout.txt
-│       │   │   │       ├── L2_2048KB_A16_B128.stderr.txt
-│       │   │   │       ├── L2_2048KB_A16_B128.stdout.txt
-│       │   │   │       ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │       ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │       ├── L2_2048KB_A16_B64.stderr.txt
-│       │   │   │       ├── L2_2048KB_A16_B64.stdout.txt
-│       │   │   │       ├── L2_256KB_A4_B128.stderr.txt
-│       │   │   │       ├── L2_256KB_A4_B128.stdout.txt
-│       │   │   │       ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │       ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │       ├── L2_256KB_A4_B64.stderr.txt
-│       │   │   │       ├── L2_256KB_A4_B64.stdout.txt
-│       │   │   │       ├── L2_512KB_A16_B128.stderr.txt
-│       │   │   │       ├── L2_512KB_A16_B128.stdout.txt
-│       │   │   │       ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │       ├── L2_512KB_A16_B256.stdout.txt
-│       │   │   │       ├── L2_512KB_A16_B64.stderr.txt
-│       │   │   │       ├── L2_512KB_A16_B64.stdout.txt
-│       │   │   │       ├── L2_512KB_A4_B128.stderr.txt
-│       │   │   │       ├── L2_512KB_A4_B128.stdout.txt
-│       │   │   │       ├── L2_512KB_A4_B256.stderr.txt
-│       │   │   │       ├── L2_512KB_A4_B256.stdout.txt
-│       │   │   │       ├── L2_512KB_A4_B64.stderr.txt
-│       │   │   │       ├── L2_512KB_A4_B64.stdout.txt
-│       │   │   │       ├── L2_512KB_A8_B128.stderr.txt
-│       │   │   │       ├── L2_512KB_A8_B128.stdout.txt
-│       │   │   │       ├── L2_512KB_A8_B256.stderr.txt
-│       │   │   │       ├── L2_512KB_A8_B256.stdout.txt
-│       │   │   │       ├── L2_512KB_A8_B64.stderr.txt
-│       │   │   │       └── L2_512KB_A8_B64.stdout.txt
-│       │   │   ├── raw/
-│       │   │   │   ├── 403.gcc/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.out
-│       │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   ├── L2_1024KB_A16_B64.out
-│       │   │   │   │   ├── L2_1024KB_A8_B128.out
-│       │   │   │   │   ├── L2_1024KB_A8_B256.out
-│       │   │   │   │   ├── L2_1024KB_A8_B64.out
-│       │   │   │   │   ├── L2_2048KB_A16_B128.out
-│       │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   ├── L2_2048KB_A16_B64.out
-│       │   │   │   │   ├── L2_256KB_A4_B128.out
-│       │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   ├── L2_256KB_A4_B64.out
-│       │   │   │   │   ├── L2_512KB_A16_B128.out
-│       │   │   │   │   ├── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── L2_512KB_A16_B64.out
-│       │   │   │   │   ├── L2_512KB_A4_B128.out
-│       │   │   │   │   ├── L2_512KB_A4_B256.out
-│       │   │   │   │   ├── L2_512KB_A4_B64.out
-│       │   │   │   │   ├── L2_512KB_A8_B128.out
-│       │   │   │   │   ├── L2_512KB_A8_B256.out
-│       │   │   │   │   └── L2_512KB_A8_B64.out
-│       │   │   │   ├── 429.mcf/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.out
-│       │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   ├── L2_1024KB_A16_B64.out
-│       │   │   │   │   ├── L2_1024KB_A8_B128.out
-│       │   │   │   │   ├── L2_1024KB_A8_B256.out
-│       │   │   │   │   ├── L2_1024KB_A8_B64.out
-│       │   │   │   │   ├── L2_2048KB_A16_B128.out
-│       │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   ├── L2_2048KB_A16_B64.out
-│       │   │   │   │   ├── L2_256KB_A4_B128.out
-│       │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   ├── L2_256KB_A4_B64.out
-│       │   │   │   │   ├── L2_512KB_A16_B128.out
-│       │   │   │   │   ├── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── L2_512KB_A16_B64.out
-│       │   │   │   │   ├── L2_512KB_A4_B128.out
-│       │   │   │   │   ├── L2_512KB_A4_B256.out
-│       │   │   │   │   ├── L2_512KB_A4_B64.out
-│       │   │   │   │   ├── L2_512KB_A8_B128.out
-│       │   │   │   │   ├── L2_512KB_A8_B256.out
-│       │   │   │   │   └── L2_512KB_A8_B64.out
-│       │   │   │   ├── 433.milc/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.out
-│       │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   ├── L2_1024KB_A16_B64.out
-│       │   │   │   │   ├── L2_1024KB_A8_B128.out
-│       │   │   │   │   ├── L2_1024KB_A8_B256.out
-│       │   │   │   │   ├── L2_1024KB_A8_B64.out
-│       │   │   │   │   ├── L2_2048KB_A16_B128.out
-│       │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   ├── L2_2048KB_A16_B64.out
-│       │   │   │   │   ├── L2_256KB_A4_B128.out
-│       │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   ├── L2_256KB_A4_B64.out
-│       │   │   │   │   ├── L2_512KB_A16_B128.out
-│       │   │   │   │   ├── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── L2_512KB_A16_B64.out
-│       │   │   │   │   ├── L2_512KB_A4_B128.out
-│       │   │   │   │   ├── L2_512KB_A4_B256.out
-│       │   │   │   │   ├── L2_512KB_A4_B64.out
-│       │   │   │   │   ├── L2_512KB_A8_B128.out
-│       │   │   │   │   ├── L2_512KB_A8_B256.out
-│       │   │   │   │   └── L2_512KB_A8_B64.out
-│       │   │   │   ├── 444.namd/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.out
-│       │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   ├── L2_1024KB_A16_B64.out
-│       │   │   │   │   ├── L2_1024KB_A8_B128.out
-│       │   │   │   │   ├── L2_1024KB_A8_B256.out
-│       │   │   │   │   ├── L2_1024KB_A8_B64.out
-│       │   │   │   │   ├── L2_2048KB_A16_B128.out
-│       │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   ├── L2_2048KB_A16_B64.out
-│       │   │   │   │   ├── L2_256KB_A4_B128.out
-│       │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   ├── L2_256KB_A4_B64.out
-│       │   │   │   │   ├── L2_512KB_A16_B128.out
-│       │   │   │   │   ├── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── L2_512KB_A16_B64.out
-│       │   │   │   │   ├── L2_512KB_A4_B128.out
-│       │   │   │   │   ├── L2_512KB_A4_B256.out
-│       │   │   │   │   ├── L2_512KB_A4_B64.out
-│       │   │   │   │   ├── L2_512KB_A8_B128.out
-│       │   │   │   │   ├── L2_512KB_A8_B256.out
-│       │   │   │   │   └── L2_512KB_A8_B64.out
-│       │   │   │   ├── 450.soplex/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.out
-│       │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   ├── L2_1024KB_A16_B64.out
-│       │   │   │   │   ├── L2_1024KB_A8_B128.out
-│       │   │   │   │   ├── L2_1024KB_A8_B256.out
-│       │   │   │   │   ├── L2_1024KB_A8_B64.out
-│       │   │   │   │   ├── L2_2048KB_A16_B128.out
-│       │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   ├── L2_2048KB_A16_B64.out
-│       │   │   │   │   ├── L2_256KB_A4_B128.out
-│       │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   ├── L2_256KB_A4_B64.out
-│       │   │   │   │   ├── L2_512KB_A16_B128.out
-│       │   │   │   │   ├── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── L2_512KB_A16_B64.out
-│       │   │   │   │   ├── L2_512KB_A4_B128.out
-│       │   │   │   │   ├── L2_512KB_A4_B256.out
-│       │   │   │   │   ├── L2_512KB_A4_B64.out
-│       │   │   │   │   ├── L2_512KB_A8_B128.out
-│       │   │   │   │   ├── L2_512KB_A8_B256.out
-│       │   │   │   │   └── L2_512KB_A8_B64.out
-│       │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.out
-│       │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   ├── L2_1024KB_A16_B64.out
-│       │   │   │   │   ├── L2_1024KB_A8_B128.out
-│       │   │   │   │   ├── L2_1024KB_A8_B256.out
-│       │   │   │   │   ├── L2_1024KB_A8_B64.out
-│       │   │   │   │   ├── L2_2048KB_A16_B128.out
-│       │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   ├── L2_2048KB_A16_B64.out
-│       │   │   │   │   ├── L2_256KB_A4_B128.out
-│       │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   ├── L2_256KB_A4_B64.out
-│       │   │   │   │   ├── L2_512KB_A16_B128.out
-│       │   │   │   │   ├── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── L2_512KB_A16_B64.out
-│       │   │   │   │   ├── L2_512KB_A4_B128.out
-│       │   │   │   │   ├── L2_512KB_A4_B256.out
-│       │   │   │   │   ├── L2_512KB_A4_B64.out
-│       │   │   │   │   ├── L2_512KB_A8_B128.out
-│       │   │   │   │   ├── L2_512KB_A8_B256.out
-│       │   │   │   │   └── L2_512KB_A8_B64.out
-│       │   │   │   └── 470.lbm/
-│       │   │   │       ├── L2_1024KB_A16_B128.out
-│       │   │   │       ├── L2_1024KB_A16_B256.out
-│       │   │   │       ├── L2_1024KB_A16_B64.out
-│       │   │   │       ├── L2_1024KB_A8_B128.out
-│       │   │   │       ├── L2_1024KB_A8_B256.out
-│       │   │   │       ├── L2_1024KB_A8_B64.out
-│       │   │   │       ├── L2_2048KB_A16_B128.out
-│       │   │   │       ├── L2_2048KB_A16_B256.out
-│       │   │   │       ├── L2_2048KB_A16_B64.out
-│       │   │   │       ├── L2_256KB_A4_B128.out
-│       │   │   │       ├── L2_256KB_A4_B256.out
-│       │   │   │       ├── L2_256KB_A4_B64.out
-│       │   │   │       ├── L2_512KB_A16_B128.out
-│       │   │   │       ├── L2_512KB_A16_B256.out
-│       │   │   │       ├── L2_512KB_A16_B64.out
-│       │   │   │       ├── L2_512KB_A4_B128.out
-│       │   │   │       ├── L2_512KB_A4_B256.out
-│       │   │   │       ├── L2_512KB_A4_B64.out
-│       │   │   │       ├── L2_512KB_A8_B128.out
-│       │   │   │       ├── L2_512KB_A8_B256.out
-│       │   │   │       └── L2_512KB_A8_B64.out
-│       │   │   ├── times/
-│       │   │   │   ├── 403.gcc/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.time.txt
-│       │   │   │   │   └── L2_512KB_A8_B64.time.txt
-│       │   │   │   ├── 429.mcf/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.time.txt
-│       │   │   │   │   └── L2_512KB_A8_B64.time.txt
-│       │   │   │   ├── 433.milc/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.time.txt
-│       │   │   │   │   └── L2_512KB_A8_B64.time.txt
-│       │   │   │   ├── 444.namd/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.time.txt
-│       │   │   │   │   └── L2_512KB_A8_B64.time.txt
-│       │   │   │   ├── 450.soplex/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.time.txt
-│       │   │   │   │   └── L2_512KB_A8_B64.time.txt
-│       │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   ├── L2_1024KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_1024KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B128.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B256.time.txt
-│       │   │   │   │   ├── L2_1024KB_A8_B64.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_2048KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B128.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   ├── L2_256KB_A4_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── L2_512KB_A16_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B256.time.txt
-│       │   │   │   │   ├── L2_512KB_A4_B64.time.txt
-│       │   │   │   │   ├── L2_512KB_A8_B128.time.txt
-│       │   │   │   │   ├── L2_512KB_A8_B256.time.txt
-│       │   │   │   │   └── L2_512KB_A8_B64.time.txt
-│       │   │   │   └── 470.lbm/
-│       │   │   │       ├── L2_1024KB_A16_B128.time.txt
-│       │   │   │       ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │       ├── L2_1024KB_A16_B64.time.txt
-│       │   │   │       ├── L2_1024KB_A8_B128.time.txt
-│       │   │   │       ├── L2_1024KB_A8_B256.time.txt
-│       │   │   │       ├── L2_1024KB_A8_B64.time.txt
-│       │   │   │       ├── L2_2048KB_A16_B128.time.txt
-│       │   │   │       ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │       ├── L2_2048KB_A16_B64.time.txt
-│       │   │   │       ├── L2_256KB_A4_B128.time.txt
-│       │   │   │       ├── L2_256KB_A4_B256.time.txt
-│       │   │   │       ├── L2_256KB_A4_B64.time.txt
-│       │   │   │       ├── L2_512KB_A16_B128.time.txt
-│       │   │   │       ├── L2_512KB_A16_B256.time.txt
-│       │   │   │       ├── L2_512KB_A16_B64.time.txt
-│       │   │   │       ├── L2_512KB_A4_B128.time.txt
-│       │   │   │       ├── L2_512KB_A4_B256.time.txt
-│       │   │   │       ├── L2_512KB_A4_B64.time.txt
-│       │   │   │       ├── L2_512KB_A8_B128.time.txt
-│       │   │   │       ├── L2_512KB_A8_B256.time.txt
-│       │   │   │       └── L2_512KB_A8_B64.time.txt
-│       │   │   ├── summary.csv
-│       │   │   ├── summary.txt
-│       │   │   ├── summary_by_benchmark.csv
-│       │   │   └── summary_by_config.csv
-│       │   ├── 4.3/
-│       │   │   ├── logs/
-│       │   │   │   ├── LFU/
-│       │   │   │   │   ├── 403.gcc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 429.mcf/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 433.milc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 444.namd/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 450.soplex/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   └── 470.lbm/
-│       │   │   │   │       ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │       ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │       ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │       ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │       ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │       ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │       ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │       └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   ├── LIP/
-│       │   │   │   │   ├── 403.gcc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 429.mcf/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 433.milc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 444.namd/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 450.soplex/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   └── 470.lbm/
-│       │   │   │   │       ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │       ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │       ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │       ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │       ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │       ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │       ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │       └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   ├── LRU/
-│       │   │   │   │   ├── 403.gcc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 429.mcf/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 433.milc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 444.namd/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 450.soplex/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   └── 470.lbm/
-│       │   │   │   │       ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │       ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │       ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │       ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │       ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │       ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │       ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │       └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   ├── MRU/
-│       │   │   │   │   ├── 403.gcc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 429.mcf/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 433.milc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 444.namd/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 450.soplex/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   └── 470.lbm/
-│       │   │   │   │       ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │       ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │       ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │       ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │       ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │       ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │       ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │       └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   ├── Random/
-│       │   │   │   │   ├── 403.gcc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 429.mcf/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 433.milc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 444.namd/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 450.soplex/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │   │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   │   └── 470.lbm/
-│       │   │   │   │       ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │   │       ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │   │       ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │   │       ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │   │       ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │   │       ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │   │       ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │   │       └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │   └── SRRIP/
-│       │   │   │       ├── 403.gcc/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │       │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │       │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │       │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │       ├── 429.mcf/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │       │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │       │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │       │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │       ├── 433.milc/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │       │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │       │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │       │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │       ├── 444.namd/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │       │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │       │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │       │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │       ├── 450.soplex/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │       │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │       │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │       │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │       ├── 459.GemsFDTD/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │       │   ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │       │   ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │       │   └── L2_512KB_A16_B256.stdout.txt
-│       │   │   │       └── 470.lbm/
-│       │   │   │           ├── L2_1024KB_A16_B256.stderr.txt
-│       │   │   │           ├── L2_1024KB_A16_B256.stdout.txt
-│       │   │   │           ├── L2_2048KB_A16_B256.stderr.txt
-│       │   │   │           ├── L2_2048KB_A16_B256.stdout.txt
-│       │   │   │           ├── L2_256KB_A4_B256.stderr.txt
-│       │   │   │           ├── L2_256KB_A4_B256.stdout.txt
-│       │   │   │           ├── L2_512KB_A16_B256.stderr.txt
-│       │   │   │           └── L2_512KB_A16_B256.stdout.txt
-│       │   │   ├── raw/
-│       │   │   │   ├── LFU/
-│       │   │   │   │   ├── 403.gcc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 429.mcf/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 433.milc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 444.namd/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 450.soplex/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   └── 470.lbm/
-│       │   │   │   │       ├── L2_1024KB_A16_B256.out
-│       │   │   │   │       ├── L2_2048KB_A16_B256.out
-│       │   │   │   │       ├── L2_256KB_A4_B256.out
-│       │   │   │   │       └── L2_512KB_A16_B256.out
-│       │   │   │   ├── LIP/
-│       │   │   │   │   ├── 403.gcc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 429.mcf/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 433.milc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 444.namd/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 450.soplex/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   └── 470.lbm/
-│       │   │   │   │       ├── L2_1024KB_A16_B256.out
-│       │   │   │   │       ├── L2_2048KB_A16_B256.out
-│       │   │   │   │       ├── L2_256KB_A4_B256.out
-│       │   │   │   │       └── L2_512KB_A16_B256.out
-│       │   │   │   ├── LRU/
-│       │   │   │   │   ├── 403.gcc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 429.mcf/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 433.milc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 444.namd/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 450.soplex/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   └── 470.lbm/
-│       │   │   │   │       ├── L2_1024KB_A16_B256.out
-│       │   │   │   │       ├── L2_2048KB_A16_B256.out
-│       │   │   │   │       ├── L2_256KB_A4_B256.out
-│       │   │   │   │       └── L2_512KB_A16_B256.out
-│       │   │   │   ├── MRU/
-│       │   │   │   │   ├── 403.gcc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 429.mcf/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 433.milc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 444.namd/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 450.soplex/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   └── 470.lbm/
-│       │   │   │   │       ├── L2_1024KB_A16_B256.out
-│       │   │   │   │       ├── L2_2048KB_A16_B256.out
-│       │   │   │   │       ├── L2_256KB_A4_B256.out
-│       │   │   │   │       └── L2_512KB_A16_B256.out
-│       │   │   │   ├── Random/
-│       │   │   │   │   ├── 403.gcc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 429.mcf/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 433.milc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 444.namd/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 450.soplex/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.out
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.out
-│       │   │   │   │   │   └── L2_512KB_A16_B256.out
-│       │   │   │   │   └── 470.lbm/
-│       │   │   │   │       ├── L2_1024KB_A16_B256.out
-│       │   │   │   │       ├── L2_2048KB_A16_B256.out
-│       │   │   │   │       ├── L2_256KB_A4_B256.out
-│       │   │   │   │       └── L2_512KB_A16_B256.out
-│       │   │   │   └── SRRIP/
-│       │   │   │       ├── 403.gcc/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.out
-│       │   │   │       │   ├── L2_2048KB_A16_B256.out
-│       │   │   │       │   ├── L2_256KB_A4_B256.out
-│       │   │   │       │   └── L2_512KB_A16_B256.out
-│       │   │   │       ├── 429.mcf/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.out
-│       │   │   │       │   ├── L2_2048KB_A16_B256.out
-│       │   │   │       │   ├── L2_256KB_A4_B256.out
-│       │   │   │       │   └── L2_512KB_A16_B256.out
-│       │   │   │       ├── 433.milc/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.out
-│       │   │   │       │   ├── L2_2048KB_A16_B256.out
-│       │   │   │       │   ├── L2_256KB_A4_B256.out
-│       │   │   │       │   └── L2_512KB_A16_B256.out
-│       │   │   │       ├── 444.namd/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.out
-│       │   │   │       │   ├── L2_2048KB_A16_B256.out
-│       │   │   │       │   ├── L2_256KB_A4_B256.out
-│       │   │   │       │   └── L2_512KB_A16_B256.out
-│       │   │   │       ├── 450.soplex/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.out
-│       │   │   │       │   ├── L2_2048KB_A16_B256.out
-│       │   │   │       │   ├── L2_256KB_A4_B256.out
-│       │   │   │       │   └── L2_512KB_A16_B256.out
-│       │   │   │       ├── 459.GemsFDTD/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.out
-│       │   │   │       │   ├── L2_2048KB_A16_B256.out
-│       │   │   │       │   ├── L2_256KB_A4_B256.out
-│       │   │   │       │   └── L2_512KB_A16_B256.out
-│       │   │   │       └── 470.lbm/
-│       │   │   │           ├── L2_1024KB_A16_B256.out
-│       │   │   │           ├── L2_2048KB_A16_B256.out
-│       │   │   │           ├── L2_256KB_A4_B256.out
-│       │   │   │           └── L2_512KB_A16_B256.out
-│       │   │   ├── times/
-│       │   │   │   ├── LFU/
-│       │   │   │   │   ├── 403.gcc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 429.mcf/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 433.milc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 444.namd/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 450.soplex/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   └── 470.lbm/
-│       │   │   │   │       ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │       ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │       ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │       └── L2_512KB_A16_B256.time.txt
-│       │   │   │   ├── LIP/
-│       │   │   │   │   ├── 403.gcc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 429.mcf/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 433.milc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 444.namd/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 450.soplex/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   └── 470.lbm/
-│       │   │   │   │       ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │       ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │       ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │       └── L2_512KB_A16_B256.time.txt
-│       │   │   │   ├── LRU/
-│       │   │   │   │   ├── 403.gcc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 429.mcf/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 433.milc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 444.namd/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 450.soplex/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   └── 470.lbm/
-│       │   │   │   │       ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │       ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │       ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │       └── L2_512KB_A16_B256.time.txt
-│       │   │   │   ├── MRU/
-│       │   │   │   │   ├── 403.gcc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 429.mcf/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 433.milc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 444.namd/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 450.soplex/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   └── 470.lbm/
-│       │   │   │   │       ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │       ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │       ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │       └── L2_512KB_A16_B256.time.txt
-│       │   │   │   ├── Random/
-│       │   │   │   │   ├── 403.gcc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 429.mcf/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 433.milc/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 444.namd/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 450.soplex/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   ├── 459.GemsFDTD/
-│       │   │   │   │   │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │   │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │   │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │   │   └── 470.lbm/
-│       │   │   │   │       ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │   │       ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │   │       ├── L2_256KB_A4_B256.time.txt
-│       │   │   │   │       └── L2_512KB_A16_B256.time.txt
-│       │   │   │   └── SRRIP/
-│       │   │   │       ├── 403.gcc/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │       │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │       ├── 429.mcf/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │       │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │       ├── 433.milc/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │       │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │       ├── 444.namd/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │       │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │       ├── 450.soplex/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │       │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │       ├── 459.GemsFDTD/
-│       │   │   │       │   ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │       │   ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │       │   ├── L2_256KB_A4_B256.time.txt
-│       │   │   │       │   └── L2_512KB_A16_B256.time.txt
-│       │   │   │       └── 470.lbm/
-│       │   │   │           ├── L2_1024KB_A16_B256.time.txt
-│       │   │   │           ├── L2_2048KB_A16_B256.time.txt
-│       │   │   │           ├── L2_256KB_A4_B256.time.txt
-│       │   │   │           └── L2_512KB_A16_B256.time.txt
-│       │   │   ├── summary.csv
-│       │   │   ├── summary.txt
-│       │   │   ├── summary_best_policy_by_config.csv
-│       │   │   ├── summary_by_config_policy.csv
-│       │   │   └── summary_by_policy.csv
 │       │   └── diagrams/
-│       │       ├── 4_2_associativity_sensitivity.pdf
-│       │       ├── 4_2_associativity_sensitivity.png
-│       │       ├── 4_2_benchmark_ipc_heatmap.pdf
-│       │       ├── 4_2_benchmark_ipc_heatmap.png
-│       │       ├── 4_2_best_by_capacity.pdf
-│       │       ├── 4_2_best_by_capacity.png
-│       │       ├── 4_2_block_size_sensitivity.pdf
-│       │       ├── 4_2_block_size_sensitivity.png
-│       │       ├── 4_2_config_ipc_ranked.pdf
-│       │       ├── 4_2_config_ipc_ranked.png
-│       │       ├── 4_2_l2_mpki_vs_ipc.pdf
-│       │       ├── 4_2_l2_mpki_vs_ipc.png
-│       │       ├── 4_3_lru_random_delta_by_benchmark.pdf
-│       │       ├── 4_3_lru_random_delta_by_benchmark.png
-│       │       ├── 4_3_policy_benchmark_heatmap.pdf
-│       │       ├── 4_3_policy_benchmark_heatmap.png
-│       │       ├── 4_3_policy_by_config_ipc.pdf
-│       │       ├── 4_3_policy_by_config_ipc.png
-│       │       ├── 4_3_policy_by_config_l2_mpki.pdf
-│       │       ├── 4_3_policy_by_config_l2_mpki.png
-│       │       ├── 4_3_policy_overall.pdf
-│       │       ├── 4_3_policy_overall.png
-│       │       └── make_diagrams.py
 │       ├── report/
 │       ├── scripts/
-│       │   ├── README.md
-│       │   ├── run_4_2_l2_sweep.py
-│       │   └── run_4_3_replacement_policies.py
+│       │   └── README.md
+│       ├── advanced-ca-Spring-2026-ask3-helpcode.tgz
 │       ├── decisions.md
 │       ├── README.md
 │       └── theory.md
 ├── .gitattributes
 ├── .gitignore
 ├── LICENSE
-├── no
-├── passed
-├── passed,
 └── README.md
 
-Total directories: 258, Total files: 2076
+Total directories: 264, Total files: 2085
