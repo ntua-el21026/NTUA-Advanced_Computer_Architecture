@@ -247,6 +247,8 @@ def build_sniper_command(
         str(spec.nthreads),
         "--roi",
         "-c",
+        "--traceinput/mirror_output=true",
+        "-c",
         "--perf_model/l1_icache/shared_cores=1",
         "-c",
         "--perf_model/l1_dcache/shared_cores=1",

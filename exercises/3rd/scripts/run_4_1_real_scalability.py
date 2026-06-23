@@ -7,6 +7,7 @@ import argparse
 import json
 import os
 import platform
+import shutil
 import statistics
 import subprocess
 import sys
@@ -77,7 +78,76 @@ class RealRunSpec:
     stderr_log: Path
 
 
-def discover_physical_cpus() -> list[PhysicalCpu]:
+WINDOWS_CORE_TOPOLOGY_SCRIPT = r"""
+$code = @"
+using System;
+using System.Runtime.InteropServices;
+
+public static class CpuTopo {
+  [DllImport("kernel32.dll", SetLastError=true)]
+  static extern bool GetLogicalProcessorInformationEx(
+    int relationshipType, IntPtr buffer, ref int returnedLength);
+
+  public static void Main() {
+    int len = 0;
+    GetLogicalProcessorInformationEx(0, IntPtr.Zero, ref len);
+    IntPtr buf = Marshal.AllocHGlobal(len);
+    try {
+      if (!GetLogicalProcessorInformationEx(0, buf, ref len)) {
+        Console.Error.WriteLine(
+          "GetLogicalProcessorInformationEx failed: "
+          + Marshal.GetLastWin32Error());
+        Environment.Exit(1);
+      }
+      long ptr = buf.ToInt64();
+      long end = ptr + len;
+      int index = 0;
+      while (ptr < end) {
+        int rel = Marshal.ReadInt32(new IntPtr(ptr));
+        int size = Marshal.ReadInt32(new IntPtr(ptr + 4));
+        if (rel == 0) {
+          byte flags = Marshal.ReadByte(new IntPtr(ptr + 8));
+          byte efficiency = Marshal.ReadByte(new IntPtr(ptr + 9));
+          ushort groupCount =
+            (ushort)Marshal.ReadInt16(new IntPtr(ptr + 30));
+          for (int g = 0; g < groupCount; g++) {
+            long ga = ptr + 32 + g * 16;
+            ulong mask = (ulong)Marshal.ReadInt64(new IntPtr(ga));
+            ushort group = (ushort)Marshal.ReadInt16(new IntPtr(ga + 8));
+            Console.WriteLine(string.Format(
+              "{0},{1},{2},{3},{4:X}",
+              index, flags, efficiency, group, mask));
+          }
+          index++;
+        }
+        ptr += size;
+      }
+    } finally {
+      Marshal.FreeHGlobal(buf);
+    }
+  }
+}
+"@
+Add-Type -TypeDefinition $code
+[CpuTopo]::Main()
+"""
+
+
+def cpu_ids_from_mask(mask: int) -> tuple[int, ...]:
+    return tuple(cpu for cpu in range(mask.bit_length()) if mask & (1 << cpu))
+
+
+def is_wsl() -> bool:
+    for path in (Path("/proc/sys/kernel/osrelease"), Path("/proc/version")):
+        try:
+            if "microsoft" in path.read_text(encoding="utf-8").lower():
+                return True
+        except FileNotFoundError:
+            pass
+    return False
+
+
+def discover_physical_cpus_from_lscpu() -> list[PhysicalCpu]:
     completed = subprocess.run(
         ["lscpu", "--parse=CPU,CORE,SOCKET,ONLINE"],
         check=True,
@@ -111,6 +181,63 @@ def discover_physical_cpus() -> list[PhysicalCpu]:
     physical.sort(key=lambda item: (-len(item.siblings), item.representative))
     if not physical:
         raise RuntimeError("no online physical CPUs discovered through lscpu")
+    return physical
+
+
+def discover_physical_cpus_from_windows() -> list[PhysicalCpu]:
+    if not is_wsl() or shutil.which("powershell.exe") is None:
+        return []
+
+    completed = subprocess.run(
+        [
+            "powershell.exe",
+            "-NoProfile",
+            "-Command",
+            WINDOWS_CORE_TOPOLOGY_SCRIPT,
+        ],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if completed.returncode != 0:
+        return []
+
+    physical: list[PhysicalCpu] = []
+    for line in completed.stdout.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        parts = stripped.split(",")
+        if len(parts) != 5:
+            return []
+        core_raw, _flags_raw, _efficiency_raw, group_raw, mask_raw = parts
+        if int(group_raw) != 0:
+            return []
+        siblings = cpu_ids_from_mask(int(mask_raw, 16))
+        if not siblings:
+            return []
+        physical.append(
+            PhysicalCpu(
+                representative=min(siblings),
+                siblings=siblings,
+                core=int(core_raw),
+                socket=0,
+            )
+        )
+
+    allowed = set(os.sched_getaffinity(0))
+    discovered = {cpu for item in physical for cpu in item.siblings}
+    if discovered != allowed:
+        return []
+    physical.sort(key=lambda item: (-len(item.siblings), item.representative))
+    return physical
+
+
+def discover_physical_cpus() -> list[PhysicalCpu]:
+    physical = discover_physical_cpus_from_lscpu()
+    windows_physical = discover_physical_cpus_from_windows()
+    if len(windows_physical) > len(physical):
+        return windows_physical
     return physical
 
 

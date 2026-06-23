@@ -1,0 +1,2 @@
+topology,implementation,nthreads,iterations,grain,l2_shared_cores,l3_shared_cores,total_instructions,total_cycles,runtime_seconds,power_w,energy_j,edp_j_s,ed2p_j_s2,validation_value,process_returncode,result_dir
+scalability,tas_cas,1,1000,1,1,1,71186,280347,0.000105394000,,,,,1000,0,/home/peppaspan/NTUA-Advanced_Computer_Architecture/exercises/3rd/benchmarks/4.1/sniper/raw/tas_cas/threads_1/grain_1

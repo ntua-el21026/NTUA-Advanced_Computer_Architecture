@@ -35,6 +35,7 @@
 static void* malloc_safe(size_t);
 static inline double dummy_work(double);
 static int parse_cpu_list(const char *, int *, int);
+static int validate_counter(int, unsigned long);
 
 /* total iterations the critical section is executed by each thread*/
 unsigned long iters;  
@@ -50,6 +51,7 @@ struct timeval begin, end;
 #endif 
 
 double val = 0.0;
+int total_threads = 0;
 
 /* lock/mutex definition */
 #if ( defined TAS_CAS || defined TTAS_CAS || defined TAS_TS || defined TTAS_TS ) 
@@ -148,6 +150,8 @@ void* thread_fn(void *args)
     pthread_barrier_wait(&bar);
     if ( ta->my_id == 0 ) {
 #ifdef SNIPER
+        if (validate_counter(total_threads, iters) != EXIT_SUCCESS)
+            exit(EXIT_FAILURE);
         SimRoiEnd();
 #elif defined(REAL)
         gettimeofday(&end, NULL);
@@ -171,7 +175,7 @@ int main(int argc, char **argv)
     pthread_t *tids;
     int *cpu_ids;
     int i, res, nthreads;
-    double elapsed, expected_val;
+    double elapsed;
     int exit_status = EXIT_SUCCESS;
     const char *cpu_list;
 
@@ -183,6 +187,7 @@ int main(int argc, char **argv)
     nthreads = atoi(argv[1]);
     iters = atol(argv[2]);
     grain = atol(argv[3]);
+    total_threads = nthreads;
 
     if (nthreads <= 0 || nthreads > CPU_SETSIZE || iters == 0 || grain == 0) {
         fprintf(stderr,
@@ -237,15 +242,9 @@ int main(int argc, char **argv)
         pthread_join(tids[i], NULL);
     }
 
-    expected_val = (double)nthreads * (double)iters;
-    if (val != expected_val) {
-        fprintf(stderr,
-                "Validation failed: expected val %.0f, observed %.0f\n",
-                expected_val, val);
-        exit_status = EXIT_FAILURE;
-    } else {
-        fprintf(stdout, "Validation: PASS (val=%.0f)\n", val);
-    }
+#ifndef SNIPER
+    exit_status = validate_counter(nthreads, iters);
+#endif
 
 #ifdef REAL
     elapsed = (end.tv_sec - begin.tv_sec) + (end.tv_usec - begin.tv_usec)/1000000.0; 
@@ -262,6 +261,24 @@ int main(int argc, char **argv)
     free(cpu_ids);
     
     return exit_status;
+}
+
+
+static int validate_counter(int nthreads, unsigned long iterations)
+{
+    double expected_val = (double)nthreads * (double)iterations;
+
+    if (val != expected_val) {
+        fprintf(stderr,
+                "Validation failed: expected val %.0f, observed %.0f\n",
+                expected_val, val);
+        fflush(stderr);
+        return EXIT_FAILURE;
+    }
+
+    fprintf(stdout, "Validation: PASS (val=%.0f)\n", val);
+    fflush(stdout);
+    return EXIT_SUCCESS;
 }
 
 

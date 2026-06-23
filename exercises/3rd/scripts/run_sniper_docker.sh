@@ -36,6 +36,7 @@ case "$action" in
         set +e
         container --entrypoint /bin/bash "$IMAGE" -lc \
             "test -x /root/sniper/run-sniper &&
+             test -x /root/sniper/pin_kit/pin &&
              test -f /root/sniper/include/sim_api.h &&
              test -x /root/sniper/tools/advcomparch_mcpat.py &&
              echo 'Sniper container: PASS'"

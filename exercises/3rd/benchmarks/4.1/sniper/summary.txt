@@ -1,0 +1,10 @@
+Assignment 3 - Section 4.1 Sniper Scalability
+Expected outputs: 1
+Parsed outputs: 1
+Missing/unparseable outputs: 0
+
+Grain size 1
+Threads Implementation           Cycles     Energy (J)              EDP
+------------------------------------------------------------------------
+      1 tas_cas                280347              -                -
+
