@@ -2341,10 +2341,1310 @@ NTUA-Advanced_Computer_Architecture/
 │       ├── assignment/
 │       │   └── advanced-ca-2025-2026-askisi3.pdf
 │       ├── benchmarks/
-│       │   └── diagrams/
+│       │   ├── 4.1/
+│       │   │   └── sniper/
+│       │   │       ├── raw/
+│       │   │       │   ├── mutex/
+│       │   │       │   │   ├── threads_1/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   ├── threads_16/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   ├── threads_2/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   ├── threads_4/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   └── threads_8/
+│       │   │       │   │       ├── grain_1/
+│       │   │       │   │       │   ├── command.txt
+│       │   │       │   │       │   ├── power.py
+│       │   │       │   │       │   ├── power.stderr.txt
+│       │   │       │   │       │   ├── power.total.out
+│       │   │       │   │       │   ├── power.txt
+│       │   │       │   │       │   ├── power.xml
+│       │   │       │   │       │   ├── process.returncode.txt
+│       │   │       │   │       │   ├── run.stderr.txt
+│       │   │       │   │       │   ├── run.stdout.txt
+│       │   │       │   │       │   ├── sim.cfg
+│       │   │       │   │       │   ├── sim.info
+│       │   │       │   │       │   ├── sim.out
+│       │   │       │   │       │   └── sim.stats.sqlite3
+│       │   │       │   │       ├── grain_10/
+│       │   │       │   │       │   ├── command.txt
+│       │   │       │   │       │   ├── power.py
+│       │   │       │   │       │   ├── power.stderr.txt
+│       │   │       │   │       │   ├── power.total.out
+│       │   │       │   │       │   ├── power.txt
+│       │   │       │   │       │   ├── power.xml
+│       │   │       │   │       │   ├── process.returncode.txt
+│       │   │       │   │       │   ├── run.stderr.txt
+│       │   │       │   │       │   ├── run.stdout.txt
+│       │   │       │   │       │   ├── sim.cfg
+│       │   │       │   │       │   ├── sim.info
+│       │   │       │   │       │   ├── sim.out
+│       │   │       │   │       │   └── sim.stats.sqlite3
+│       │   │       │   │       └── grain_100/
+│       │   │       │   │           ├── command.txt
+│       │   │       │   │           ├── power.py
+│       │   │       │   │           ├── power.stderr.txt
+│       │   │       │   │           ├── power.total.out
+│       │   │       │   │           ├── power.txt
+│       │   │       │   │           ├── power.xml
+│       │   │       │   │           ├── process.returncode.txt
+│       │   │       │   │           ├── run.stderr.txt
+│       │   │       │   │           ├── run.stdout.txt
+│       │   │       │   │           ├── sim.cfg
+│       │   │       │   │           ├── sim.info
+│       │   │       │   │           ├── sim.out
+│       │   │       │   │           └── sim.stats.sqlite3
+│       │   │       │   ├── tas_cas/
+│       │   │       │   │   ├── threads_1/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   ├── threads_16/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   ├── threads_2/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   ├── threads_4/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   └── threads_8/
+│       │   │       │   │       ├── grain_1/
+│       │   │       │   │       │   ├── command.txt
+│       │   │       │   │       │   ├── power.py
+│       │   │       │   │       │   ├── power.stderr.txt
+│       │   │       │   │       │   ├── power.total.out
+│       │   │       │   │       │   ├── power.txt
+│       │   │       │   │       │   ├── power.xml
+│       │   │       │   │       │   ├── process.returncode.txt
+│       │   │       │   │       │   ├── run.stderr.txt
+│       │   │       │   │       │   ├── run.stdout.txt
+│       │   │       │   │       │   ├── sim.cfg
+│       │   │       │   │       │   ├── sim.info
+│       │   │       │   │       │   ├── sim.out
+│       │   │       │   │       │   └── sim.stats.sqlite3
+│       │   │       │   │       ├── grain_10/
+│       │   │       │   │       │   ├── command.txt
+│       │   │       │   │       │   ├── power.py
+│       │   │       │   │       │   ├── power.stderr.txt
+│       │   │       │   │       │   ├── power.total.out
+│       │   │       │   │       │   ├── power.txt
+│       │   │       │   │       │   ├── power.xml
+│       │   │       │   │       │   ├── process.returncode.txt
+│       │   │       │   │       │   ├── run.stderr.txt
+│       │   │       │   │       │   ├── run.stdout.txt
+│       │   │       │   │       │   ├── sim.cfg
+│       │   │       │   │       │   ├── sim.info
+│       │   │       │   │       │   ├── sim.out
+│       │   │       │   │       │   └── sim.stats.sqlite3
+│       │   │       │   │       └── grain_100/
+│       │   │       │   │           ├── command.txt
+│       │   │       │   │           ├── power.py
+│       │   │       │   │           ├── power.stderr.txt
+│       │   │       │   │           ├── power.total.out
+│       │   │       │   │           ├── power.txt
+│       │   │       │   │           ├── power.xml
+│       │   │       │   │           ├── process.returncode.txt
+│       │   │       │   │           ├── run.stderr.txt
+│       │   │       │   │           ├── run.stdout.txt
+│       │   │       │   │           ├── sim.cfg
+│       │   │       │   │           ├── sim.info
+│       │   │       │   │           ├── sim.out
+│       │   │       │   │           └── sim.stats.sqlite3
+│       │   │       │   ├── tas_ts/
+│       │   │       │   │   ├── threads_1/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   ├── threads_16/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   ├── threads_2/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   ├── threads_4/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   └── threads_8/
+│       │   │       │   │       ├── grain_1/
+│       │   │       │   │       │   ├── command.txt
+│       │   │       │   │       │   ├── power.py
+│       │   │       │   │       │   ├── power.stderr.txt
+│       │   │       │   │       │   ├── power.total.out
+│       │   │       │   │       │   ├── power.txt
+│       │   │       │   │       │   ├── power.xml
+│       │   │       │   │       │   ├── process.returncode.txt
+│       │   │       │   │       │   ├── run.stderr.txt
+│       │   │       │   │       │   ├── run.stdout.txt
+│       │   │       │   │       │   ├── sim.cfg
+│       │   │       │   │       │   ├── sim.info
+│       │   │       │   │       │   ├── sim.out
+│       │   │       │   │       │   └── sim.stats.sqlite3
+│       │   │       │   │       ├── grain_10/
+│       │   │       │   │       │   ├── command.txt
+│       │   │       │   │       │   ├── power.py
+│       │   │       │   │       │   ├── power.stderr.txt
+│       │   │       │   │       │   ├── power.total.out
+│       │   │       │   │       │   ├── power.txt
+│       │   │       │   │       │   ├── power.xml
+│       │   │       │   │       │   ├── process.returncode.txt
+│       │   │       │   │       │   ├── run.stderr.txt
+│       │   │       │   │       │   ├── run.stdout.txt
+│       │   │       │   │       │   ├── sim.cfg
+│       │   │       │   │       │   ├── sim.info
+│       │   │       │   │       │   ├── sim.out
+│       │   │       │   │       │   └── sim.stats.sqlite3
+│       │   │       │   │       └── grain_100/
+│       │   │       │   │           ├── command.txt
+│       │   │       │   │           ├── power.py
+│       │   │       │   │           ├── power.stderr.txt
+│       │   │       │   │           ├── power.total.out
+│       │   │       │   │           ├── power.txt
+│       │   │       │   │           ├── power.xml
+│       │   │       │   │           ├── process.returncode.txt
+│       │   │       │   │           ├── run.stderr.txt
+│       │   │       │   │           ├── run.stdout.txt
+│       │   │       │   │           ├── sim.cfg
+│       │   │       │   │           ├── sim.info
+│       │   │       │   │           ├── sim.out
+│       │   │       │   │           └── sim.stats.sqlite3
+│       │   │       │   ├── ttas_cas/
+│       │   │       │   │   ├── threads_1/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   ├── threads_16/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   ├── threads_2/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   ├── threads_4/
+│       │   │       │   │   │   ├── grain_1/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   ├── grain_10/
+│       │   │       │   │   │   │   ├── command.txt
+│       │   │       │   │   │   │   ├── power.py
+│       │   │       │   │   │   │   ├── power.stderr.txt
+│       │   │       │   │   │   │   ├── power.total.out
+│       │   │       │   │   │   │   ├── power.txt
+│       │   │       │   │   │   │   ├── power.xml
+│       │   │       │   │   │   │   ├── process.returncode.txt
+│       │   │       │   │   │   │   ├── run.stderr.txt
+│       │   │       │   │   │   │   ├── run.stdout.txt
+│       │   │       │   │   │   │   ├── sim.cfg
+│       │   │       │   │   │   │   ├── sim.info
+│       │   │       │   │   │   │   ├── sim.out
+│       │   │       │   │   │   │   └── sim.stats.sqlite3
+│       │   │       │   │   │   └── grain_100/
+│       │   │       │   │   │       ├── command.txt
+│       │   │       │   │   │       ├── power.py
+│       │   │       │   │   │       ├── power.stderr.txt
+│       │   │       │   │   │       ├── power.total.out
+│       │   │       │   │   │       ├── power.txt
+│       │   │       │   │   │       ├── power.xml
+│       │   │       │   │   │       ├── process.returncode.txt
+│       │   │       │   │   │       ├── run.stderr.txt
+│       │   │       │   │   │       ├── run.stdout.txt
+│       │   │       │   │   │       ├── sim.cfg
+│       │   │       │   │   │       ├── sim.info
+│       │   │       │   │   │       ├── sim.out
+│       │   │       │   │   │       └── sim.stats.sqlite3
+│       │   │       │   │   └── threads_8/
+│       │   │       │   │       ├── grain_1/
+│       │   │       │   │       │   ├── command.txt
+│       │   │       │   │       │   ├── power.py
+│       │   │       │   │       │   ├── power.stderr.txt
+│       │   │       │   │       │   ├── power.total.out
+│       │   │       │   │       │   ├── power.txt
+│       │   │       │   │       │   ├── power.xml
+│       │   │       │   │       │   ├── process.returncode.txt
+│       │   │       │   │       │   ├── run.stderr.txt
+│       │   │       │   │       │   ├── run.stdout.txt
+│       │   │       │   │       │   ├── sim.cfg
+│       │   │       │   │       │   ├── sim.info
+│       │   │       │   │       │   ├── sim.out
+│       │   │       │   │       │   └── sim.stats.sqlite3
+│       │   │       │   │       ├── grain_10/
+│       │   │       │   │       │   ├── command.txt
+│       │   │       │   │       │   ├── power.py
+│       │   │       │   │       │   ├── power.stderr.txt
+│       │   │       │   │       │   ├── power.total.out
+│       │   │       │   │       │   ├── power.txt
+│       │   │       │   │       │   ├── power.xml
+│       │   │       │   │       │   ├── process.returncode.txt
+│       │   │       │   │       │   ├── run.stderr.txt
+│       │   │       │   │       │   ├── run.stdout.txt
+│       │   │       │   │       │   ├── sim.cfg
+│       │   │       │   │       │   ├── sim.info
+│       │   │       │   │       │   ├── sim.out
+│       │   │       │   │       │   └── sim.stats.sqlite3
+│       │   │       │   │       └── grain_100/
+│       │   │       │   │           ├── command.txt
+│       │   │       │   │           ├── power.py
+│       │   │       │   │           ├── power.stderr.txt
+│       │   │       │   │           ├── power.total.out
+│       │   │       │   │           ├── power.txt
+│       │   │       │   │           ├── power.xml
+│       │   │       │   │           ├── process.returncode.txt
+│       │   │       │   │           ├── run.stderr.txt
+│       │   │       │   │           ├── run.stdout.txt
+│       │   │       │   │           ├── sim.cfg
+│       │   │       │   │           ├── sim.info
+│       │   │       │   │           ├── sim.out
+│       │   │       │   │           └── sim.stats.sqlite3
+│       │   │       │   └── ttas_ts/
+│       │   │       │       ├── threads_1/
+│       │   │       │       │   ├── grain_1/
+│       │   │       │       │   │   ├── command.txt
+│       │   │       │       │   │   ├── power.py
+│       │   │       │       │   │   ├── power.stderr.txt
+│       │   │       │       │   │   ├── power.total.out
+│       │   │       │       │   │   ├── power.txt
+│       │   │       │       │   │   ├── power.xml
+│       │   │       │       │   │   ├── process.returncode.txt
+│       │   │       │       │   │   ├── run.stderr.txt
+│       │   │       │       │   │   ├── run.stdout.txt
+│       │   │       │       │   │   ├── sim.cfg
+│       │   │       │       │   │   ├── sim.info
+│       │   │       │       │   │   ├── sim.out
+│       │   │       │       │   │   └── sim.stats.sqlite3
+│       │   │       │       │   ├── grain_10/
+│       │   │       │       │   │   ├── command.txt
+│       │   │       │       │   │   ├── power.py
+│       │   │       │       │   │   ├── power.stderr.txt
+│       │   │       │       │   │   ├── power.total.out
+│       │   │       │       │   │   ├── power.txt
+│       │   │       │       │   │   ├── power.xml
+│       │   │       │       │   │   ├── process.returncode.txt
+│       │   │       │       │   │   ├── run.stderr.txt
+│       │   │       │       │   │   ├── run.stdout.txt
+│       │   │       │       │   │   ├── sim.cfg
+│       │   │       │       │   │   ├── sim.info
+│       │   │       │       │   │   ├── sim.out
+│       │   │       │       │   │   └── sim.stats.sqlite3
+│       │   │       │       │   └── grain_100/
+│       │   │       │       │       ├── command.txt
+│       │   │       │       │       ├── power.py
+│       │   │       │       │       ├── power.stderr.txt
+│       │   │       │       │       ├── power.total.out
+│       │   │       │       │       ├── power.txt
+│       │   │       │       │       ├── power.xml
+│       │   │       │       │       ├── process.returncode.txt
+│       │   │       │       │       ├── run.stderr.txt
+│       │   │       │       │       ├── run.stdout.txt
+│       │   │       │       │       ├── sim.cfg
+│       │   │       │       │       ├── sim.info
+│       │   │       │       │       ├── sim.out
+│       │   │       │       │       └── sim.stats.sqlite3
+│       │   │       │       ├── threads_16/
+│       │   │       │       │   ├── grain_1/
+│       │   │       │       │   │   ├── command.txt
+│       │   │       │       │   │   ├── power.py
+│       │   │       │       │   │   ├── power.stderr.txt
+│       │   │       │       │   │   ├── power.total.out
+│       │   │       │       │   │   ├── power.txt
+│       │   │       │       │   │   ├── power.xml
+│       │   │       │       │   │   ├── process.returncode.txt
+│       │   │       │       │   │   ├── run.stderr.txt
+│       │   │       │       │   │   ├── run.stdout.txt
+│       │   │       │       │   │   ├── sim.cfg
+│       │   │       │       │   │   ├── sim.info
+│       │   │       │       │   │   ├── sim.out
+│       │   │       │       │   │   └── sim.stats.sqlite3
+│       │   │       │       │   ├── grain_10/
+│       │   │       │       │   │   ├── command.txt
+│       │   │       │       │   │   ├── power.py
+│       │   │       │       │   │   ├── power.stderr.txt
+│       │   │       │       │   │   ├── power.total.out
+│       │   │       │       │   │   ├── power.txt
+│       │   │       │       │   │   ├── power.xml
+│       │   │       │       │   │   ├── process.returncode.txt
+│       │   │       │       │   │   ├── run.stderr.txt
+│       │   │       │       │   │   ├── run.stdout.txt
+│       │   │       │       │   │   ├── sim.cfg
+│       │   │       │       │   │   ├── sim.info
+│       │   │       │       │   │   ├── sim.out
+│       │   │       │       │   │   └── sim.stats.sqlite3
+│       │   │       │       │   └── grain_100/
+│       │   │       │       │       ├── command.txt
+│       │   │       │       │       ├── power.py
+│       │   │       │       │       ├── power.stderr.txt
+│       │   │       │       │       ├── power.total.out
+│       │   │       │       │       ├── power.txt
+│       │   │       │       │       ├── power.xml
+│       │   │       │       │       ├── process.returncode.txt
+│       │   │       │       │       ├── run.stderr.txt
+│       │   │       │       │       ├── run.stdout.txt
+│       │   │       │       │       ├── sim.cfg
+│       │   │       │       │       ├── sim.info
+│       │   │       │       │       ├── sim.out
+│       │   │       │       │       └── sim.stats.sqlite3
+│       │   │       │       ├── threads_2/
+│       │   │       │       │   ├── grain_1/
+│       │   │       │       │   │   ├── command.txt
+│       │   │       │       │   │   ├── power.py
+│       │   │       │       │   │   ├── power.stderr.txt
+│       │   │       │       │   │   ├── power.total.out
+│       │   │       │       │   │   ├── power.txt
+│       │   │       │       │   │   ├── power.xml
+│       │   │       │       │   │   ├── process.returncode.txt
+│       │   │       │       │   │   ├── run.stderr.txt
+│       │   │       │       │   │   ├── run.stdout.txt
+│       │   │       │       │   │   ├── sim.cfg
+│       │   │       │       │   │   ├── sim.info
+│       │   │       │       │   │   ├── sim.out
+│       │   │       │       │   │   └── sim.stats.sqlite3
+│       │   │       │       │   ├── grain_10/
+│       │   │       │       │   │   ├── command.txt
+│       │   │       │       │   │   ├── power.py
+│       │   │       │       │   │   ├── power.stderr.txt
+│       │   │       │       │   │   ├── power.total.out
+│       │   │       │       │   │   ├── power.txt
+│       │   │       │       │   │   ├── power.xml
+│       │   │       │       │   │   ├── process.returncode.txt
+│       │   │       │       │   │   ├── run.stderr.txt
+│       │   │       │       │   │   ├── run.stdout.txt
+│       │   │       │       │   │   ├── sim.cfg
+│       │   │       │       │   │   ├── sim.info
+│       │   │       │       │   │   ├── sim.out
+│       │   │       │       │   │   └── sim.stats.sqlite3
+│       │   │       │       │   └── grain_100/
+│       │   │       │       │       ├── command.txt
+│       │   │       │       │       ├── power.py
+│       │   │       │       │       ├── power.stderr.txt
+│       │   │       │       │       ├── power.total.out
+│       │   │       │       │       ├── power.txt
+│       │   │       │       │       ├── power.xml
+│       │   │       │       │       ├── process.returncode.txt
+│       │   │       │       │       ├── run.stderr.txt
+│       │   │       │       │       ├── run.stdout.txt
+│       │   │       │       │       ├── sim.cfg
+│       │   │       │       │       ├── sim.info
+│       │   │       │       │       ├── sim.out
+│       │   │       │       │       └── sim.stats.sqlite3
+│       │   │       │       ├── threads_4/
+│       │   │       │       │   ├── grain_1/
+│       │   │       │       │   │   ├── command.txt
+│       │   │       │       │   │   ├── power.py
+│       │   │       │       │   │   ├── power.stderr.txt
+│       │   │       │       │   │   ├── power.total.out
+│       │   │       │       │   │   ├── power.txt
+│       │   │       │       │   │   ├── power.xml
+│       │   │       │       │   │   ├── process.returncode.txt
+│       │   │       │       │   │   ├── run.stderr.txt
+│       │   │       │       │   │   ├── run.stdout.txt
+│       │   │       │       │   │   ├── sim.cfg
+│       │   │       │       │   │   ├── sim.info
+│       │   │       │       │   │   ├── sim.out
+│       │   │       │       │   │   └── sim.stats.sqlite3
+│       │   │       │       │   ├── grain_10/
+│       │   │       │       │   │   ├── command.txt
+│       │   │       │       │   │   ├── power.py
+│       │   │       │       │   │   ├── power.stderr.txt
+│       │   │       │       │   │   ├── power.total.out
+│       │   │       │       │   │   ├── power.txt
+│       │   │       │       │   │   ├── power.xml
+│       │   │       │       │   │   ├── process.returncode.txt
+│       │   │       │       │   │   ├── run.stderr.txt
+│       │   │       │       │   │   ├── run.stdout.txt
+│       │   │       │       │   │   ├── sim.cfg
+│       │   │       │       │   │   ├── sim.info
+│       │   │       │       │   │   ├── sim.out
+│       │   │       │       │   │   └── sim.stats.sqlite3
+│       │   │       │       │   └── grain_100/
+│       │   │       │       │       ├── command.txt
+│       │   │       │       │       ├── power.py
+│       │   │       │       │       ├── power.stderr.txt
+│       │   │       │       │       ├── power.total.out
+│       │   │       │       │       ├── power.txt
+│       │   │       │       │       ├── power.xml
+│       │   │       │       │       ├── process.returncode.txt
+│       │   │       │       │       ├── run.stderr.txt
+│       │   │       │       │       ├── run.stdout.txt
+│       │   │       │       │       ├── sim.cfg
+│       │   │       │       │       ├── sim.info
+│       │   │       │       │       ├── sim.out
+│       │   │       │       │       └── sim.stats.sqlite3
+│       │   │       │       └── threads_8/
+│       │   │       │           ├── grain_1/
+│       │   │       │           │   ├── command.txt
+│       │   │       │           │   ├── power.py
+│       │   │       │           │   ├── power.stderr.txt
+│       │   │       │           │   ├── power.total.out
+│       │   │       │           │   ├── power.txt
+│       │   │       │           │   ├── power.xml
+│       │   │       │           │   ├── process.returncode.txt
+│       │   │       │           │   ├── run.stderr.txt
+│       │   │       │           │   ├── run.stdout.txt
+│       │   │       │           │   ├── sim.cfg
+│       │   │       │           │   ├── sim.info
+│       │   │       │           │   ├── sim.out
+│       │   │       │           │   └── sim.stats.sqlite3
+│       │   │       │           ├── grain_10/
+│       │   │       │           │   ├── command.txt
+│       │   │       │           │   ├── power.py
+│       │   │       │           │   ├── power.stderr.txt
+│       │   │       │           │   ├── power.total.out
+│       │   │       │           │   ├── power.txt
+│       │   │       │           │   ├── power.xml
+│       │   │       │           │   ├── process.returncode.txt
+│       │   │       │           │   ├── run.stderr.txt
+│       │   │       │           │   ├── run.stdout.txt
+│       │   │       │           │   ├── sim.cfg
+│       │   │       │           │   ├── sim.info
+│       │   │       │           │   ├── sim.out
+│       │   │       │           │   └── sim.stats.sqlite3
+│       │   │       │           └── grain_100/
+│       │   │       │               ├── command.txt
+│       │   │       │               ├── power.py
+│       │   │       │               ├── power.stderr.txt
+│       │   │       │               ├── power.total.out
+│       │   │       │               ├── power.txt
+│       │   │       │               ├── power.xml
+│       │   │       │               ├── process.returncode.txt
+│       │   │       │               ├── run.stderr.txt
+│       │   │       │               ├── run.stdout.txt
+│       │   │       │               ├── sim.cfg
+│       │   │       │               ├── sim.info
+│       │   │       │               ├── sim.out
+│       │   │       │               └── sim.stats.sqlite3
+│       │   │       ├── summary.csv
+│       │   │       └── summary.txt
+│       │   └── 4.2/
+│       │       ├── raw/
+│       │       │   ├── share-all/
+│       │       │   │   ├── mutex/
+│       │       │   │   │   ├── command.txt
+│       │       │   │   │   ├── power.py
+│       │       │   │   │   ├── power.stderr.txt
+│       │       │   │   │   ├── power.total.out
+│       │       │   │   │   ├── power.txt
+│       │       │   │   │   ├── power.xml
+│       │       │   │   │   ├── process.returncode.txt
+│       │       │   │   │   ├── run.stderr.txt
+│       │       │   │   │   ├── run.stdout.txt
+│       │       │   │   │   ├── sim.cfg
+│       │       │   │   │   ├── sim.info
+│       │       │   │   │   ├── sim.out
+│       │       │   │   │   └── sim.stats.sqlite3
+│       │       │   │   ├── tas_cas/
+│       │       │   │   │   ├── command.txt
+│       │       │   │   │   ├── power.py
+│       │       │   │   │   ├── power.stderr.txt
+│       │       │   │   │   ├── power.total.out
+│       │       │   │   │   ├── power.txt
+│       │       │   │   │   ├── power.xml
+│       │       │   │   │   ├── process.returncode.txt
+│       │       │   │   │   ├── run.stderr.txt
+│       │       │   │   │   ├── run.stdout.txt
+│       │       │   │   │   ├── sim.cfg
+│       │       │   │   │   ├── sim.info
+│       │       │   │   │   ├── sim.out
+│       │       │   │   │   └── sim.stats.sqlite3
+│       │       │   │   ├── tas_ts/
+│       │       │   │   │   ├── command.txt
+│       │       │   │   │   ├── power.py
+│       │       │   │   │   ├── power.stderr.txt
+│       │       │   │   │   ├── power.total.out
+│       │       │   │   │   ├── power.txt
+│       │       │   │   │   ├── power.xml
+│       │       │   │   │   ├── process.returncode.txt
+│       │       │   │   │   ├── run.stderr.txt
+│       │       │   │   │   ├── run.stdout.txt
+│       │       │   │   │   ├── sim.cfg
+│       │       │   │   │   ├── sim.info
+│       │       │   │   │   ├── sim.out
+│       │       │   │   │   └── sim.stats.sqlite3
+│       │       │   │   ├── ttas_cas/
+│       │       │   │   │   ├── command.txt
+│       │       │   │   │   ├── power.py
+│       │       │   │   │   ├── power.stderr.txt
+│       │       │   │   │   ├── power.total.out
+│       │       │   │   │   ├── power.txt
+│       │       │   │   │   ├── power.xml
+│       │       │   │   │   ├── process.returncode.txt
+│       │       │   │   │   ├── run.stderr.txt
+│       │       │   │   │   ├── run.stdout.txt
+│       │       │   │   │   ├── sim.cfg
+│       │       │   │   │   ├── sim.info
+│       │       │   │   │   ├── sim.out
+│       │       │   │   │   └── sim.stats.sqlite3
+│       │       │   │   └── ttas_ts/
+│       │       │   │       ├── command.txt
+│       │       │   │       ├── power.py
+│       │       │   │       ├── power.stderr.txt
+│       │       │   │       ├── power.total.out
+│       │       │   │       ├── power.txt
+│       │       │   │       ├── power.xml
+│       │       │   │       ├── process.returncode.txt
+│       │       │   │       ├── run.stderr.txt
+│       │       │   │       ├── run.stdout.txt
+│       │       │   │       ├── sim.cfg
+│       │       │   │       ├── sim.info
+│       │       │   │       ├── sim.out
+│       │       │   │       └── sim.stats.sqlite3
+│       │       │   ├── share-l3/
+│       │       │   │   ├── mutex/
+│       │       │   │   │   ├── command.txt
+│       │       │   │   │   ├── power.py
+│       │       │   │   │   ├── power.stderr.txt
+│       │       │   │   │   ├── power.total.out
+│       │       │   │   │   ├── power.txt
+│       │       │   │   │   ├── power.xml
+│       │       │   │   │   ├── process.returncode.txt
+│       │       │   │   │   ├── run.stderr.txt
+│       │       │   │   │   ├── run.stdout.txt
+│       │       │   │   │   ├── sim.cfg
+│       │       │   │   │   ├── sim.info
+│       │       │   │   │   ├── sim.out
+│       │       │   │   │   └── sim.stats.sqlite3
+│       │       │   │   ├── tas_cas/
+│       │       │   │   │   ├── command.txt
+│       │       │   │   │   ├── power.py
+│       │       │   │   │   ├── power.stderr.txt
+│       │       │   │   │   ├── power.total.out
+│       │       │   │   │   ├── power.txt
+│       │       │   │   │   ├── power.xml
+│       │       │   │   │   ├── process.returncode.txt
+│       │       │   │   │   ├── run.stderr.txt
+│       │       │   │   │   ├── run.stdout.txt
+│       │       │   │   │   ├── sim.cfg
+│       │       │   │   │   ├── sim.info
+│       │       │   │   │   ├── sim.out
+│       │       │   │   │   └── sim.stats.sqlite3
+│       │       │   │   ├── tas_ts/
+│       │       │   │   │   ├── command.txt
+│       │       │   │   │   ├── power.py
+│       │       │   │   │   ├── power.stderr.txt
+│       │       │   │   │   ├── power.total.out
+│       │       │   │   │   ├── power.txt
+│       │       │   │   │   ├── power.xml
+│       │       │   │   │   ├── process.returncode.txt
+│       │       │   │   │   ├── run.stderr.txt
+│       │       │   │   │   ├── run.stdout.txt
+│       │       │   │   │   ├── sim.cfg
+│       │       │   │   │   ├── sim.info
+│       │       │   │   │   ├── sim.out
+│       │       │   │   │   └── sim.stats.sqlite3
+│       │       │   │   ├── ttas_cas/
+│       │       │   │   │   ├── command.txt
+│       │       │   │   │   ├── power.py
+│       │       │   │   │   ├── power.stderr.txt
+│       │       │   │   │   ├── power.total.out
+│       │       │   │   │   ├── power.txt
+│       │       │   │   │   ├── power.xml
+│       │       │   │   │   ├── process.returncode.txt
+│       │       │   │   │   ├── run.stderr.txt
+│       │       │   │   │   ├── run.stdout.txt
+│       │       │   │   │   ├── sim.cfg
+│       │       │   │   │   ├── sim.info
+│       │       │   │   │   ├── sim.out
+│       │       │   │   │   └── sim.stats.sqlite3
+│       │       │   │   └── ttas_ts/
+│       │       │   │       ├── command.txt
+│       │       │   │       ├── power.py
+│       │       │   │       ├── power.stderr.txt
+│       │       │   │       ├── power.total.out
+│       │       │   │       ├── power.txt
+│       │       │   │       ├── power.xml
+│       │       │   │       ├── process.returncode.txt
+│       │       │   │       ├── run.stderr.txt
+│       │       │   │       ├── run.stdout.txt
+│       │       │   │       ├── sim.cfg
+│       │       │   │       ├── sim.info
+│       │       │   │       ├── sim.out
+│       │       │   │       └── sim.stats.sqlite3
+│       │       │   └── share-nothing/
+│       │       │       ├── mutex/
+│       │       │       │   ├── command.txt
+│       │       │       │   ├── power.py
+│       │       │       │   ├── power.stderr.txt
+│       │       │       │   ├── power.total.out
+│       │       │       │   ├── power.txt
+│       │       │       │   ├── power.xml
+│       │       │       │   ├── process.returncode.txt
+│       │       │       │   ├── run.stderr.txt
+│       │       │       │   ├── run.stdout.txt
+│       │       │       │   ├── sim.cfg
+│       │       │       │   ├── sim.info
+│       │       │       │   ├── sim.out
+│       │       │       │   └── sim.stats.sqlite3
+│       │       │       ├── tas_cas/
+│       │       │       │   ├── command.txt
+│       │       │       │   ├── power.py
+│       │       │       │   ├── power.stderr.txt
+│       │       │       │   ├── power.total.out
+│       │       │       │   ├── power.txt
+│       │       │       │   ├── power.xml
+│       │       │       │   ├── process.returncode.txt
+│       │       │       │   ├── run.stderr.txt
+│       │       │       │   ├── run.stdout.txt
+│       │       │       │   ├── sim.cfg
+│       │       │       │   ├── sim.info
+│       │       │       │   ├── sim.out
+│       │       │       │   └── sim.stats.sqlite3
+│       │       │       ├── tas_ts/
+│       │       │       │   ├── command.txt
+│       │       │       │   ├── power.py
+│       │       │       │   ├── power.stderr.txt
+│       │       │       │   ├── power.total.out
+│       │       │       │   ├── power.txt
+│       │       │       │   ├── power.xml
+│       │       │       │   ├── process.returncode.txt
+│       │       │       │   ├── run.stderr.txt
+│       │       │       │   ├── run.stdout.txt
+│       │       │       │   ├── sim.cfg
+│       │       │       │   ├── sim.info
+│       │       │       │   ├── sim.out
+│       │       │       │   └── sim.stats.sqlite3
+│       │       │       ├── ttas_cas/
+│       │       │       │   ├── command.txt
+│       │       │       │   ├── power.py
+│       │       │       │   ├── power.stderr.txt
+│       │       │       │   ├── power.total.out
+│       │       │       │   ├── power.txt
+│       │       │       │   ├── power.xml
+│       │       │       │   ├── process.returncode.txt
+│       │       │       │   ├── run.stderr.txt
+│       │       │       │   ├── run.stdout.txt
+│       │       │       │   ├── sim.cfg
+│       │       │       │   ├── sim.info
+│       │       │       │   ├── sim.out
+│       │       │       │   └── sim.stats.sqlite3
+│       │       │       └── ttas_ts/
+│       │       │           ├── command.txt
+│       │       │           ├── power.py
+│       │       │           ├── power.stderr.txt
+│       │       │           ├── power.total.out
+│       │       │           ├── power.txt
+│       │       │           ├── power.xml
+│       │       │           ├── process.returncode.txt
+│       │       │           ├── run.stderr.txt
+│       │       │           ├── run.stdout.txt
+│       │       │           ├── sim.cfg
+│       │       │           ├── sim.info
+│       │       │           ├── sim.out
+│       │       │           └── sim.stats.sqlite3
+│       │       ├── summary.csv
+│       │       └── summary.txt
 │       ├── docker/
 │       │   └── Dockerfile
-│       ├── report/
 │       ├── scripts/
 │       │   ├── exercise3_common.py
 │       │   ├── mcpat_docker_exec.sh
@@ -2363,4 +3663,4 @@ NTUA-Advanced_Computer_Architecture/
 ├── LICENSE
 └── README.md
 
-Total directories: 266, Total files: 2098
+Total directories: 392, Total files: 3272

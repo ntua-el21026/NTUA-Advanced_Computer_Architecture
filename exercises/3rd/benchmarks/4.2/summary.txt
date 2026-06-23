@@ -1,0 +1,22 @@
+Assignment 3 - Section 4.2 Thread Topology
+Expected outputs: 15
+Parsed outputs: 15
+Missing/unparseable outputs: 0
+
+Topology        Implementation           Cycles     Energy (J)              EDP
+------------------------------------------------------------------------------
+share-all       mutex                  815648 0.580000000000   0.000177848300
+share-all       tas_cas                367708 0.650000000000   0.000089853400
+share-all       tas_ts                 358067 1.190000000000   0.000160188280
+share-all       ttas_cas               358615 1.030000000000   0.000138862540
+share-all       ttas_ts                358434 0.990000000000   0.000133402500
+share-l3        mutex                 1070543 0.590000000000   0.000237451400
+share-l3        tas_cas                510158 0.570000000000   0.000109319730
+share-l3        tas_ts                 483855 0.600000000000   0.000109140600
+share-l3        ttas_cas               580885 0.820000000000   0.000179069960
+share-l3        ttas_ts                608246 0.850000000000   0.000194364400
+share-nothing   mutex                  980267 0.590000000000   0.000217427980
+share-nothing   tas_cas                473997 0.500000000000   0.000089097500
+share-nothing   tas_ts                 515471 0.550000000000   0.000106582300
+share-nothing   ttas_cas               483674 0.580000000000   0.000105463140
+share-nothing   ttas_ts                565954 0.680000000000   0.000144680200
