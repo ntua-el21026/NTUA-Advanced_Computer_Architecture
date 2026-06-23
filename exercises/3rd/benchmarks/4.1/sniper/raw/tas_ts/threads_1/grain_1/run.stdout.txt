@@ -1,0 +1,20 @@
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using SIFT/trace-driven frontend
+[SNIPER] Running pre-ROI region in  CACHE_ONLY mode
+[SNIPER] Running application ROI in DETAILED mode
+[SNIPER] Running post-ROI region in FAST_FORWARD mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+[TRACE:1] Validation: PASS (val=1000)
+Validation: PASS (val=1000)
+[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 0.28 seconds
+[SNIPER] Simulated 0.1M instructions, 0.3M cycles, 0.25 IPC
+[SNIPER] Simulation speed 254.5 KIPS (254.5 KIPS / target core - 3928.9ns/instr)
+[SNIPER] Sampling: executed 26.28% of simulated time in detailed mode
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+[TRACE:1] -- DONE --
+[SNIPER] End
+[SNIPER] Elapsed time: 2.94 seconds

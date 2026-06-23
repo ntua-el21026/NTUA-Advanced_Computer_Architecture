@@ -1,0 +1,43 @@
+                                     | Core 0    
+  Instructions                       |     191186
+  Cycles                             |     472949
+  IPC                                |       0.40
+  Time (ns)                          |     177801
+  Idle time (ns)                     |      77690
+  Idle time (%)                      |      43.7%
+Branch predictor stats               |           
+  num correct                        |      14449
+  num incorrect                      |        169
+  misprediction rate                 |      1.16%
+  mpki                               |       0.88
+TLB Summary                          |           
+Cache Summary                        |           
+  Cache L1-I                         |           
+    num cache accesses               |      30583
+    num cache misses                 |        274
+    miss rate                        |      0.90%
+    mpki                             |       1.43
+  Cache L1-D                         |           
+    num cache accesses               |     127854
+    num cache misses                 |        149
+    miss rate                        |      0.12%
+    mpki                             |       0.78
+  Cache L2                           |           
+    num cache accesses               |        437
+    num cache misses                 |        423
+    miss rate                        |     96.80%
+    mpki                             |       2.21
+  Cache L3                           |           
+    num cache accesses               |        437
+    num cache misses                 |        423
+    miss rate                        |     96.80%
+    mpki                             |       2.21
+DRAM summary                         |           
+  num dram accesses                  |        420
+  average dram access latency (ns)   |     108.62
+  average dram queueing delay        |      55.19
+  average dram bandwidth utilization |      1.00%
+Coherency Traffic                    |           
+  num loads from dram                |        109
+  num loads from dram cache          |          0
+  num loads from remote cache        |          0
