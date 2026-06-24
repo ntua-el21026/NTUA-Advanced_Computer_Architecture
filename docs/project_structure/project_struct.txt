@@ -2342,6 +2342,867 @@ NTUA-Advanced_Computer_Architecture/
 │       │   └── advanced-ca-2025-2026-askisi3.pdf
 │       ├── benchmarks/
 │       │   ├── 4.1/
+│       │   │   ├── real/
+│       │   │   │   ├── raw/
+│       │   │   │   │   ├── mutex/
+│       │   │   │   │   │   ├── threads_1/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   ├── threads_16/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   ├── threads_2/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   ├── threads_4/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   └── threads_8/
+│       │   │   │   │   │       ├── grain_1/
+│       │   │   │   │   │       │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │       │   └── repeat_5.stdout.txt
+│       │   │   │   │   │       ├── grain_10/
+│       │   │   │   │   │       │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │       │   └── repeat_5.stdout.txt
+│       │   │   │   │   │       └── grain_100/
+│       │   │   │   │   │           ├── repeat_1.stderr.txt
+│       │   │   │   │   │           ├── repeat_1.stdout.txt
+│       │   │   │   │   │           ├── repeat_2.stderr.txt
+│       │   │   │   │   │           ├── repeat_2.stdout.txt
+│       │   │   │   │   │           ├── repeat_3.stderr.txt
+│       │   │   │   │   │           ├── repeat_3.stdout.txt
+│       │   │   │   │   │           ├── repeat_4.stderr.txt
+│       │   │   │   │   │           ├── repeat_4.stdout.txt
+│       │   │   │   │   │           ├── repeat_5.stderr.txt
+│       │   │   │   │   │           └── repeat_5.stdout.txt
+│       │   │   │   │   ├── tas_cas/
+│       │   │   │   │   │   ├── threads_1/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   ├── threads_16/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   ├── threads_2/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   ├── threads_4/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   └── threads_8/
+│       │   │   │   │   │       ├── grain_1/
+│       │   │   │   │   │       │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │       │   └── repeat_5.stdout.txt
+│       │   │   │   │   │       ├── grain_10/
+│       │   │   │   │   │       │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │       │   └── repeat_5.stdout.txt
+│       │   │   │   │   │       └── grain_100/
+│       │   │   │   │   │           ├── repeat_1.stderr.txt
+│       │   │   │   │   │           ├── repeat_1.stdout.txt
+│       │   │   │   │   │           ├── repeat_2.stderr.txt
+│       │   │   │   │   │           ├── repeat_2.stdout.txt
+│       │   │   │   │   │           ├── repeat_3.stderr.txt
+│       │   │   │   │   │           ├── repeat_3.stdout.txt
+│       │   │   │   │   │           ├── repeat_4.stderr.txt
+│       │   │   │   │   │           ├── repeat_4.stdout.txt
+│       │   │   │   │   │           ├── repeat_5.stderr.txt
+│       │   │   │   │   │           └── repeat_5.stdout.txt
+│       │   │   │   │   ├── tas_ts/
+│       │   │   │   │   │   ├── threads_1/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   ├── threads_16/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   ├── threads_2/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   ├── threads_4/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   └── threads_8/
+│       │   │   │   │   │       ├── grain_1/
+│       │   │   │   │   │       │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │       │   └── repeat_5.stdout.txt
+│       │   │   │   │   │       ├── grain_10/
+│       │   │   │   │   │       │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │       │   └── repeat_5.stdout.txt
+│       │   │   │   │   │       └── grain_100/
+│       │   │   │   │   │           ├── repeat_1.stderr.txt
+│       │   │   │   │   │           ├── repeat_1.stdout.txt
+│       │   │   │   │   │           ├── repeat_2.stderr.txt
+│       │   │   │   │   │           ├── repeat_2.stdout.txt
+│       │   │   │   │   │           ├── repeat_3.stderr.txt
+│       │   │   │   │   │           ├── repeat_3.stdout.txt
+│       │   │   │   │   │           ├── repeat_4.stderr.txt
+│       │   │   │   │   │           ├── repeat_4.stdout.txt
+│       │   │   │   │   │           ├── repeat_5.stderr.txt
+│       │   │   │   │   │           └── repeat_5.stdout.txt
+│       │   │   │   │   ├── ttas_cas/
+│       │   │   │   │   │   ├── threads_1/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   ├── threads_16/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   ├── threads_2/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   ├── threads_4/
+│       │   │   │   │   │   │   ├── grain_1/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   ├── grain_10/
+│       │   │   │   │   │   │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │   │   └── repeat_5.stdout.txt
+│       │   │   │   │   │   │   └── grain_100/
+│       │   │   │   │   │   │       ├── repeat_1.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_1.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_2.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_2.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_3.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_3.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_4.stderr.txt
+│       │   │   │   │   │   │       ├── repeat_4.stdout.txt
+│       │   │   │   │   │   │       ├── repeat_5.stderr.txt
+│       │   │   │   │   │   │       └── repeat_5.stdout.txt
+│       │   │   │   │   │   └── threads_8/
+│       │   │   │   │   │       ├── grain_1/
+│       │   │   │   │   │       │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │       │   └── repeat_5.stdout.txt
+│       │   │   │   │   │       ├── grain_10/
+│       │   │   │   │   │       │   ├── repeat_1.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_1.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_2.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_2.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_3.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_3.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_4.stderr.txt
+│       │   │   │   │   │       │   ├── repeat_4.stdout.txt
+│       │   │   │   │   │       │   ├── repeat_5.stderr.txt
+│       │   │   │   │   │       │   └── repeat_5.stdout.txt
+│       │   │   │   │   │       └── grain_100/
+│       │   │   │   │   │           ├── repeat_1.stderr.txt
+│       │   │   │   │   │           ├── repeat_1.stdout.txt
+│       │   │   │   │   │           ├── repeat_2.stderr.txt
+│       │   │   │   │   │           ├── repeat_2.stdout.txt
+│       │   │   │   │   │           ├── repeat_3.stderr.txt
+│       │   │   │   │   │           ├── repeat_3.stdout.txt
+│       │   │   │   │   │           ├── repeat_4.stderr.txt
+│       │   │   │   │   │           ├── repeat_4.stdout.txt
+│       │   │   │   │   │           ├── repeat_5.stderr.txt
+│       │   │   │   │   │           └── repeat_5.stdout.txt
+│       │   │   │   │   └── ttas_ts/
+│       │   │   │   │       ├── threads_1/
+│       │   │   │   │       │   ├── grain_1/
+│       │   │   │   │       │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │       │   │   └── repeat_5.stdout.txt
+│       │   │   │   │       │   ├── grain_10/
+│       │   │   │   │       │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │       │   │   └── repeat_5.stdout.txt
+│       │   │   │   │       │   └── grain_100/
+│       │   │   │   │       │       ├── repeat_1.stderr.txt
+│       │   │   │   │       │       ├── repeat_1.stdout.txt
+│       │   │   │   │       │       ├── repeat_2.stderr.txt
+│       │   │   │   │       │       ├── repeat_2.stdout.txt
+│       │   │   │   │       │       ├── repeat_3.stderr.txt
+│       │   │   │   │       │       ├── repeat_3.stdout.txt
+│       │   │   │   │       │       ├── repeat_4.stderr.txt
+│       │   │   │   │       │       ├── repeat_4.stdout.txt
+│       │   │   │   │       │       ├── repeat_5.stderr.txt
+│       │   │   │   │       │       └── repeat_5.stdout.txt
+│       │   │   │   │       ├── threads_16/
+│       │   │   │   │       │   ├── grain_1/
+│       │   │   │   │       │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │       │   │   └── repeat_5.stdout.txt
+│       │   │   │   │       │   ├── grain_10/
+│       │   │   │   │       │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │       │   │   └── repeat_5.stdout.txt
+│       │   │   │   │       │   └── grain_100/
+│       │   │   │   │       │       ├── repeat_1.stderr.txt
+│       │   │   │   │       │       ├── repeat_1.stdout.txt
+│       │   │   │   │       │       ├── repeat_2.stderr.txt
+│       │   │   │   │       │       ├── repeat_2.stdout.txt
+│       │   │   │   │       │       ├── repeat_3.stderr.txt
+│       │   │   │   │       │       ├── repeat_3.stdout.txt
+│       │   │   │   │       │       ├── repeat_4.stderr.txt
+│       │   │   │   │       │       ├── repeat_4.stdout.txt
+│       │   │   │   │       │       ├── repeat_5.stderr.txt
+│       │   │   │   │       │       └── repeat_5.stdout.txt
+│       │   │   │   │       ├── threads_2/
+│       │   │   │   │       │   ├── grain_1/
+│       │   │   │   │       │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │       │   │   └── repeat_5.stdout.txt
+│       │   │   │   │       │   ├── grain_10/
+│       │   │   │   │       │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │       │   │   └── repeat_5.stdout.txt
+│       │   │   │   │       │   └── grain_100/
+│       │   │   │   │       │       ├── repeat_1.stderr.txt
+│       │   │   │   │       │       ├── repeat_1.stdout.txt
+│       │   │   │   │       │       ├── repeat_2.stderr.txt
+│       │   │   │   │       │       ├── repeat_2.stdout.txt
+│       │   │   │   │       │       ├── repeat_3.stderr.txt
+│       │   │   │   │       │       ├── repeat_3.stdout.txt
+│       │   │   │   │       │       ├── repeat_4.stderr.txt
+│       │   │   │   │       │       ├── repeat_4.stdout.txt
+│       │   │   │   │       │       ├── repeat_5.stderr.txt
+│       │   │   │   │       │       └── repeat_5.stdout.txt
+│       │   │   │   │       ├── threads_4/
+│       │   │   │   │       │   ├── grain_1/
+│       │   │   │   │       │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │       │   │   └── repeat_5.stdout.txt
+│       │   │   │   │       │   ├── grain_10/
+│       │   │   │   │       │   │   ├── repeat_1.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_1.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_2.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_2.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_3.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_3.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_4.stderr.txt
+│       │   │   │   │       │   │   ├── repeat_4.stdout.txt
+│       │   │   │   │       │   │   ├── repeat_5.stderr.txt
+│       │   │   │   │       │   │   └── repeat_5.stdout.txt
+│       │   │   │   │       │   └── grain_100/
+│       │   │   │   │       │       ├── repeat_1.stderr.txt
+│       │   │   │   │       │       ├── repeat_1.stdout.txt
+│       │   │   │   │       │       ├── repeat_2.stderr.txt
+│       │   │   │   │       │       ├── repeat_2.stdout.txt
+│       │   │   │   │       │       ├── repeat_3.stderr.txt
+│       │   │   │   │       │       ├── repeat_3.stdout.txt
+│       │   │   │   │       │       ├── repeat_4.stderr.txt
+│       │   │   │   │       │       ├── repeat_4.stdout.txt
+│       │   │   │   │       │       ├── repeat_5.stderr.txt
+│       │   │   │   │       │       └── repeat_5.stdout.txt
+│       │   │   │   │       └── threads_8/
+│       │   │   │   │           ├── grain_1/
+│       │   │   │   │           │   ├── repeat_1.stderr.txt
+│       │   │   │   │           │   ├── repeat_1.stdout.txt
+│       │   │   │   │           │   ├── repeat_2.stderr.txt
+│       │   │   │   │           │   ├── repeat_2.stdout.txt
+│       │   │   │   │           │   ├── repeat_3.stderr.txt
+│       │   │   │   │           │   ├── repeat_3.stdout.txt
+│       │   │   │   │           │   ├── repeat_4.stderr.txt
+│       │   │   │   │           │   ├── repeat_4.stdout.txt
+│       │   │   │   │           │   ├── repeat_5.stderr.txt
+│       │   │   │   │           │   └── repeat_5.stdout.txt
+│       │   │   │   │           ├── grain_10/
+│       │   │   │   │           │   ├── repeat_1.stderr.txt
+│       │   │   │   │           │   ├── repeat_1.stdout.txt
+│       │   │   │   │           │   ├── repeat_2.stderr.txt
+│       │   │   │   │           │   ├── repeat_2.stdout.txt
+│       │   │   │   │           │   ├── repeat_3.stderr.txt
+│       │   │   │   │           │   ├── repeat_3.stdout.txt
+│       │   │   │   │           │   ├── repeat_4.stderr.txt
+│       │   │   │   │           │   ├── repeat_4.stdout.txt
+│       │   │   │   │           │   ├── repeat_5.stderr.txt
+│       │   │   │   │           │   └── repeat_5.stdout.txt
+│       │   │   │   │           └── grain_100/
+│       │   │   │   │               ├── repeat_1.stderr.txt
+│       │   │   │   │               ├── repeat_1.stdout.txt
+│       │   │   │   │               ├── repeat_2.stderr.txt
+│       │   │   │   │               ├── repeat_2.stdout.txt
+│       │   │   │   │               ├── repeat_3.stderr.txt
+│       │   │   │   │               ├── repeat_3.stdout.txt
+│       │   │   │   │               ├── repeat_4.stderr.txt
+│       │   │   │   │               ├── repeat_4.stdout.txt
+│       │   │   │   │               ├── repeat_5.stderr.txt
+│       │   │   │   │               └── repeat_5.stdout.txt
+│       │   │   │   ├── machine.json
+│       │   │   │   ├── summary.csv
+│       │   │   │   ├── summary.txt
+│       │   │   │   └── summary_raw.csv
 │       │   │   └── sniper/
 │       │   │       ├── raw/
 │       │   │       │   ├── mutex/
@@ -3663,4 +4524,4 @@ NTUA-Advanced_Computer_Architecture/
 ├── LICENSE
 └── README.md
 
-Total directories: 392, Total files: 3272
+Total directories: 499, Total files: 4026

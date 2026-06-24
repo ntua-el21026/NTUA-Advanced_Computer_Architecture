@@ -296,7 +296,7 @@ def execute_run(
     spec: RealRunSpec,
     binary_dir: Path,
     force: bool,
-    timeout: int,
+    timeout: int | None,
     dry_run: bool,
 ) -> int:
     existing = parse_existing_run(spec)
@@ -363,7 +363,7 @@ def run_warmup(
     cpu_ids: list[int],
     binary_dir: Path,
     repeat: int,
-    timeout: int,
+    timeout: int | None,
     dry_run: bool,
 ) -> int:
     command = [
@@ -381,14 +381,21 @@ def run_warmup(
         return 0
     env = os.environ.copy()
     env["LOCKS_CPU_LIST"] = cpu_list
-    completed = subprocess.run(
-        command,
-        env=env,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-        timeout=timeout,
-        check=False,
-    )
+    try:
+        completed = subprocess.run(
+            command,
+            env=env,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            timeout=timeout,
+            check=False,
+        )
+    except subprocess.TimeoutExpired:
+        print(
+            f"ERROR warmup timeout: {implementation} "
+            f"threads={nthreads} grain={grain} repeat={repeat}"
+        )
+        return 124
     return completed.returncode
 
 
@@ -526,7 +533,12 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("--warmups", type=int, default=1)
     parser.add_argument("--cpu-list")
     parser.add_argument("--limit", type=int)
-    parser.add_argument("--timeout", type=int, default=120)
+    parser.add_argument(
+        "--timeout",
+        type=int,
+        default=0,
+        help="seconds per program execution; 0 disables the timeout",
+    )
     parser.add_argument("--output-root", type=Path, default=exercise / "benchmarks" / "4.1" / "real")
     parser.add_argument("--helpcode-dir", type=Path, default=helpcode)
     parser.add_argument("--binary-dir", type=Path, default=helpcode / "bin")
@@ -544,9 +556,12 @@ def main(argv: list[str] | None = None) -> int:
         args.iterations <= 0
         or args.repeats <= 0
         or args.warmups < 0
-        or args.timeout <= 0
+        or args.timeout < 0
     ):
-        raise ValueError("iterations/repeats/timeout must be positive")
+        raise ValueError(
+            "iterations/repeats must be positive and timeout must be non-negative"
+        )
+    timeout = None if args.timeout == 0 else args.timeout
 
     physical = discover_physical_cpus()
     discovered_ids = [cpu.representative for cpu in physical]
@@ -619,26 +634,37 @@ def main(argv: list[str] | None = None) -> int:
     for spec in specs:
         warmup_key = (spec.implementation, spec.nthreads, spec.grain)
         if warmup_key not in warmed:
-            for repeat in range(1, args.warmups + 1):
-                status = run_warmup(
-                    spec.implementation,
-                    spec.nthreads,
-                    spec.iterations,
-                    spec.grain,
-                    cpu_ids,
-                    args.binary_dir,
-                    repeat,
-                    args.timeout,
-                    args.dry_run,
-                )
-                failures += status != 0
+            key_specs = [
+                item
+                for item in specs
+                if (item.implementation, item.nthreads, item.grain) == warmup_key
+            ]
+            all_key_outputs_exist = (
+                not args.force
+                and not args.dry_run
+                and all(parse_existing_run(item) is not None for item in key_specs)
+            )
+            if not all_key_outputs_exist:
+                for repeat in range(1, args.warmups + 1):
+                    status = run_warmup(
+                        spec.implementation,
+                        spec.nthreads,
+                        spec.iterations,
+                        spec.grain,
+                        cpu_ids,
+                        args.binary_dir,
+                        repeat,
+                        timeout,
+                        args.dry_run,
+                    )
+                    failures += status != 0
             warmed.add(warmup_key)
         failures += (
             execute_run(
                 spec,
                 args.binary_dir,
                 args.force,
-                args.timeout,
+                timeout,
                 args.dry_run,
             )
             != 0

@@ -1,0 +1,2 @@
+Validation: PASS (val=100000000)
+Execution time:4.693049 seconds
