@@ -13,6 +13,10 @@ experiments required by Assignment 3.
   sharing topologies.
 - `exercise3_common.py`: shared parsing, command construction, McPAT, and CSV
   helpers.
+- `run_sniper_docker.sh`: Docker controller for pulling, building, checking,
+  smoke-testing, and running Sniper matrices.
+- `sniper_docker_exec.sh` and `mcpat_docker_exec.sh`: low-level container
+  wrappers used by the controller and Python runners.
 
 ## Real-machine runs
 
@@ -136,4 +140,12 @@ Common options include:
 --implementations
 --limit
 --timeout
+```
+
+## Diagrams
+
+After the Sniper and real-machine summaries exist, generate report figures with:
+
+```bash
+python3 exercises/3rd/benchmarks/diagrams/make_diagrams.py
 ```

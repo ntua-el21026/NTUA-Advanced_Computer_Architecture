@@ -1,6 +1,8 @@
-# 1st Exercise
+# Exercise 1 - Branch Prediction
 
-This directory contains the first Advanced Computer Architecture exercise. The work focuses on branch-instruction analysis and branch-prediction experiments using Intel PIN and SPEC CPU2006 benchmark inputs.
+This directory contains the first Advanced Computer Architecture exercise. The
+work focuses on branch-instruction analysis and branch-prediction experiments
+using Intel PIN and SPEC CPU2006 benchmark inputs.
 
 ## Contents
 
@@ -9,7 +11,6 @@ This directory contains the first Advanced Computer Architecture exercise. The w
 - `scripts/`: automation scripts for running each report section and producing summaries.
 - `benchmarks/`: raw benchmark outputs, CSV summaries, text summaries, and generated diagrams.
 - `report/`: LaTeX report source and compiled PDF.
-- `image/`: reserved image assets for theory notes or report material outside the generated benchmark diagrams.
 - `decisions.md`: implementation and evaluation decisions kept while working through the assignment.
 - `theory.md`: compact theory notes used to keep the report explanations consistent.
 
@@ -35,3 +36,9 @@ Run the section-specific automation from the repository root, for example:
 ```
 
 Generated benchmark data is stored under `benchmarks/`, and final report material is assembled under `report/`.
+
+## Results and Report
+
+The completed outputs are stored in `benchmarks/` by assignment section. The
+report-ready figures are under `benchmarks/diagrams/`, and the final submitted
+PDF is under `report/`.

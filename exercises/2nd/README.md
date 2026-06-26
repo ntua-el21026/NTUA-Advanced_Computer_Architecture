@@ -1,4 +1,4 @@
-# 2nd Exercise
+# Exercise 2 - Cache Hierarchy Simulation
 
 This directory contains the second Advanced Computer Architecture exercise. The work focuses on memory hierarchy simulation with Intel PIN and SPEC CPU2006 benchmark inputs.
 
@@ -12,7 +12,7 @@ This directory contains the second Advanced Computer Architecture exercise. The 
 - `decisions.md`: implementation and evaluation decisions kept while working through the assignment.
 - `theory.md`: compact theory notes used to keep the report explanations consistent.
 
-## Current Workflow
+## Workflow
 
 Build the simulator pintool:
 
@@ -36,3 +36,15 @@ After section 4.2 finishes and writes `summary_by_config.csv`, run the section 4
 ```
 
 The 4.3 runner selects the best 4.2 L2 configuration for each capacity by aggregate IPC, then runs LRU, MRU, Random, LFU, LIP, and SRRIP on the same seven benchmarks. It writes raw outputs and summaries under `exercises/2nd/benchmarks/4.3/`.
+
+Generate report diagrams after the summaries exist:
+
+```bash
+python3 exercises/2nd/benchmarks/diagrams/make_diagrams.py
+```
+
+## Results and Report
+
+Section summaries live under `benchmarks/4.2/` and `benchmarks/4.3/`.
+Report-ready diagrams are stored in `benchmarks/diagrams/`, and the final
+LaTeX source/PDF is stored in `report/`.
