@@ -38,3 +38,24 @@ payloads are tracked according to `.gitattributes`.
 Run automation from the repository root unless a README explicitly says
 otherwise. This keeps relative paths stable and makes the generated summaries
 land in the expected `benchmarks/` directories.
+
+## Portfolio status and attribution
+
+The three submitted reports credit Michail-Athanasios Peppas (03121026), May–June 2026. The repository combines original implementations/automation, course starter code and third-party tools/inputs. Preserve local starter notices; report authorship does not grant ownership of the benchmark suite or simulators.
+
+This is a strong conditional public systems showcase. A code-only public release can retain reviewed original source and automation while excluding licensed benchmark payloads. The complete local repository retains all original benchmark evidence; see [PUBLIC_RELEASE.md](docs/PUBLIC_RELEASE.md) for the non-destructive release procedure and required inputs.
+
+## Setup and bounded verification
+
+For code inspection, clone without fetching LFS payloads. Python plotting/analysis dependencies, Intel PIN, Sniper 8.0 and McPAT belong to their respective exercise workflows; there is no repository-wide environment lock. Use each exercise README and record tool/source versions, compiler flags, affinity, topology and package versions. Course-provided paths and the original machine's core counts need adjustment in local configuration before running a matrix.
+
+The real-machine synchronization check needs only a Linux C compiler, make, pthreads and `timeout`, without SPEC, PIN or Sniper:
+
+```bash
+cd exercises/3rd/advcomparch-ex3-helpcode
+make check-real TEST_THREADS=2 TEST_ITERATIONS=1000 TEST_GRAIN=1
+```
+
+Use a separate `BIN_DIR` if preserving the working tree's build products. This small counter-correctness smoke check validates five lock variants on its bounded input; it is not a scalability benchmark or a rerun of reported measurements.
+
+The historical plots and reports distinguish PIN/Sniper simulation estimates from real-machine timing. Preserve the original raw results and seeds. CPU2006 is a retired workload suite, and results are workload/hardware-specific; these experiments do not establish general architectural superiority. No simulator matrix or historical performance run was repeated in preparation.
