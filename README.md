@@ -1,6 +1,6 @@
 # NTUA Advanced Computer Architecture
 
-Three programming assignments for NTUA ECE's **Advanced Topics in Computer Architecture** course, by **Michail-Athanasios Peppas (03121026)**. The repository retains simulator implementations, experiment automation, raw outputs, plots, and the submitted May–June 2026 reports.
+Three programming assignments for NTUA ECE's **Advanced Topics in Computer Architecture** course, by **Michail Athanasios Peppas (03121026)**. The repository retains simulator implementations, experiment automation, raw outputs, plots, and the submitted May–June 2026 reports.
 
 ## Assignments
 
