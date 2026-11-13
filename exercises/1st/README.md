@@ -16,11 +16,10 @@ using Intel PIN and SPEC CPU2006 benchmark inputs.
 
 ## Workflow
 
-Build the pintools from the helper-code directory:
+From the repository root, build the pintools with an explicit PIN installation:
 
 ```bash
-cd advcomparch-ex1-helpcode/pintool
-make
+make -C exercises/1st/advcomparch-ex1-helpcode/pintool PIN_ROOT=/path/to/pin
 ```
 
 Run the section-specific automation from the repository root, for example:
@@ -42,3 +41,7 @@ Generated benchmark data is stored under `benchmarks/`, and final report materia
 The completed outputs are stored in `benchmarks/` by assignment section. The
 report-ready figures are under `benchmarks/diagrams/`, and the final submitted
 PDF is under `report/`.
+
+## Runtime and evidence limits
+
+PIN and authorized SPEC CPU2006 train/reference inputs must be available before running the scripts. Inspect `--pin-root`, `--helpcode-dir`, `--output-root`, and `--dry-run` in the selected runner. Paths default to the historical PIN distribution and benchmark tree. `--summarize-only` regenerates summaries and can overwrite stored evidence; use a copied output tree when reviewing existing results. The reported predictor behavior is simulated from instrumented executions, not a direct measurement of a physical CPU's branch predictor. See the [root guide](../../README.md) for attribution and input licensing.

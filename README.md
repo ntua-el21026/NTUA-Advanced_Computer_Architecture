@@ -1,61 +1,56 @@
 # NTUA Advanced Computer Architecture
 
-Coursework repository for the NTUA ECE course "Advanced Topics in Computer
-Architecture" by student `03121026`.
+Three programming assignments for NTUA ECE's **Advanced Topics in Computer Architecture** course, by **Michail-Athanasios Peppas (03121026)**. The repository retains simulator implementations, experiment automation, raw outputs, plots, and the submitted May–June 2026 reports.
 
-The repository keeps the three programming assignments, their automation
-scripts, measured outputs, generated diagrams, and final reports in one
-reproducible layout.
+## Assignments
 
-## Repository Layout
+| Assignment | Implementation | Evidence and interpretation |
+| --- | --- | --- |
+| [1: Branch prediction](exercises/1st/README.md) | Intel PIN instruction/branch statistics; predictor comparisons, branch-target buffers, return-address stacks, and perceptron-based studies | [Section results](exercises/1st/benchmarks/) and [report](exercises/1st/report/); instrumentation-driven simulated predictor behavior |
+| [2: Cache hierarchy](exercises/2nd/README.md) | Two-level cache pintool, L2 capacity/associativity/block-size sweeps, and LRU/MRU/Random/LFU/LIP/SRRIP comparisons | [Section results](exercises/2nd/benchmarks/) and [report](exercises/2nd/report/); modeled cache/IPC estimates |
+| [3: Synchronization and coherence](exercises/3rd/README.md) | TAS/TTAS with compare-and-swap or test-and-set, plus pthread mutex; real-machine and Sniper 8.0/McPAT workflows | [Section results](exercises/3rd/benchmarks/) and [report](exercises/3rd/report/); separate measured host timing, simulated timing, and modeled power/energy |
 
-- `docs/`: lecture slides and repository-structure utilities.
-- `exercises/1st/`: branch-instruction analysis and branch-prediction studies
-  with Intel PIN and SPEC CPU2006 inputs.
-- `exercises/2nd/`: cache-hierarchy simulation, L2 cache design-space
-  exploration, and replacement-policy evaluation.
-- `exercises/3rd/`: TAS/TTAS/pthread mutex synchronization experiments with
-  Sniper 8.0, McPAT, Docker, and real-machine measurements.
+The [exercise index](exercises/README.md) describes the common layout. Local `decisions.md` and `theory.md` files record modeling/measurement choices; [docs/](docs/README.md) contains course-level supporting material.
 
-Each exercise follows the same high-level structure:
-
-- `assignment/`: official handout and any reference material.
-- `advcomparch-*-helpcode/`: assignment helper code plus local
-  implementations.
-- `scripts/`: reproducible experiment automation.
-- `benchmarks/`: raw outputs, summaries, and generated diagrams.
-- `report/`: LaTeX source and compiled PDF.
-- `decisions.md`: implementation and measurement decisions.
-- `theory.md`: concise notes used while writing the report.
-
-## Reproducibility Notes
-
-The benchmark payloads are course-provided data and should be treated as
-stable inputs. Generated binaries and local scratch directories are ignored by
-Git. Large or binary artifacts such as PDFs, plots, and selected benchmark
-payloads are tracked according to `.gitattributes`.
-
-Run automation from the repository root unless a README explicitly says
-otherwise. This keeps relative paths stable and makes the generated summaries
-land in the expected `benchmarks/` directories.
-
-## Portfolio status and attribution
-
-The three submitted reports credit Michail-Athanasios Peppas (03121026), May–June 2026. The repository combines original implementations/automation, course starter code and third-party tools/inputs. Preserve local starter notices; report authorship does not grant ownership of the benchmark suite or simulators.
-
-This is a strong conditional public systems showcase. A code-only public release can retain reviewed original source and automation while excluding licensed benchmark payloads. The complete local repository retains all original benchmark evidence; see [PUBLIC_RELEASE.md](docs/PUBLIC_RELEASE.md) for the non-destructive release procedure and required inputs.
-
-## Setup and bounded verification
-
-For code inspection, clone without fetching LFS payloads. Python plotting/analysis dependencies, Intel PIN, Sniper 8.0 and McPAT belong to their respective exercise workflows; there is no repository-wide environment lock. Use each exercise README and record tool/source versions, compiler flags, affinity, topology and package versions. Course-provided paths and the original machine's core counts need adjustment in local configuration before running a matrix.
-
-The real-machine synchronization check needs only a Linux C compiler, make, pthreads and `timeout`, without SPEC, PIN or Sniper:
+## Prerequisites and external inputs
 
 ```bash
-cd exercises/3rd/advcomparch-ex3-helpcode
-make check-real TEST_THREADS=2 TEST_ITERATIONS=1000 TEST_GRAIN=1
+GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/ntua-el21026/ntua-advanced-computer-architecture.git
+cd ntua-advanced-computer-architecture
 ```
 
-Use a separate `BIN_DIR` if preserving the working tree's build products. This small counter-correctness smoke check validates five lock variants on its bounded input; it is not a scalability benchmark or a rerun of reported measurements.
+A source-inspection clone can omit large LFS objects. Seven tracked soplex input paths are LFS pointers in such a checkout; they represent four distinct payloads, with identity/size recorded in each pointer. A pointer is not usable benchmark data. Preserve the existing LFS arrangement and obtain authorized payloads only when needed for an experiment.
 
-The historical plots and reports distinguish PIN/Sniper simulation estimates from real-machine timing. Preserve the original raw results and seeds. CPU2006 is a retired workload suite, and results are workload/hardware-specific; these experiments do not establish general architectural superiority. No simulator matrix or historical performance run was repeated in preparation.
+Assignments 1–2 require Intel PIN, a compatible Linux compiler/toolchain, and the matching course-distributed SPEC CPU2006 executables/input classes. These tools and licensed data are not supplied by a Python package install. The pintool makefiles retain a historical default `PIN_ROOT`; override it with your actual PIN installation. The branch runners expose `--pin-root`, `--helpcode-dir`, and `--output-root`; the cache runners expose `--pin`, `--pintool`, and `--cores`. Read each runner's `--help` before execution.
+
+Assignment 3's real-machine path needs Linux, GCC, GNU Make, pthreads, CPU-affinity support, and `timeout`. Its simulator path additionally needs Sniper 8.0 and McPAT; the existing [container scripts](exercises/3rd/scripts/README.md) describe the original Docker workflow. Docker is not needed for source inspection or the bounded real-machine check. Python analysis/plotting dependencies are local to the relevant scripts; there is no repository-wide environment lock.
+
+## Build and bounded verification
+
+For Assignment 1, an explicit PIN path avoids the original workstation default:
+
+```bash
+make -C exercises/1st/advcomparch-ex1-helpcode/pintool PIN_ROOT=/path/to/pin
+```
+
+Use the corresponding Assignment 2 pintool directory for its cache simulator. Section runners should be launched from the repository root; their default output roots point into the existing `benchmarks/` trees. Configure a separate output root where supported or use a disposable working copy for new runs.
+
+The small lock-counter check builds and runs five real-machine variants without PIN, SPEC, Sniper, or McPAT:
+
+```bash
+make -C exercises/3rd/advcomparch-ex3-helpcode check-real \
+  BIN_DIR=/tmp/ntua-lock-check \
+  TEST_THREADS=2 TEST_ITERATIONS=1000 TEST_GRAIN=1
+```
+
+Choose a new writable `BIN_DIR` for each independent run. The program supports an allowed CPU list through `LOCKS_CPU_LIST` and otherwise chooses CPUs from its current affinity mask. The bounded check validates the final counter for its input; it does not reproduce scalability measurements. This documentation update inspected source, script options, and Makefile expansion. No executable correctness test, simulator run, container build, or benchmark was executed.
+
+## Measurement scope
+
+PIN branch/cache outputs describe the implemented models and workload traces. Sniper timing and McPAT power/energy are model-derived estimates; host real-machine lock timings are separate measurements. Do not compare those values as interchangeable observations. Historical CPU topology, core pinning, iterations, grain, compiler flags, and benchmark classes are part of each experiment's context.
+
+CPU2006 is a retired workload suite. The stored measurements support workload/hardware-specific coursework conclusions, not general architectural superiority. Preserve raw outputs, reports, and seeds; record exact source/tool/configuration/input fingerprints and hardware for any new run.
+
+## Attribution and licensing
+
+The reports credit Michail-Athanasios Peppas. The tree also contains NTUA starter code, licensed benchmark payloads, third-party tools, teaching material, and papers, whose notices and rights remain separate. Original contributions are offered under [MIT](LICENSE) within the author's rights. [PUBLIC_RELEASE.md](docs/PUBLIC_RELEASE.md) explains SPEC/input restrictions and a non-destructive source-only export procedure; it does not authorize publication or change the repository's visibility.

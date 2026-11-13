@@ -4,8 +4,8 @@ The working evidence repository includes course-distributed SPEC CPU2006 executa
 
 ## Non-destructive route
 
-1. Preserve this source/evidence repository and its hashes privately. Do not delete payloads, rewrite history, or publish this full history as a shortcut to a code-only release.
-2. Construct a fresh export outside this repository from an explicit, reviewed source-file allowlist. Exclude `.git`, LFS payload/pointer files, binaries, archives, datasets, lectures, assignment handouts and benchmark input trees. Retain required copyright/license notices with adapted source. A candidate manifest in the local preparation workspace lists exact paths, sizes, SHA-256 values and exclusions; its status is review-required, not publication approval.
+1. Preserve this source/evidence repository and its hashes in access-controlled storage. Do not delete payloads, rewrite history, or publish this full history as a shortcut to a code-only release.
+2. Construct a fresh export outside this repository from an explicit, reviewed source-file allowlist. Exclude `.git`, LFS payload/pointer files, binaries, archives, datasets, lectures, assignment handouts and benchmark input trees. Retain required copyright/license notices with adapted source. Generate a new manifest for that concrete export listing exact relative paths, sizes, SHA-256 values, and exclusions. No temporary manifest from an earlier preparation workspace is required or assumed to exist.
 3. Review ownership/notices for the selected helper-code adaptations and automation. Add applicable notices and describe the assignment/starter provenance; do not label all files solely authored by the report author.
 4. Use fresh release metadata and obtain the user's publication authorization for the concrete export. This preparation does not publish, change visibility, or modify remote history.
 
@@ -19,4 +19,4 @@ The default excluded trees are:
 
 Licensed users must obtain the benchmark suite/input classes through their authorized source, then supply the matching tree in private local storage. Match the executable/input versions used by the historical report; do not replace them with arbitrary downloads or claim exact replay from a benchmark name. Inspect runner paths and configure local roots before execution. Version and license Intel PIN, Sniper 8.0 and McPAT separately. The real-machine lock check documented in the root README needs none of these benchmark payloads.
 
-Raw benchmark outputs, reports and diagrams remain preserved in this private evidence copy. A public source-only export excludes them by default pending individual rights/content review, so it cannot itself reproduce historical numerical results. A later reviewed results package may reference fingerprints and methodology without redistributing licensed inputs.
+Raw benchmark outputs, reports and diagrams remain preserved in the evidence repository. A public source-only export excludes them by default pending individual rights/content review, so it cannot itself reproduce historical numerical results. A later reviewed results package may reference fingerprints and methodology without redistributing licensed inputs.

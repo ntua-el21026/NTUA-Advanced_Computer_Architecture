@@ -31,7 +31,7 @@ Inside the Sniper container:
 make sniper SNIPER_BASE_DIR=/root/sniper
 ```
 
-See `scripts/README.md` for the experiment commands and output layout.
+See [the script guide](scripts/README.md) for the experiment commands and output layout.
 
 On the 16-physical/24-logical target laptop, start with:
 
@@ -64,3 +64,7 @@ Completed Sniper and real-machine summaries are stored under `benchmarks/4.1/`
 and `benchmarks/4.2/`. The plotting workflow writes report-ready PNG/PDF
 figures under `benchmarks/diagrams/`. The final report source and compiled PDF
 are stored under `report/`.
+
+## Interpreting the outputs
+
+The real-machine runner records host timings; Sniper reports simulator timing/cycles, and McPAT estimates power/energy from the simulated configuration. Preserve those distinctions in comparisons. The 16-physical/24-logical preflight and container defaults describe the original target environment, so inspect affinity, resources, paths, and output roots before new execution. The [root guide](../../README.md) provides a smaller counter check and input/provenance requirements.

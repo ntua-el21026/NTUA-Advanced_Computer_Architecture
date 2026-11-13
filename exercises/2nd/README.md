@@ -14,11 +14,10 @@ This directory contains the second Advanced Computer Architecture exercise. The 
 
 ## Workflow
 
-Build the simulator pintool:
+From the repository root, build the simulator pintool with an explicit PIN installation:
 
 ```bash
-cd exercises/2nd/advcomparch-ex2-helpcode/pintool
-make
+make -C exercises/2nd/advcomparch-ex2-helpcode/pintool PIN_ROOT=/path/to/pin
 ```
 
 Run the section 4.2 L2-cache sweep from the repository root:
@@ -48,3 +47,7 @@ python3 exercises/2nd/benchmarks/diagrams/make_diagrams.py
 Section summaries live under `benchmarks/4.2/` and `benchmarks/4.3/`.
 Report-ready diagrams are stored in `benchmarks/diagrams/`, and the final
 LaTeX source/PDF is stored in `report/`.
+
+## Runtime and evidence limits
+
+Use `--pin` and `--pintool` for local tool paths, `--cores` for allowed host CPUs, and a separate `--output-root` for new measurements. Section 4.3 also reads the Section 4.2 selection summary; inspect its summary-path option before a rerun. `--dry-run` prints intended commands without executing the simulation. Cache miss counts and IPC are outputs of the configured model, not hardware-counter measurements. Authorized SPEC inputs, including any required LFS payloads, must be present; see the [root guide](../../README.md).
