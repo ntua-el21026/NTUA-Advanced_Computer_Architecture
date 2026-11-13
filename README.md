@@ -19,9 +19,9 @@ GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/ntua-el21026/ntua-advanced-co
 cd ntua-advanced-computer-architecture
 ```
 
-A source-inspection clone can omit large LFS objects. Seven tracked soplex input paths are LFS pointers in such a checkout; they represent four distinct payloads, with identity/size recorded in each pointer. A pointer is not usable benchmark data. Preserve the existing LFS arrangement and obtain authorized payloads only when needed for an experiment.
+A source-inspection clone can omit large LFS objects. Seven tracked soplex input paths are LFS pointers in such a checkout; they represent four distinct payloads, with identity/size recorded in each pointer. A pointer is not usable benchmark data. Obtain the matching payloads when needed for an experiment.
 
-Assignments 1–2 require Intel PIN, a compatible Linux compiler/toolchain, and the matching course-distributed SPEC CPU2006 executables/input classes. These tools and licensed data are not supplied by a Python package install. The pintool makefiles retain a historical default `PIN_ROOT`; override it with your actual PIN installation. The branch runners expose `--pin-root`, `--helpcode-dir`, and `--output-root`; the cache runners expose `--pin`, `--pintool`, and `--cores`. Read each runner's `--help` before execution.
+Assignments 1–2 require Intel PIN, a compatible Linux compiler/toolchain, and the matching course-distributed SPEC CPU2006 executables/input classes. A Python package install does not supply these tools or benchmark inputs. The pintool makefiles retain a historical default `PIN_ROOT`; override it with your actual PIN installation. The branch runners expose `--pin-root`, `--helpcode-dir`, and `--output-root`; the cache runners expose `--pin`, `--pintool`, and `--cores`. Read each runner's `--help` before execution.
 
 Assignment 3's real-machine path needs Linux, GCC, GNU Make, pthreads, CPU-affinity support, and `timeout`. Its simulator path additionally needs Sniper 8.0 and McPAT; the existing [container scripts](exercises/3rd/scripts/README.md) describe the original Docker workflow. Docker is not needed for source inspection or the bounded real-machine check. Python analysis/plotting dependencies are local to the relevant scripts; there is no repository-wide environment lock.
 
@@ -43,14 +43,10 @@ make -C exercises/3rd/advcomparch-ex3-helpcode check-real \
   TEST_THREADS=2 TEST_ITERATIONS=1000 TEST_GRAIN=1
 ```
 
-Choose a new writable `BIN_DIR` for each independent run. The program supports an allowed CPU list through `LOCKS_CPU_LIST` and otherwise chooses CPUs from its current affinity mask. The bounded check validates the final counter for its input; it does not reproduce scalability measurements. This documentation update inspected source, script options, and Makefile expansion. No executable correctness test, simulator run, container build, or benchmark was executed.
+Choose a new writable `BIN_DIR` for each independent run. The program supports an allowed CPU list through `LOCKS_CPU_LIST` and otherwise chooses CPUs from its current affinity mask. The bounded check validates the final counter for its input; it does not reproduce scalability measurements.
 
 ## Measurement scope
 
 PIN branch/cache outputs describe the implemented models and workload traces. Sniper timing and McPAT power/energy are model-derived estimates; host real-machine lock timings are separate measurements. Do not compare those values as interchangeable observations. Historical CPU topology, core pinning, iterations, grain, compiler flags, and benchmark classes are part of each experiment's context.
 
 CPU2006 is a retired workload suite. The stored measurements support workload/hardware-specific coursework conclusions, not general architectural superiority. Preserve raw outputs, reports, and seeds; record exact source/tool/configuration/input fingerprints and hardware for any new run.
-
-## Attribution and licensing
-
-The reports credit Michail-Athanasios Peppas. The tree also contains NTUA starter code, licensed benchmark payloads, third-party tools, teaching material, and papers, whose notices and rights remain separate. Original contributions are offered under [MIT](LICENSE) within the author's rights. [PUBLIC_RELEASE.md](docs/PUBLIC_RELEASE.md) explains SPEC/input restrictions and a non-destructive source-only export procedure; it does not authorize publication or change the repository's visibility.
