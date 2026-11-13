@@ -21,10 +21,10 @@ Build from the `pintool/` directory:
 
 ```bash
 cd pintool
-make
+make PIN_ROOT=/path/to/pin
 ```
 
-The local Intel PIN kit is expected at `../pin-external-4.2-99776-g21d818fa2-gcc-linux`, as configured in `pintool/makefile`.
+`PIN_ROOT` defaults to a historical absolute workstation path in `pintool/makefile`. Override it with the path to your actual Intel PIN kit, as shown above.
 
 ## Notes
 
